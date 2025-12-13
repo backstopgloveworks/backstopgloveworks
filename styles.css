@@ -344,13 +344,6 @@ img {
     padding: var(--spacing-lg) var(--spacing-md);
 }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: var(--spacing-lg) var(--spacing-md);
-}
-
 .hero-title {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 7vw, 5rem);
