@@ -328,17 +328,6 @@ img {
     color: var(--bg-white);
     overflow: hidden;
 }
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: var(--spacing-lg) var(--spacing-md);
-    background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent box */
-    backdrop-filter: blur(10px); /* Blurs the background */
-    border-radius: 24px;
-    max-width: 900px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -357,7 +346,10 @@ img {
     line-height: 1.1;
     letter-spacing: -1px;
     animation: fadeInUp 1s ease both;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    text-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.9),
+        0 6px 12px rgba(0, 0, 0, 0.7),
+        0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
