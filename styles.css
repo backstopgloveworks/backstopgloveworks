@@ -432,7 +432,146 @@ img {
         transform: translateY(0);
     }
 }
+/* ============================================
+   INFINITE SCROLLER - WHAT WE FIX
+   ============================================ */
+.services-scroller {
+    width: 100%;
+    background: linear-gradient(135deg, #2d5016 0%, #1a3009 100%);
+    padding: 40px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
 
+/* Fade edges */
+.services-scroller::before,
+.services-scroller::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.services-scroller::before {
+    left: 0;
+    background: linear-gradient(to right, #2d5016, transparent);
+}
+
+.services-scroller::after {
+    right: 0;
+    background: linear-gradient(to left, #1a3009, transparent);
+}
+
+/* Scrolling container */
+.scroller-track {
+    display: flex;
+    gap: 60px;
+    animation: scroll 40s linear infinite;
+}
+
+/* Pause on hover */
+.services-scroller:hover .scroller-track {
+    animation-play-state: paused;
+}
+
+/* Individual service items */
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.service-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bg-white);
+    letter-spacing: -0.3px;
+}
+
+.service-price {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .services-scroller {
+        padding: 30px 0;
+    }
+
+    .scroller-track {
+        gap: 40px;
+    }
+
+    .service-item {
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    .service-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .service-title {
+        font-size: 1rem;
+    }
+
+    .service-price {
+        font-size: 0.85rem;
+    }
+}
 /* ============================================
    SECTION: OUR PROCESS
    ============================================ */
