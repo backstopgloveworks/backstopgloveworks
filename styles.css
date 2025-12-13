@@ -322,7 +322,7 @@ img {
     justify-content: center;
     background: 
         linear-gradient(135deg, rgba(45, 80, 22, 0.92) 0%, rgba(26, 48, 9, 0.95) 100%),
-        url('https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=1600');
+        url('banner.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
