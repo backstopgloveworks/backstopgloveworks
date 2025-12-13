@@ -343,6 +343,14 @@ img {
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-md);
 }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
 .hero-title {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 7vw, 5rem);
@@ -351,10 +359,12 @@ img {
     line-height: 1.1;
     letter-spacing: -1px;
     animation: fadeInUp 1s ease both;
+    /* STRONG text shadows */
     text-shadow: 
-        0 3px 6px rgba(0, 0, 0, 0.9),
-        0 6px 12px rgba(0, 0, 0, 0.7),
-        0 12px 24px rgba(0, 0, 0, 0.5);
+        0 3px 8px rgba(0, 0, 0, 0.95),
+        0 6px 16px rgba(0, 0, 0, 0.8),
+        0 12px 30px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
@@ -367,7 +377,11 @@ img {
     margin-left: auto;
     margin-right: auto;
     animation: fadeInUp 1s ease 0.2s both;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    /* STRONG text shadows */
+    text-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.95),
+        0 4px 16px rgba(0, 0, 0, 0.8),
+        0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 .hero-cta {
@@ -376,6 +390,27 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     animation: fadeInUp 1s ease 0.4s both;
+}
+
+/* Add shadows to BUTTONS in hero section */
+.hero-cta .btn {
+    /* Strong box shadows on buttons */
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        0 12px 36px rgba(0, 0, 0, 0.3);
+    /* Text shadow inside the button */
+    text-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.hero-cta .btn:hover {
+    /* Even stronger shadow on hover */
+    box-shadow: 
+        0 6px 18px rgba(0, 0, 0, 0.6),
+        0 12px 32px rgba(0, 0, 0, 0.5),
+        0 18px 48px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes fadeInUp {
