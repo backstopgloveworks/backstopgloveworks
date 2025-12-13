@@ -328,7 +328,17 @@ img {
     color: var(--bg-white);
     overflow: hidden;
 }
-
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent box */
+    backdrop-filter: blur(10px); /* Blurs the background */
+    border-radius: 24px;
+    max-width: 900px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
 .hero-overlay {
     position: absolute;
     top: 0;
