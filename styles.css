@@ -467,7 +467,7 @@ img {
 .scroller-track {
     display: flex;
     gap: 60px;
-    animation: scroll 40s linear infinite;
+    animation: scroll 25s linear infinite;
 }
 
 /* Pause on hover */
