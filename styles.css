@@ -131,17 +131,27 @@ img {
 }
 
 .btn-secondary {
-    background-color: transparent;
+    /* Frosted glass effect! */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: var(--bg-white);
-    border-color: var(--bg-white);
-    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover {
-    background-color: var(--bg-white);
-    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: var(--bg-white);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Elegant Section Headers */
@@ -314,20 +324,23 @@ img {
 /* ============================================
    SECTION: HERO / BANNER
    ============================================ */
+/* ============================================
+   SECTION: HERO / BANNER
+   ============================================ */
 .hero-section {
     position: relative;
     min-height: clamp(600px, 90vh, 800px);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: 
-        url('banner.jpg');
+    background: url('banner.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: var(--bg-white);
     overflow: hidden;
 }
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -337,6 +350,7 @@ img {
     background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
     opacity: 0.3;
 }
+
 .hero-content {
     position: relative;
     z-index: 2;
@@ -352,13 +366,13 @@ img {
     line-height: 1.1;
     letter-spacing: -1px;
     animation: fadeInUp 1s ease both;
-    /* MASSIVE dark shadows */
+    /* DARKER shadows */
     text-shadow: 
         0 4px 12px rgba(0, 0, 0, 1),
-        0 8px 24px rgba(0, 0, 0, 0.95),
-        0 16px 48px rgba(0, 0, 0, 0.8),
-        0 24px 64px rgba(0, 0, 0, 0.7),
-        0 0 80px rgba(0, 0, 0, 0.6);
+        0 8px 24px rgba(0, 0, 0, 1),
+        0 16px 48px rgba(0, 0, 0, 0.9),
+        0 24px 64px rgba(0, 0, 0, 0.8),
+        0 0 80px rgba(0, 0, 0, 0.7);
 }
 
 .hero-subtitle {
@@ -371,12 +385,12 @@ img {
     margin-left: auto;
     margin-right: auto;
     animation: fadeInUp 1s ease 0.2s both;
-    /* LARGE dark shadows */
+    /* DARKER shadows */
     text-shadow: 
         0 3px 10px rgba(0, 0, 0, 1),
-        0 6px 20px rgba(0, 0, 0, 0.95),
-        0 12px 36px rgba(0, 0, 0, 0.8),
-        0 18px 48px rgba(0, 0, 0, 0.6);
+        0 6px 20px rgba(0, 0, 0, 1),
+        0 12px 36px rgba(0, 0, 0, 0.9),
+        0 18px 48px rgba(0, 0, 0, 0.7);
 }
 
 .hero-cta {
@@ -387,24 +401,24 @@ img {
     animation: fadeInUp 1s ease 0.4s both;
 }
 
-/* MUCH STRONGER shadows on buttons */
+/* DARKER shadows on buttons */
 .hero-cta .btn {
     box-shadow: 
-        0 6px 18px rgba(0, 0, 0, 0.7),
-        0 12px 36px rgba(0, 0, 0, 0.6),
-        0 20px 56px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(0, 0, 0, 0.4);
+        0 6px 18px rgba(0, 0, 0, 0.8),
+        0 12px 36px rgba(0, 0, 0, 0.7),
+        0 20px 56px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 0, 0, 0.5);
     text-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.9),
-        0 4px 16px rgba(0, 0, 0, 0.7);
+        0 2px 8px rgba(0, 0, 0, 1),
+        0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
 .hero-cta .btn:hover {
     box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.8),
-        0 16px 48px rgba(0, 0, 0, 0.7),
-        0 28px 72px rgba(0, 0, 0, 0.6),
-        0 0 60px rgba(0, 0, 0, 0.5);
+        0 8px 24px rgba(0, 0, 0, 0.9),
+        0 16px 48px rgba(0, 0, 0, 0.8),
+        0 28px 72px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(0, 0, 0, 0.6);
     transform: translateY(-3px);
 }
 
