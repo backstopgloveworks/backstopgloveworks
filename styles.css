@@ -321,7 +321,6 @@ img {
     align-items: center;
     justify-content: center;
     background: 
-        linear-gradient(135deg, rgba(45, 80, 22, 0.92) 0%, rgba(26, 48, 9, 0.95) 100%),
         url('banner.jpg');
     background-size: cover;
     background-position: center;
