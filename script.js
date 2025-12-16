@@ -3,6 +3,66 @@
    All interactive functionality organized by section
    ============================================ */
 
+// LACE COLORS DATA - Define at top level
+const laceColors = [
+    // Row 1
+    { name: 'Black', hex: '#2b2b2b' },
+    { name: 'Black AD', hex: '#1a1a1a' },
+    { name: 'Black TX', hex: '#0d0d0d' },
+    { name: 'Saddle Tan', hex: '#8B4513' },
+    { name: 'Tan', hex: '#D2691E' },
+    { name: 'Gold', hex: '#DAA520' },
+    { name: 'Orange', hex: '#FF6B35' },
+    { name: 'Cream', hex: '#F5DEB3' },
+    { name: 'Beige', hex: '#C4A574' },
+    { name: 'Wheat', hex: '#D4B896' },
+    { name: 'White', hex: '#FFFFFF', soldOut: true },
+    { name: 'Brown', hex: '#654321' },
+    { name: 'Dark Brown', hex: '#3d2817' },
+    
+    // Row 2
+    { name: 'Dark Brown TX', hex: '#2d1810' },
+    { name: 'Burgundy', hex: '#800020' },
+    { name: 'Maroon', hex: '#691b1b' },
+    { name: 'Cardinal', hex: '#8B1A1A' },
+    { name: 'Red', hex: '#DC143C' },
+    { name: 'Bright Red', hex: '#FF0000' },
+    { name: 'Scarlet', hex: '#C8102E' },
+    { name: 'Pink', hex: '#FF69B4' },
+    { name: 'Hot Pink', hex: '#FF1493' },
+    { name: 'Purple', hex: '#800080' },
+    { name: 'Orange AD', hex: '#FF8C00' },
+    { name: 'Orange TX', hex: '#FF4500' },
+    { name: 'Yellow', hex: '#FFD700' },
+    
+    // Row 3
+    { name: 'Canary', hex: '#FFFF99' },
+    { name: 'Neon Yellow', hex: '#CCFF00' },
+    { name: 'Olive', hex: '#6B8E23' },
+    { name: 'Gray', hex: '#808080' },
+    { name: 'Silver', hex: '#C0C0C0' },
+    { name: 'Forest Green', hex: '#228B22' },
+    { name: 'Teal', hex: '#008080' },
+    { name: 'Mint', hex: '#98FF98' },
+    { name: 'Tiger', hex: '#CC8800' },
+    { name: 'Camo', hex: '#4a5d23' },
+    { name: 'Vegas Gold', hex: '#C5B358' },
+    { name: 'Dark Brown AD', hex: '#362214' },
+    { name: 'Royal Blue', hex: '#0041C2' },
+    
+    // Row 4
+    { name: 'Navy Blue', hex: '#1e3a5f' },
+    { name: 'Electric Blue', hex: '#0080FF' },
+    { name: 'Navy', hex: '#000080' },
+    { name: 'Black Blue', hex: '#1a1a2e' },
+    { name: 'Columbia Blue', hex: '#B9D9EB' },
+    { name: 'Turquoise', hex: '#40E0D0' },
+    { name: 'Aqua', hex: '#00FFFF', soldOut: true },
+    { name: 'Seafoam', hex: '#93E9BE' }
+];
+
+let currentColorIndex = -1;
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -58,165 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     /* ============================================
-       SECTION: LACE COLOR DATA
-       Define all lace colors and images
+       SECTION: LACE GALLERY
        ============================================ */
-    const laceColors = [
-        { name: 'Black Cougar AL', color: '#1a1a1a', image: 'https://via.placeholder.com/800x800?text=Black+Cougar' },
-        { name: 'Black SC', color: '#2d2d2d', image: 'https://via.placeholder.com/800x800?text=Black+SC' },
-        { name: 'Black TT', color: '#000000', image: 'https://via.placeholder.com/800x800?text=Black+TT' },
-        { name: 'Indian Tan AL', color: '#d4a373', image: 'https://via.placeholder.com/800x800?text=Indian+Tan' },
-        { name: 'Chieftan Tan SC', color: '#c19a6b', image: 'https://via.placeholder.com/800x800?text=Chieftan+Tan' },
-        { name: 'Havana Tan TT', color: '#b38b6d', image: 'https://via.placeholder.com/800x800?text=Havana+Tan' },
-        { name: 'Japan Tan TT', color: '#daa06d', image: 'https://via.placeholder.com/800x800?text=Japan+Tan' },
-        { name: 'Camel AL', color: '#c19a6b', image: 'https://via.placeholder.com/800x800?text=Camel' },
-        { name: 'Vanilla Cream', color: '#f3e5ab', image: 'https://via.placeholder.com/800x800?text=Vanilla+Cream' },
-        { name: 'White TT', color: '#f5f5f5', image: 'https://via.placeholder.com/800x800?text=White' },
-        { name: 'Chocolate AL', color: '#3e2723', image: 'https://via.placeholder.com/800x800?text=Chocolate' },
-        { name: 'Dark Chocolate AL', color: '#4e342e', image: 'https://via.placeholder.com/800x800?text=Dark+Chocolate' },
-        { name: 'Dark Brown AL', color: '#5d4037', image: 'https://via.placeholder.com/800x800?text=Dark+Brown' },
-        { name: 'Chestnut AL', color: '#954535', image: 'https://via.placeholder.com/800x800?text=Chestnut' },
-        { name: 'Burgundy Prime', color: '#800020', image: 'https://via.placeholder.com/800x800?text=Burgundy' },
-        { name: 'Maroon TT', color: '#800000', image: 'https://via.placeholder.com/800x800?text=Maroon' },
-        { name: 'Cardinal Red TT', color: '#c41e3a', image: 'https://via.placeholder.com/800x800?text=Cardinal+Red' },
-        { name: 'Bright Red', color: '#ff0000', image: 'https://via.placeholder.com/800x800?text=Bright+Red' },
-        { name: 'Bloodline TT', color: '#8b0000', image: 'https://via.placeholder.com/800x800?text=Bloodline' },
-        { name: 'Bright Pink Tulip', color: '#ff69b4', image: 'https://via.placeholder.com/800x800?text=Pink' },
-        { name: 'Passion Pink TT', color: '#ff1493', image: 'https://via.placeholder.com/800x800?text=Passion+Pink' },
-        { name: 'Purple TT', color: '#800080', image: 'https://via.placeholder.com/800x800?text=Purple' },
-        { name: 'Orange TT', color: '#ff8c00', image: 'https://via.placeholder.com/800x800?text=Orange' },
-        { name: 'Orange Peel AD', color: '#ffa500', image: 'https://via.placeholder.com/800x800?text=Orange+Peel' },
-        { name: 'Yellow TT', color: '#ffd700', image: 'https://via.placeholder.com/800x800?text=Yellow' },
-        { name: 'Pirate Yellow AL', color: '#f4c430', image: 'https://via.placeholder.com/800x800?text=Pirate+Yellow' },
-        { name: 'Lemon Yellow', color: '#fff44f', image: 'https://via.placeholder.com/800x800?text=Lemon+Yellow' },
-        { name: 'Light Gray AL', color: '#d3d3d3', image: 'https://via.placeholder.com/800x800?text=Light+Gray' },
-        { name: 'Smoke Gray', color: '#708090', image: 'https://via.placeholder.com/800x800?text=Smoke+Gray' },
-        { name: 'Dark Gray AL', color: '#696969', image: 'https://via.placeholder.com/800x800?text=Dark+Gray' },
-        { name: 'Gray TT', color: '#808080', image: 'https://via.placeholder.com/800x800?text=Gray' },
-        { name: 'Kelly Green', color: '#4cbb17', image: 'https://via.placeholder.com/800x800?text=Kelly+Green' },
-        { name: 'Dark Green TT', color: '#013220', image: 'https://via.placeholder.com/800x800?text=Dark+Green' },
-        { name: 'Neon Green', color: '#39ff14', image: 'https://via.placeholder.com/800x800?text=Neon+Green' },
-        { name: 'Carolina Blue TT', color: '#56a0d3', image: 'https://via.placeholder.com/800x800?text=Carolina+Blue' },
-        { name: 'Royal Blue TT', color: '#4169e1', image: 'https://via.placeholder.com/800x800?text=Royal+Blue' },
-        { name: 'Wildcat Blue AL', color: '#0033a0', image: 'https://via.placeholder.com/800x800?text=Wildcat+Blue' },
-        { name: 'Electric Blue AD', color: '#7df9ff', image: 'https://via.placeholder.com/800x800?text=Electric+Blue' },
-        { name: 'Sapphire Blue', color: '#0f52ba', image: 'https://via.placeholder.com/800x800?text=Sapphire+Blue' },
-        { name: 'Navy TT', color: '#000080', image: 'https://via.placeholder.com/800x800?text=Navy' },
-        { name: 'Teal', color: '#008080', image: 'https://via.placeholder.com/800x800?text=Teal' },
-        { name: 'Green Aqua', color: '#00ffff', image: 'https://via.placeholder.com/800x800?text=Green+Aqua' },
-        { name: 'Mint', color: '#98ff98', image: 'https://via.placeholder.com/800x800?text=Mint' },
-        { name: 'Ocean Mint TT', color: '#3eb489', image: 'https://via.placeholder.com/800x800?text=Ocean+Mint' }
-    ];
+    generateColorGrid();
+    generateThumbnails();
+    setupSizeButtons();
     
-    
-    /* ============================================
-       SECTION: LACE GALLERY FUNCTIONALITY
-       Initialize color selector and image gallery
-       ============================================ */
-    const colorGrid = document.getElementById('colorGrid');
-    const thumbnailGallery = document.getElementById('thumbnailGallery');
-    const mainImage = document.getElementById('mainImage');
-    const selectedColorName = document.getElementById('selectedColorName');
-    const selectedColorDesc = document.getElementById('selectedColorDesc');
-    
-    if (colorGrid && mainImage) {
-        // Generate color swatches
-        laceColors.forEach((lace, index) => {
-            const swatch = document.createElement('div');
-            swatch.className = 'color-swatch' + (index === 0 ? ' selected' : '');
-            swatch.style.backgroundColor = lace.color;
-            swatch.dataset.index = index;
-            
-            const swatchName = document.createElement('span');
-            swatchName.className = 'color-swatch-name';
-            swatchName.textContent = lace.name;
-            swatch.appendChild(swatchName);
-            
-            swatch.addEventListener('click', function() {
-                selectColor(index);
-            });
-            
-            colorGrid.appendChild(swatch);
-        });
-        
-        // Generate thumbnail gallery
-        const thumbnailCount = Math.min(8, laceColors.length);
-        for (let i = 0; i < thumbnailCount; i++) {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = 'thumbnail-item' + (i === 0 ? ' active' : '');
-            thumbnail.dataset.index = i;
-            
-            const img = document.createElement('img');
-            img.src = laceColors[i].image;
-            img.alt = laceColors[i].name;
-            thumbnail.appendChild(img);
-            
-            thumbnail.addEventListener('click', function() {
-                selectColor(i);
-            });
-            
-            thumbnailGallery.appendChild(thumbnail);
-        }
-        
-        // Function to select a color
-        function selectColor(index) {
-            const lace = laceColors[index];
-            
-            // Update main image
-            mainImage.src = lace.image;
-            mainImage.alt = lace.name;
-            
-            // Update selected color info
-            selectedColorName.textContent = lace.name;
-            
-            // Update color swatches
-            document.querySelectorAll('.color-swatch').forEach((swatch, i) => {
-                swatch.classList.toggle('selected', i === index);
-            });
-            
-            // Update thumbnails
-            document.querySelectorAll('.thumbnail-item').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
-    }
-    
-    
-    /* ============================================
-       SECTION: IMAGE ZOOM MODAL
-       Click main image to zoom
-       ============================================ */
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const modalClose = document.querySelector('.modal-close');
-    
-    if (mainImage && modal) {
-        mainImage.addEventListener('click', function() {
-            modal.classList.add('show');
-            modalImg.src = this.src;
-        });
-        
-        if (modalClose) {
-            modalClose.addEventListener('click', function() {
-                modal.classList.remove('show');
-            });
-        }
-        
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('show')) {
-                modal.classList.remove('show');
-            }
-        });
-    }
-    
-    
+   
     /* ============================================
        SECTION: BEFORE & AFTER COMPARISON SLIDER
        Interactive image comparison with drag
@@ -430,3 +338,117 @@ function scrollToElement(elementId) {
 
 // Get URL parameters
 function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+
+/* ============================================
+   LACE GALLERY FUNCTIONS
+   ============================================ */
+
+// GENERATE COLOR GRID
+function generateColorGrid() {
+    const colorGrid = document.getElementById('colorGrid');
+    if (!colorGrid) return;
+    
+    laceColors.forEach((color, index) => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch' + (color.soldOut ? ' sold-out' : '');
+        swatch.style.backgroundColor = color.hex;
+        swatch.dataset.index = index;
+        swatch.title = color.name;
+        
+        if (!color.soldOut) {
+            swatch.onclick = () => selectColor(index);
+        }
+        
+        colorGrid.appendChild(swatch);
+    });
+}
+
+// GENERATE THUMBNAIL GALLERY
+function generateThumbnails() {
+    const gallery = document.getElementById('thumbnailGallery');
+    if (!gallery) return;
+    
+    laceColors.forEach((color, index) => {
+        if (!color.soldOut) {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'thumbnail-item';
+            thumbnail.dataset.index = index;
+            thumbnail.onclick = () => selectColor(index);
+            
+            // Create colored preview
+            const preview = document.createElement('div');
+            preview.className = 'thumbnail-preview';
+            preview.style.backgroundColor = color.hex;
+            
+            // Create label
+            const label = document.createElement('div');
+            label.className = 'thumbnail-label';
+            label.textContent = color.name;
+            
+            thumbnail.appendChild(preview);
+            thumbnail.appendChild(label);
+            gallery.appendChild(thumbnail);
+        }
+    });
+}
+
+// SELECT COLOR
+function selectColor(index) {
+    const color = laceColors[index];
+    currentColorIndex = index;
+    
+    // Update main preview
+    const preview = document.getElementById('lacePreview');
+    if (preview) {
+        preview.style.backgroundColor = color.hex;
+    }
+    
+    // Update label
+    const label = document.getElementById('laceColorLabel');
+    if (label) {
+        label.textContent = color.name;
+    }
+    
+    // Update active state on color swatches
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.classList.remove('active');
+    });
+    const activeSwatch = document.querySelector(`.color-swatch[data-index="${index}"]`);
+    if (activeSwatch) {
+        activeSwatch.classList.add('active');
+    }
+    
+    // Update active state on thumbnails
+    document.querySelectorAll('.thumbnail-item').forEach(thumb => {
+        thumb.classList.remove('active');
+    });
+    const activeThumbnail = document.querySelector(`.thumbnail-item[data-index="${index}"]`);
+    if (activeThumbnail) {
+        activeThumbnail.classList.add('active');
+        
+        // Scroll thumbnail into view
+        activeThumbnail.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'nearest', 
+            inline: 'center' 
+        });
+    }
+}
+
+// SIZE BUTTON TOGGLE
+function setupSizeButtons() {
+    document.querySelectorAll('.size-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+}
