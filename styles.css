@@ -1582,3 +1582,32 @@ img {
         font-size: 0.95rem;
     }
 }
+/* ============================================
+   MOBILE HERO FIX - Show Full Banner Image
+   ============================================ */
+@media (max-width: 768px) {
+    .hero-section {
+        /* Remove fixed attachment (doesn't work on mobile) */
+        background-attachment: scroll;
+        
+        /* Show more of the image instead of zooming */
+        background-size: cover;
+        background-position: center center;
+        
+        /* Reduce height so it's not too tall */
+        min-height: 500px;
+        
+        /* Alternative: Use contain to show ENTIRE image */
+        /* background-size: contain; */
+        /* background-repeat: no-repeat; */
+    }
+    
+    /* Make hero text smaller on mobile */
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem !important;
+    }
+}
