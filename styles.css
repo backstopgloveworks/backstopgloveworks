@@ -1625,10 +1625,12 @@ img {
     left: 0;
     width: 100%;
     height: 150%;
-    background-size: cover;
-    background-position: center;
+    background-size: contain; /* ← Change from "cover" to "contain" */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: var(--primary-dark); /* Fill empty space */
     will-change: transform;
-    z-index: 0; /* ← BEHIND everything */
+    z-index: 0;
 }
 
 .hero-overlay {
