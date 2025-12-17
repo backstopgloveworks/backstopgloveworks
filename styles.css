@@ -1566,10 +1566,6 @@ img {
         grid-template-columns: 1fr;
     }
     
-    .color-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .comparison-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
