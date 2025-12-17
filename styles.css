@@ -1300,6 +1300,31 @@ img {
 /* ============================================
    SECTION: CONTACT / FOOTER
    ============================================ */
+/* Add background to contact section header */
+.contact-section .section-header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 60px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    backdrop-filter: blur(10px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Keep text color dark (not white) */
+.contact-section .section-title,
+.contact-section .section-subtitle {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+/* Center the decorative line under title */
+.contact-section .section-header::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .contact-section {
     padding: var(--spacing-xl) 0;
     background: url('lace-wall.jpg'); /* ← Your image */
