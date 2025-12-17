@@ -280,24 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
     lazyImages.forEach(img => imageObserver.observe(img));
     
     
-    /* ============================================
-       SECTION: LACE SIZE SELECTOR
-       Handle lace size selection
-       ============================================ */
-    const laceSizeInputs = document.querySelectorAll('input[name="laceSize"]');
-    
-    laceSizeInputs.forEach(input => {
-        input.addEventListener('change', function() {
-            const selectedSize = this.value;
-            const description = selectedSize === '3/16' 
-                ? '3/16 x 72 INCH - Standard width for most baseball and softball gloves'
-                : '1/4 x 72 INCH - Wider lace often used for web itself';
-            
-            if (selectedColorDesc) {
-                selectedColorDesc.textContent = description;
-            }
-        });
-    });
     
     
     console.log('Glove Repair Website - All JavaScript initialized successfully!');
