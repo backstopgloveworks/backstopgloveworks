@@ -462,7 +462,7 @@ img {
 .scroller-track {
     display: flex;
     gap: 60px;
-    animation: scroll 25s linear infinite;
+    animation: scroll 15s linear infinite;
 }
 
 .services-scroller:hover .scroller-track {
