@@ -1302,7 +1302,10 @@ img {
    ============================================ */
 .contact-section {
     padding: var(--spacing-xl) 0;
-    background: var(--bg-cream);
+    background: url('lace-wall.jpg'); /* ← Your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .contact-container {
