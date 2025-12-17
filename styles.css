@@ -1612,13 +1612,11 @@ img {
     }
 }
 /* ============================================
-   SMOOTH PARALLAX SCROLLING
+   PARALLAX SCROLLING - FIXED Z-INDEX
    ============================================ */
-
 .parallax-section {
     position: relative;
     overflow: hidden;
-    min-height: 600px;
 }
 
 .parallax-bg {
@@ -1630,10 +1628,25 @@ img {
     background-size: cover;
     background-position: center;
     will-change: transform;
-    transition: transform 0.1s ease-out;
+    z-index: 0; /* ← BEHIND everything */
 }
 
-.parallax-content {
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* ← Above parallax-bg */
+}
+
+.hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* ← ABOVE overlay */
+}
+
+/* Make sure text is visible */
+.hero-text {
+    position: relative;
+    z-index: 3; /* ← Top layer */
 }
