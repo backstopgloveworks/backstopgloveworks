@@ -120,20 +120,21 @@
         }
         
         .lace-swatch {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 3px solid #e5e7eb;
             position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-shrink: 0;
         }
         
         .lace-swatch:hover {
             transform: translateY(-4px) scale(1.05);
             border-color: var(--navy);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 6px 16px rgba(30, 58, 138, 0.3);
         }
         
         .lace-swatch.selected {
@@ -168,22 +169,8 @@
             transform: scale(1);
         }
         
-        .lace-color-name {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            font-weight: 600;
-            white-space: nowrap;
-            color: var(--navy);
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
-        }
-        
-        .lace-swatch:hover .lace-color-name {
-            opacity: 1;
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
         
         /* Infinite scroll animation */
@@ -352,18 +339,42 @@
                     <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed font-medium">
                         Professional relacing, repair, and restoration services that bring your glove back to peak performance.
                     </p>
-                    <div class="flex items-center gap-4 mb-8">
+                    <div class="grid grid-cols-2 gap-3 mb-8 max-w-xl">
                         <div class="flex items-center gap-2">
-                            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-lg font-semibold">3-5 Day Turnaround</span>
+                            <span class="text-base md:text-lg font-semibold">All Sizes</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-lg font-semibold">50+ Lace Colors</span>
+                            <span class="text-base md:text-lg font-semibold">All Ages</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">All Makes</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">All Models</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">3-5 Day Turnaround</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">50+ Lace Colors</span>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
@@ -625,32 +636,48 @@
             </div>
 
             <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-12 items-start">
-                    <!-- Color Swatches -->
-                    <div>
-                        <h3 class="text-2xl font-bold mb-6" style="color: var(--navy);">Available Colors</h3>
-                        <div class="grid grid-cols-4 sm:grid-cols-6 gap-6 mb-8" id="lace-swatches">
-                            <!-- Colors will be generated by JS -->
-                        </div>
-                        <div class="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-md">
-                            <p class="text-sm font-semibold mb-3" style="color: var(--navy);">Selected Color:</p>
-                            <div class="flex items-center gap-4">
-                                <div id="selected-preview" class="w-20 h-20 rounded-xl border-4 shadow-lg" style="background: #8B4513; border-color: var(--navy);"></div>
-                                <div>
-                                    <span id="selected-name" class="text-2xl font-black block" style="color: var(--navy);">Tan</span>
-                                    <span class="text-sm text-gray-600">Premium Leather Lace</span>
-                                </div>
-                            </div>
+                <!-- BIG PREVIEW IMAGE -->
+                <div class="mb-8">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+                        <img id="glove-preview-large" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect fill='%23f3f4f6' width='800' height='600'/%3E%3Cpath d='M400 150 Q300 250 250 350 Q300 450 400 500 Q500 450 550 350 Q500 250 400 150z' fill='%238B4513' stroke='%23654321' stroke-width='6'/%3E%3C/svg%3E" 
+                             alt="Glove Preview" 
+                             class="w-full h-auto rounded-2xl">
+                        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl px-6 py-3 shadow-lg">
+                            <p class="text-sm font-semibold text-gray-600 mb-1">Selected Color:</p>
+                            <p id="selected-name-large" class="text-2xl font-black" style="color: var(--navy);">Tan</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Gallery Display -->
-                    <div>
-                        <h3 class="text-2xl font-bold mb-6" style="color: var(--navy);">See It On A Glove</h3>
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img id="glove-preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%23f3f4f6' width='500' height='400'/%3E%3Cpath d='M250 100 Q200 150 150 200 Q200 250 250 280 Q300 250 350 200 Q300 150 250 100z' fill='%238B4513' stroke='%23654321' stroke-width='3'/%3E%3Ctext x='250' y='350' font-size='18' fill='%236b7280' text-anchor='middle' font-weight='bold'%3ETan Laces%3C/text%3E%3C/svg%3E" alt="Glove Preview" class="w-full">
+                <!-- HORIZONTAL SCROLLING COLOR LIST -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Quick Select</h3>
+                    <div class="relative">
+                        <!-- Scroll arrows -->
+                        <button id="scroll-left" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg hover:bg-gray-50 transition-all" style="color: var(--navy);">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="scroll-right" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg hover:bg-gray-50 transition-all" style="color: var(--navy);">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Scrolling container -->
+                        <div id="color-scroll-container" class="flex gap-3 overflow-x-auto scroll-smooth px-12 py-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+                            <!-- Colors will be generated by JS -->
                         </div>
-                        <p class="mt-4 text-sm text-gray-600 text-center">Photos show approximate color representation. Actual leather may vary slightly.</p>
+                    </div>
+                </div>
+
+                <!-- FULL GRID GALLERY -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">All Available Colors</h3>
+                    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3" id="lace-swatches-grid">
+                        <!-- Colors will be generated by JS -->
                     </div>
                 </div>
             </div>
@@ -769,6 +796,138 @@
         </div>
     </section>
 
+    <!-- All Services Offered Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">ALL SERVICES OFFERED</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive care for your equipment</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                <!-- Machine Break-in -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">⚙️</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Machine Break-in</span>
+                    </div>
+                </div>
+
+                <!-- Lace Tightening -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🔩</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Lace Tightening</span>
+                    </div>
+                </div>
+
+                <!-- Lace Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🧵</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Lace Repair</span>
+                    </div>
+                </div>
+
+                <!-- Leather Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🧰</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Leather Repair</span>
+                    </div>
+                </div>
+
+                <!-- Full Restoration -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">✨</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Full Restoration</span>
+                    </div>
+                </div>
+
+                <!-- Relacing -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🎨</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Relacing</span>
+                    </div>
+                </div>
+
+                <!-- Finger Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">👆</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Finger Repair</span>
+                    </div>
+                </div>
+
+                <!-- Web Replacement -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🕸️</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Web Replacement</span>
+                    </div>
+                </div>
+
+                <!-- Web Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🔨</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Web Repair</span>
+                    </div>
+                </div>
+
+                <!-- Spiral Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🌀</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Spiral Repair</span>
+                    </div>
+                </div>
+
+                <!-- Palm Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🖐️</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Palm Repair</span>
+                    </div>
+                </div>
+
+                <!-- Heel Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🤚</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Heel Repair</span>
+                    </div>
+                </div>
+
+                <!-- Cleaning -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🧼</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Cleaning</span>
+                    </div>
+                </div>
+
+                <!-- Conditioning -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🛢️</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Conditioning</span>
+                    </div>
+                </div>
+
+                <!-- Other Sport Equipment Repair -->
+                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🏒</span>
+                        <span class="font-semibold text-sm" style="color: var(--navy);">Other Equipment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact/Order Form -->
     <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-4">
@@ -808,10 +967,10 @@
     <footer class="footer footer-center p-10 text-base-content" style="background: var(--navy); color: white;">
         <div>
             <div class="flex items-center justify-center gap-3 mb-4">
-                <!-- Footer logo - GitHub CDN -->
+                <!-- Footer logo - solid white background -->
                 <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
                      alt="Backstop Glove Works Logo" 
-                     class="h-16 w-auto object-contain bg-white/10 rounded-lg p-2">
+                     class="h-16 w-auto object-contain bg-white rounded-lg p-2 shadow-lg">
                 <div class="text-left">
                     <div class="text-2xl font-black tracking-wide">BACKSTOP GLOVE WORKS</div>
                     <div class="text-sm opacity-80 font-semibold" style="color: #DC2626;">Professional Glove Services</div>
@@ -821,14 +980,62 @@
                 Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed.
             </p>
         </div>
+        
         <div>
-            <div class="grid grid-flow-col gap-4">
+            <div class="grid grid-flow-col gap-4 mb-6">
                 <a class="link link-hover">About Us</a>
                 <a class="link link-hover">Services</a>
                 <a class="link link-hover">FAQ</a>
                 <a class="link link-hover">Contact</a>
             </div>
+            
+            <!-- Social Media Buttons -->
+            <div class="flex gap-3 justify-center mb-6">
+                <a href="https://www.instagram.com/backstopgloveworks" target="_blank" rel="noopener noreferrer" 
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/backstopgloveworks" target="_blank" rel="noopener noreferrer" 
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Neon Sign Logo -->
+            <div class="mb-6">
+                <div class="inline-block bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl hover:bg-white/10 transition-all duration-500">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Backstop-Glove-Works-Neon-Sign-Orig.jpg" 
+                         alt="Backstop Glove Works Neon Sign" 
+                         class="w-64 h-auto rounded-lg"
+                         onerror="this.style.display='none';">
+                </div>
+            </div>
         </div>
+        
+        <!-- Contact Info -->
+        <div class="grid md:grid-cols-3 gap-6 text-center md:text-left max-w-4xl w-full">
+            <div>
+                <h4 class="font-bold text-lg mb-2">Our Location</h4>
+                <p class="opacity-80">Buffalo, NY</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
+                <a href="tel:716-218-0874" class="opacity-80 hover:opacity-100 transition-opacity">716-218-0874</a>
+                <p class="opacity-80 mt-1">
+                    <a href="mailto:backstopgloveworks@gmail.com" class="hover:opacity-100 transition-opacity">backstopgloveworks@gmail.com</a>
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-2">Hours</h4>
+                <p class="opacity-80">Monday-Saturday</p>
+                <p class="opacity-80">9am-9pm</p>
+            </div>
+        </div>
+        
         <div>
             <p class="opacity-60">© 2024<span id="current-year"></span> Backstop Glove Works. All rights reserved.</p>
         </div>
@@ -896,48 +1103,56 @@
             { name: 'Plum', hex: '#9333ea' }
         ];
 
-        const swatchContainer = document.getElementById('lace-swatches');
-        const selectedPreview = document.getElementById('selected-preview');
-        const selectedName = document.getElementById('selected-name');
-        const glovePreview = document.getElementById('glove-preview');
+        const scrollContainer = document.getElementById('color-scroll-container');
+        const gridContainer = document.getElementById('lace-swatches-grid');
+        const glovePreviewLarge = document.getElementById('glove-preview-large');
+        const selectedNameLarge = document.getElementById('selected-name-large');
 
         let currentColor = laceColors[0];
 
-        laceColors.forEach(color => {
+        function createSwatch(color, container) {
             const swatch = document.createElement('div');
-            swatch.className = 'lace-swatch relative';
+            swatch.className = 'lace-swatch';
             swatch.style.background = color.hex;
             swatch.dataset.name = color.name;
+            swatch.title = color.name;
             
             // Add white border for visibility on white/light colors
             if (color.hex === '#ffffff' || color.hex === '#fef3c7') {
                 swatch.style.border = '3px solid #d1d5db';
             }
             
-            // Add color name tooltip
-            const nameLabel = document.createElement('span');
-            nameLabel.className = 'lace-color-name';
-            nameLabel.textContent = color.name;
-            swatch.appendChild(nameLabel);
-            
             swatch.addEventListener('click', () => {
                 document.querySelectorAll('.lace-swatch').forEach(s => s.classList.remove('selected'));
-                swatch.classList.add('selected');
+                document.querySelectorAll(`[data-name="${color.name}"]`).forEach(s => s.classList.add('selected'));
                 currentColor = color;
-                selectedPreview.style.background = color.hex;
-                selectedName.textContent = color.name;
+                selectedNameLarge.textContent = color.name;
                 updateGlovePreview(color);
             });
 
-            swatchContainer.appendChild(swatch);
+            container.appendChild(swatch);
+        }
+
+        // Populate both scroll and grid
+        laceColors.forEach(color => {
+            createSwatch(color, scrollContainer);
+            createSwatch(color, gridContainer);
         });
 
         // Select first color by default
-        swatchContainer.firstChild.classList.add('selected');
+        document.querySelectorAll(`[data-name="${laceColors[0].name}"]`).forEach(s => s.classList.add('selected'));
+
+        // Scroll buttons
+        document.getElementById('scroll-left').addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+        document.getElementById('scroll-right').addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
 
         function updateGlovePreview(color) {
-            // Update preview image (in production, this would load actual photos)
-            glovePreview.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%23f3f4f6' width='500' height='400'/%3E%3Cpath d='M250 100 Q200 150 150 200 Q200 250 250 280 Q300 250 350 200 Q300 150 250 100z' fill='${encodeURIComponent(color.hex)}' stroke='%23654321' stroke-width='3'/%3E%3Ctext x='250' y='350' font-size='18' fill='%236b7280' text-anchor='middle' font-weight='bold'%3E${color.name} Laces%3C/text%3E%3C/svg%3E`;
+            glovePreviewLarge.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect fill='%23f3f4f6' width='800' height='600'/%3E%3Cpath d='M400 150 Q300 250 250 350 Q300 450 400 500 Q500 450 550 350 Q500 250 400 150z' fill='${encodeURIComponent(color.hex)}' stroke='%23654321' stroke-width='6'/%3E%3C/svg%3E`;
         }
 
         // Before/After Slider Functionality
