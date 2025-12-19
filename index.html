@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backstop Glove Works | Professional Baseball Glove Repair & Relacing Services</title>
+    <meta name="description" content="Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed. Custom lacing in 50+ colors available.">
+    <meta name="keywords" content="baseball glove repair, glove relacing, glove restoration, custom glove lacing, professional glove services">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Backstop Glove Works - Professional Glove Services">
+    <meta property="og:description" content="Expert baseball glove repair, relacing, and restoration services with fast turnaround.">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Backstop Glove Works",
+        "description": "Professional baseball glove repair and relacing services",
+        "image": "logo-url-here",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        }
+    }
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        :root {
+            --navy: #1e3a8a;
+            --light-navy: #3b5998;
+            --accent-red: #dc2626;
+        }
+        
+        .diagonal-bg {
+            background: linear-gradient(165deg, var(--navy) 0%, var(--navy) 45%, white 45%, white 100%);
+        }
+        
+        .diagonal-bg-reverse {
+            background: linear-gradient(15deg, white 0%, white 55%, var(--navy) 55%, var(--navy) 100%);
+        }
+        
+        .hero-pattern {
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+        }
+        
+        .glove-shadow {
+            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.25);
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--navy), var(--light-navy));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--navy), transparent);
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .process-step::after {
+                display: none;
+            }
+        }
+        
+        .btn-primary {
+            background: var(--navy);
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary:hover {
+            background: var(--light-navy);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+        }
+        
+        .lace-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid #e5e7eb;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .lace-swatch:hover {
+            transform: translateY(-4px) scale(1.05);
+            border-color: var(--navy);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+        
+        .lace-swatch.selected {
+            border-color: var(--navy);
+            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .lace-swatch::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .lace-swatch.selected::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .lace-color-name {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--navy);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        
+        .lace-swatch:hover .lace-color-name {
+            opacity: 1;
+        }
+        
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: ew-resize;
+            user-select: none;
+        }
+        
+        .before-image, .after-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transform: translateX(-50%);
+        }
+        
+        .slider-handle::before {
+            content: '◄ ►';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--navy);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .webbing-option {
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .webbing-option:hover {
+            border-color: var(--light-navy);
+            transform: scale(1.05);
+        }
+        
+        .webbing-option.selected {
+            border-color: var(--navy);
+            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.2);
+        }
+        
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+        
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="navbar bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex-1">
+                <a href="#" class="flex items-center gap-3">
+                    <!-- Logo - GitHub CDN will work in production -->
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
+                         alt="Backstop Glove Works Logo" 
+                         class="h-14 w-auto object-contain">
+                    <div>
+                        <div class="text-xl font-black" style="color: var(--navy); letter-spacing: 0.5px;">BACKSTOP</div>
+                        <div class="text-xs font-bold tracking-wider" style="color: #DC2626;">GLOVE WORKS</div>
+                    </div>
+                </a>
+            </div>
+            <div class="flex-none hidden md:flex">
+                <ul class="menu menu-horizontal px-1 font-semibold">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#laces">Lace Colors</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact" class="btn btn-primary text-white ml-4">Order Now</a></li>
+                </ul>
+            </div>
+            <div class="flex-none md:hidden">
+                <button class="btn btn-square btn-ghost" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute top-full left-0 shadow-lg">
+            <ul class="menu menu-vertical px-4 py-2 font-semibold">
+                <li><a href="#services" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a></li>
+                <li><a href="#process" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Process</a></li>
+                <li><a href="#laces" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Lace Colors</a></li>
+                <li><a href="#gallery" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Gallery</a></li>
+                <li><a href="#contact" class="btn btn-primary text-white mt-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Order Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[700px] flex items-center overflow-hidden" style="background: linear-gradient(135deg, var(--navy) 0%, #2d4a9e 100%);">
+        <!-- Pattern Overlay -->
+        <div class="absolute inset-0 hero-pattern opacity-30"></div>
+        
+        <!-- Diagonal Accent -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-white opacity-5 transform skew-x-12 translate-x-1/4"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-white">
+                    <div class="inline-block bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
+                        PRO-TIER CRAFTSMANSHIP
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                        EXPERT GLOVE<br/>
+                        RESTORATION
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed font-medium">
+                        Professional relacing, repair, and restoration services that bring your glove back to peak performance.
+                    </p>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-lg font-semibold">3-5 Day Turnaround</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-lg font-semibold">50+ Lace Colors</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="btn btn-lg text-white border-none shadow-xl hover:scale-105 transition-transform" style="background: #dc2626;">
+                            View Services
+                        </a>
+                        <a href="#laces" class="btn btn-outline btn-lg text-white border-2 border-white hover:bg-white hover:border-white transition-all" style="--tw-text-opacity: 1; color: white;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='white'">
+                            Choose Laces
+                        </a>
+                    </div>
+                </div>
+                <div class="relative hidden md:block">
+                    <div class="relative">
+                        <!-- Glove Image Placeholder with better styling -->
+                        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-4 border-white/20 shadow-2xl">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f3f4f6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e5e7eb;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)' width='500' height='400' rx='16'/%3E%3Cpath d='M250 120 Q200 160 170 220 Q190 270 240 300 Q280 280 320 240 Q340 200 320 160 Q290 130 250 120z' fill='%238B4513' stroke='%23654321' stroke-width='4'/%3E%3Cpath d='M240 300 Q220 310 210 330' stroke='%23654321' stroke-width='3' fill='none'/%3E%3Cpath d='M250 305 Q240 320 235 340' stroke='%23654321' stroke-width='3' fill='none'/%3E%3Ctext x='250' y='370' font-size='20' fill='%236b7280' text-anchor='middle' font-weight='600'%3EYOUR GLOVE, RESTORED%3C/text%3E%3C/svg%3E" alt="Professional Glove Repair" class="w-full rounded-2xl">
+                        </div>
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 animate-pulse">
+                            <div class="text-center">
+                                <div class="text-4xl font-black" style="color: var(--navy);">100%</div>
+                                <div class="text-sm font-bold text-gray-600">Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals / Stats -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">3-5</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Day Turnaround</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">50+</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Lace Colors</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">100%</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Satisfaction</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">Pro</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Craftsmanship</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+                            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">OUR SERVICES</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pro-tier glove care services - tailored to your exact needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Relace Service -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Full Relace</h3>
+                        <p class="text-gray-600 mb-4">Complete glove relacing, with your choice of 50+ colors of premium leather lace. Includes thorough inspection and minor repairs.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Remove all old lacing, inspect for damage, repair worn areas, install new laces with professional technique</p>
+                            <p><strong>Turnaround:</strong> 3-5 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Service -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Repairs</h3>
+                        <p class="text-gray-600 mb-4">Expert repairs for torn leather, broken webbing, palm damage, and structural issues. We restore your glove's integrity.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Assessment, leather reinforcement, stitching repair, structural restoration, conditioning</p>
+                            <p><strong>Turnaround:</strong> 3-5 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restoration Service -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Full Restoration</h3>
+                        <p class="text-gray-600 mb-4">Complete overhaul: relacing, repairs, deep cleaning, conditioning, and refinishing. Bring vintage gloves back to life.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Deep clean, repair all damage, relace completely, condition leather, restore color and finish</p>
+                            <p><strong>Turnaround:</strong> 5-7 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section id="process" class="diagonal-bg-reverse py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 text-white">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">HOW IT WORKS</h2>
+                <p class="text-xl text-gray-100 max-w-2xl mx-auto">Simple, transparent process from start to finish</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Ship Your Glove</h3>
+                    <p class="text-gray-100 text-sm">Send us your glove with service details and lace color choice</p>
+                </div>
+
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Expert Assessment</h3>
+                    <p class="text-gray-100 text-sm">We inspect and confirm service scope within 24 hours</p>
+                </div>
+
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Professional Work</h3>
+                    <p class="text-gray-100 text-sm">Your glove receives expert care and craftsmanship</p>
+                </div>
+
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                        4
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Fast Return</h3>
+                    <p class="text-sm" style="color: var(--navy);">Shipped back within 3-5 days, ready for action</p>
+                </div>
+            </div>
+
+            <div class="mt-16 max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-2xl">
+                <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--navy);">Our Guarantees</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex gap-4">
+                        <div class="text-green-500 text-2xl">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-1" style="color: var(--navy);">Quality Workmanship</h4>
+                            <p class="text-sm text-gray-600">Every repair backed by professional craftsmanship</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-green-500 text-2xl">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-1" style="color: var(--navy);">Fast Turnaround</h4>
+                            <p class="text-sm text-gray-600">3-5 day standard service, rush available</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-green-500 text-2xl">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-1" style="color: var(--navy);">Premium Materials</h4>
+                            <p class="text-sm text-gray-600">High-quality leather laces in 50+ colors</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-green-500 text-2xl">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-1" style="color: var(--navy);">Satisfaction Guarantee</h4>
+                            <p class="text-sm text-gray-600">We stand behind every glove we service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lace Color Picker Section -->
+    <section id="laces" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">CHOOSE YOUR LACE COLOR</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors to customize your glove</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Color Swatches -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6" style="color: var(--navy);">Available Colors</h3>
+                        <div class="grid grid-cols-4 sm:grid-cols-6 gap-6 mb-8" id="lace-swatches">
+                            <!-- Colors will be generated by JS -->
+                        </div>
+                        <div class="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-md">
+                            <p class="text-sm font-semibold mb-3" style="color: var(--navy);">Selected Color:</p>
+                            <div class="flex items-center gap-4">
+                                <div id="selected-preview" class="w-20 h-20 rounded-xl border-4 shadow-lg" style="background: #8B4513; border-color: var(--navy);"></div>
+                                <div>
+                                    <span id="selected-name" class="text-2xl font-black block" style="color: var(--navy);">Tan</span>
+                                    <span class="text-sm text-gray-600">Premium Leather Lace</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Display -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6" style="color: var(--navy);">See It On A Glove</h3>
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <img id="glove-preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%23f3f4f6' width='500' height='400'/%3E%3Cpath d='M250 100 Q200 150 150 200 Q200 250 250 280 Q300 250 350 200 Q300 150 250 100z' fill='%238B4513' stroke='%23654321' stroke-width='3'/%3E%3Ctext x='250' y='350' font-size='18' fill='%236b7280' text-anchor='middle' font-weight='bold'%3ETan Laces%3C/text%3E%3C/svg%3E" alt="Glove Preview" class="w-full">
+                        </div>
+                        <p class="mt-4 text-sm text-gray-600 text-center">Photos show approximate color representation. Actual leather may vary slightly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Before/After Sliders -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">OUR WORK</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">See the quality difference professional restoration makes</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-8">
+                <!-- Before/After Slider 1 -->
+                <div class="card bg-white shadow-xl">
+                    <div class="card-body">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Wilson A2000 Full Relace</h3>
+                        <div class="before-after-container" id="slider1">
+                            <img class="before-image" 
+                                 src="assets/images/before-1-work-example.jpg" 
+                                 alt="Before" 
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg';">
+                            <img class="after-image" 
+                                 id="after1" 
+                                 src="assets/images/after-1-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg';">
+                            <div class="slider-handle" id="handle1"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Full relace with premium red laces, pocket repair, and conditioning. Turnaround: 4 days.</p>
+                    </div>
+                </div>
+
+                <!-- Before/After Slider 2 -->
+                <div class="card bg-white shadow-xl">
+                    <div class="card-body">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Rawlings Heart of the Hide Restoration</h3>
+                        <div class="before-after-container" id="slider2">
+                            <img class="before-image" 
+                                 src="assets/images/before-2-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg';">
+                            <img class="after-image" 
+                                 id="after2" 
+                                 src="assets/images/after-2-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg';">
+                            <div class="slider-handle" id="handle2"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Complete restoration: palm repair, full relace, deep clean, and conditioning. Turnaround: 6 days.</p>
+                    </div>
+                </div>
+
+                <!-- Before/After Slider 3 -->
+                <div class="card bg-white shadow-xl">
+                    <div class="card-body">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Mizuno Pro Custom Relace</h3>
+                        <div class="before-after-container" id="slider3">
+                            <img class="before-image" 
+                                 src="assets/images/before-3-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg';">
+                            <img class="after-image" 
+                                 id="after3" 
+                                 src="assets/images/after-3-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg';">
+                            <div class="slider-handle" id="handle3"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Custom navy laces with new web installation. Turnaround: 5 days.</p>
+                    </div>
+                </div>
+
+                <!-- Carousel for more examples -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--navy);">More Examples</h3>
+                    <div class="carousel carousel-center space-x-4 p-4 bg-white rounded-2xl shadow-xl">
+                        <div class="carousel-item w-full md:w-1/3">
+                            <div class="card bg-base-100 shadow-lg w-full">
+                                <figure class="px-4 pt-4">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3ECustom Navy Laces%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
+                                </figure>
+                                <div class="card-body items-center text-center">
+                                    <h4 class="card-title text-lg">Mizuno Pro</h4>
+                                    <p class="text-sm text-gray-600">Custom navy relace</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item w-full md:w-1/3">
+                            <div class="card bg-base-100 shadow-lg w-full">
+                                <figure class="px-4 pt-4">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3EVintage Restoration%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
+                                </figure>
+                                <div class="card-body items-center text-center">
+                                    <h4 class="card-title text-lg">1960s MacGregor</h4>
+                                    <p class="text-sm text-gray-600">Full vintage restoration</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item w-full md:w-1/3">
+                            <div class="card bg-base-100 shadow-lg w-full">
+                                <figure class="px-4 pt-4">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3EWebbing Replacement%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
+                                </figure>
+                                <div class="card-body items-center text-center">
+                                    <h4 class="card-title text-lg">Nokona X2</h4>
+                                    <p class="text-sm text-gray-600">New web + relace</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Order Form -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">GET STARTED</h2>
+                    <p class="text-xl text-gray-600">Fill out the form below to request service for your glove</p>
+                </div>
+
+                <div class="card bg-white shadow-2xl border-2 border-gray-100">
+                    <div class="card-body p-0">
+                        <!-- OpnForm Embedded Form -->
+                        <iframe 
+                            style="border:none;width:100%;min-height:800px;" 
+                            id="backstop-glove-works-glove-intake-form-aoaswm" 
+                            src="https://opnform.com/forms/backstop-glove-works-glove-intake-form-aoaswm"
+                            title="Backstop Glove Works Intake Form">
+                        </iframe>
+                        <script 
+                            type="text/javascript" 
+                            onload="initEmbed('backstop-glove-works-glove-intake-form-aoaswm', { autoResize: true })" 
+                            src="https://opnform.com/widgets/iframe.min.js">
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-500">
+                        <strong>Questions?</strong> Contact us directly at <a href="mailto:info@backstopgloveworks.com" class="text-blue-600 hover:underline">info@backstopgloveworks.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 text-base-content" style="background: var(--navy); color: white;">
+        <div>
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <!-- Footer logo - GitHub CDN -->
+                <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
+                     alt="Backstop Glove Works Logo" 
+                     class="h-16 w-auto object-contain bg-white/10 rounded-lg p-2">
+                <div class="text-left">
+                    <div class="text-2xl font-black tracking-wide">BACKSTOP GLOVE WORKS</div>
+                    <div class="text-sm opacity-80 font-semibold" style="color: #DC2626;">Professional Glove Services</div>
+                </div>
+            </div>
+            <p class="max-w-md opacity-80">
+                Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed.
+            </p>
+        </div>
+        <div>
+            <div class="grid grid-flow-col gap-4">
+                <a class="link link-hover">About Us</a>
+                <a class="link link-hover">Services</a>
+                <a class="link link-hover">FAQ</a>
+                <a class="link link-hover">Contact</a>
+            </div>
+        </div>
+        <div>
+            <p class="opacity-60">© 2024<span id="current-year"></span> Backstop Glove Works. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2024) {
+            document.getElementById('current-year').textContent = '-' + currentYear;
+        }
+        
+        // Lace Color Picker
+        const laceColors = [
+            { name: 'Tan', hex: '#8B4513' },
+            { name: 'Black', hex: '#000000' },
+            { name: 'Red', hex: '#DC2626' },
+            { name: 'Navy', hex: '#1e3a8a' },
+            { name: 'Royal Blue', hex: '#2563eb' },
+            { name: 'Forest Green', hex: '#166534' },
+            { name: 'Kelly Green', hex: '#22c55e' },
+            { name: 'Orange', hex: '#ea580c' },
+            { name: 'Burnt Orange', hex: '#c2410c' },
+            { name: 'White', hex: '#ffffff' },
+            { name: 'Cream', hex: '#fef3c7' },
+            { name: 'Gray', hex: '#6b7280' },
+            { name: 'Brown', hex: '#92400e' },
+            { name: 'Dark Brown', hex: '#451a03' },
+            { name: 'Burgundy', hex: '#7f1d1d' },
+            { name: 'Maroon', hex: '#881337' },
+            { name: 'Pink', hex: '#ec4899' },
+            { name: 'Hot Pink', hex: '#db2777' },
+            { name: 'Purple', hex: '#7c3aed' },
+            { name: 'Yellow', hex: '#fbbf24' },
+            { name: 'Gold', hex: '#d97706' },
+            { name: 'Light Blue', hex: '#38bdf8' },
+            { name: 'Teal', hex: '#14b8a6' },
+            { name: 'Lime', hex: '#84cc16' },
+            { name: 'Olive', hex: '#65a30d' },
+            { name: 'Copper', hex: '#b45309' },
+            { name: 'Silver', hex: '#94a3b8' },
+            { name: 'Charcoal', hex: '#374151' },
+            { name: 'Slate', hex: '#475569' },
+            { name: 'Beige', hex: '#d4a574' },
+            { name: 'Caramel', hex: '#a16207' },
+            { name: 'Rust', hex: '#9a3412' },
+            { name: 'Scarlet', hex: '#b91c1c' },
+            { name: 'Cardinal', hex: '#991b1b' },
+            { name: 'Crimson', hex: '#7f1d1d' },
+            { name: 'Columbia Blue', hex: '#7dd3fc' },
+            { name: 'Vegas Gold', hex: '#eab308' },
+            { name: 'Columbia', hex: '#93c5fd' },
+            { name: 'Turquoise', hex: '#06b6d4' },
+            { name: 'Aqua', hex: '#22d3ee' },
+            { name: 'Mint', hex: '#86efac' },
+            { name: 'Seafoam', hex: '#6ee7b7' },
+            { name: 'Sage', hex: '#a3e635' },
+            { name: 'Moss', hex: '#4d7c0f' },
+            { name: 'Hunter Green', hex: '#14532d' },
+            { name: 'Emerald', hex: '#059669' },
+            { name: 'Jade', hex: '#10b981' },
+            { name: 'Cobalt', hex: '#1e40af' },
+            { name: 'Indigo', hex: '#4f46e5' },
+            { name: 'Violet', hex: '#8b5cf6' },
+            { name: 'Plum', hex: '#9333ea' }
+        ];
+
+        const swatchContainer = document.getElementById('lace-swatches');
+        const selectedPreview = document.getElementById('selected-preview');
+        const selectedName = document.getElementById('selected-name');
+        const glovePreview = document.getElementById('glove-preview');
+
+        let currentColor = laceColors[0];
+
+        laceColors.forEach(color => {
+            const swatch = document.createElement('div');
+            swatch.className = 'lace-swatch relative';
+            swatch.style.background = color.hex;
+            swatch.dataset.name = color.name;
+            
+            // Add white border for visibility on white/light colors
+            if (color.hex === '#ffffff' || color.hex === '#fef3c7') {
+                swatch.style.border = '3px solid #d1d5db';
+            }
+            
+            // Add color name tooltip
+            const nameLabel = document.createElement('span');
+            nameLabel.className = 'lace-color-name';
+            nameLabel.textContent = color.name;
+            swatch.appendChild(nameLabel);
+            
+            swatch.addEventListener('click', () => {
+                document.querySelectorAll('.lace-swatch').forEach(s => s.classList.remove('selected'));
+                swatch.classList.add('selected');
+                currentColor = color;
+                selectedPreview.style.background = color.hex;
+                selectedName.textContent = color.name;
+                updateGlovePreview(color);
+            });
+
+            swatchContainer.appendChild(swatch);
+        });
+
+        // Select first color by default
+        swatchContainer.firstChild.classList.add('selected');
+
+        function updateGlovePreview(color) {
+            // Update preview image (in production, this would load actual photos)
+            glovePreview.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%23f3f4f6' width='500' height='400'/%3E%3Cpath d='M250 100 Q200 150 150 200 Q200 250 250 280 Q300 250 350 200 Q300 150 250 100z' fill='${encodeURIComponent(color.hex)}' stroke='%23654321' stroke-width='3'/%3E%3Ctext x='250' y='350' font-size='18' fill='%236b7280' text-anchor='middle' font-weight='bold'%3E${color.name} Laces%3C/text%3E%3C/svg%3E`;
+        }
+
+        // Before/After Slider Functionality
+        function initSlider(sliderId, handleId, afterId) {
+            const container = document.getElementById(sliderId);
+            const handle = document.getElementById(handleId);
+            const afterImage = document.getElementById(afterId);
+            
+            if (!container || !handle || !afterImage) return;
+
+            let isDragging = false;
+
+            function updateSlider(x) {
+                const rect = container.getBoundingClientRect();
+                const offsetX = x - rect.left;
+                const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+                
+                handle.style.left = percentage + '%';
+                afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+            }
+
+            handle.addEventListener('mousedown', () => isDragging = true);
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mouseup', () => isDragging = false);
+
+            // Touch events
+            handle.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isDragging = true;
+            });
+
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                updateSlider(e.touches[0].clientX);
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                updateSlider(e.touches[0].clientX);
+            });
+
+            document.addEventListener('touchend', () => isDragging = false);
+        }
+
+        // Initialize sliders
+        initSlider('slider1', 'handle1', 'after1');
+        initSlider('slider2', 'handle2', 'after2');
+        initSlider('slider3', 'handle3', 'after3');
+
+        // Webbing Selection - Brand
+        document.querySelectorAll('.webbing-brand').forEach(brand => {
+            brand.addEventListener('click', function() {
+                document.querySelectorAll('.webbing-brand').forEach(b => {
+                    b.classList.remove('selected');
+                    b.style.borderColor = '#d1d5db';
+                    b.style.borderWidth = '3px';
+                });
+                this.classList.add('selected');
+                this.style.borderColor = 'var(--navy)';
+                this.style.borderWidth = '3px';
+                document.getElementById('selected-webbing-brand').value = this.dataset.brand;
+                
+                // Show/hide style selector
+                const stylesDiv = document.getElementById('webbing-styles');
+                if (this.dataset.brand === 'none') {
+                    stylesDiv.style.display = 'none';
+                    document.getElementById('selected-webbing-style').value = '';
+                } else {
+                    stylesDiv.style.display = 'block';
+                }
+            });
+        });
+
+        // Webbing Selection - Style
+        document.querySelectorAll('.webbing-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.webbing-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('selected-webbing-style').value = this.dataset.webbing;
+            });
+        });
+
+        // Select "No Thanks" by default
+        const noThanksBtn = document.querySelector('[data-brand="none"]');
+        if (noThanksBtn) noThanksBtn.click();
+
+        // Photo Upload Preview (only if elements exist)
+        const photoUpload = document.getElementById('photo-upload');
+        if (photoUpload) {
+            photoUpload.addEventListener('change', function(e) {
+                const preview = document.getElementById('photo-preview');
+                preview.innerHTML = '';
+                
+                Array.from(e.target.files).slice(0, 3).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const div = document.createElement('div');
+                        div.className = 'relative';
+                        div.innerHTML = `
+                            <img src="${e.target.result}" class="w-full h-24 object-cover rounded-lg border-2 border-gray-200">
+                        `;
+                        preview.appendChild(div);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+        }
+
+        // Form Submission (only if form exists)
+        const orderForm = document.getElementById('order-form');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your order request! We\'ll be in touch within 24 hours.');
+                // In production, this would send data to your backend
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
