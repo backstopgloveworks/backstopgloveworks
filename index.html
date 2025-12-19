@@ -186,6 +186,25 @@
             opacity: 1;
         }
         
+        /* Infinite scroll animation */
+        .logo-scroll-container {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .logo-scroll-container:hover {
+            animation-play-state: paused;
+        }
+        
         .before-after-container {
             position: relative;
             overflow: hidden;
@@ -266,14 +285,23 @@
     <nav class="navbar bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex-1">
-                <a href="#" class="flex items-center gap-3">
-                    <!-- Logo - GitHub CDN will work in production -->
+                <a href="#" class="flex items-center gap-4">
+                    <!-- Logo -->
                     <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
                          alt="Backstop Glove Works Logo" 
-                         class="h-14 w-auto object-contain">
-                    <div>
-                        <div class="text-xl font-black" style="color: var(--navy); letter-spacing: 0.5px;">BACKSTOP</div>
-                        <div class="text-xs font-bold tracking-wider" style="color: #DC2626;">GLOVE WORKS</div>
+                         class="h-16 md:h-20 w-auto object-contain">
+                    <!-- .com with 90s sports crayon underline -->
+                    <div class="relative">
+                        <span class="text-3xl md:text-4xl font-black" style="color: var(--navy); font-style: italic;">.com</span>
+                        <!-- Crayon underline SVG -->
+                        <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M 0,5 Q 10,3 20,5 T 40,5 T 60,5 T 80,5 T 100,5" 
+                                  stroke="#FF6B35" 
+                                  stroke-width="4" 
+                                  fill="none" 
+                                  stroke-linecap="round"
+                                  opacity="0.8"/>
+                        </svg>
                     </div>
                 </a>
             </div>
@@ -466,44 +494,48 @@
     </section>
 
     <!-- Process Timeline -->
-    <section id="process" class="diagonal-bg-reverse py-20">
+    <section id="process" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 text-white">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">HOW IT WORKS</h2>
-                <p class="text-xl text-gray-100 max-w-2xl mx-auto">Simple, transparent process from start to finish</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">HOW IT WORKS</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Simple, transparent process from start to finish</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-                <div class="process-step text-center">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
                         1
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Ship Your Glove</h3>
-                    <p class="text-gray-100 text-sm">Send us your glove with service details and lace color choice</p>
+                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Ship Your Glove</h3>
+                    <p class="text-gray-700 text-sm text-center">Send us your glove with service details and lace color choice</p>
                 </div>
 
-                <div class="process-step text-center">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
                         2
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Expert Assessment</h3>
-                    <p class="text-gray-100 text-sm">We inspect and confirm service scope within 24 hours</p>
+                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Expert Assessment</h3>
+                    <p class="text-gray-700 text-sm text-center">We inspect and confirm service scope within 24 hours</p>
                 </div>
 
-                <div class="process-step text-center">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
                         3
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Professional Work</h3>
-                    <p class="text-gray-100 text-sm">Your glove receives expert care and craftsmanship</p>
+                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Professional Work</h3>
+                    <p class="text-gray-700 text-sm text-center">Your glove receives expert care and craftsmanship</p>
                 </div>
 
-                <div class="process-step text-center">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-black shadow-xl" style="background: white; color: var(--navy);">
+                <!-- Step 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
                         4
                     </div>
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Fast Return</h3>
-                    <p class="text-sm" style="color: var(--navy);">Shipped back within 3-5 days, ready for action</p>
+                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Fast Return</h3>
+                    <p class="text-gray-700 text-sm text-center">Shipped back within 3-5 days, ready for action</p>
                 </div>
             </div>
 
@@ -537,6 +569,47 @@
                             <h4 class="font-bold mb-1" style="color: var(--navy);">Satisfaction Guarantee</h4>
                             <p class="text-sm text-gray-600">We stand behind every glove we service</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- We Work With All Makes Section -->
+    <section class="py-20 bg-white border-t-2 border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">WE WORK WITH ALL MAKES</h2>
+                <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
+            </div>
+
+            <!-- Infinite Scrolling Logo Container -->
+            <div class="relative overflow-hidden">
+                <!-- Gradient overlays for fade effect -->
+                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+                
+                <!-- Scrolling logos -->
+                <div class="logo-scroll-container flex gap-16 py-8">
+                    <!-- First set -->
+                    <div class="logo-scroll flex gap-16 items-center">
+                        <img src="assets/images/glovebrand-1-scroller.png" alt="Rawlings" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-2-scroller.png" alt="Wilson" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-3-scroller.png" alt="Mizuno" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-4-scroller.png" alt="Nokona" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-5-scroller.png" alt="All-Star" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-6-scroller.png" alt="Easton" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="logo-scroll flex gap-16 items-center">
+                        <img src="assets/images/glovebrand-1-scroller.png" alt="Rawlings" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-2-scroller.png" alt="Wilson" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-3-scroller.png" alt="Mizuno" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-4-scroller.png" alt="Nokona" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-5-scroller.png" alt="All-Star" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-6-scroller.png" alt="Easton" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/images/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
                     </div>
                 </div>
             </div>
