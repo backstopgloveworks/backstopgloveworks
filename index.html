@@ -35,6 +35,7 @@
         
         * {
             font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
         }
         
         /* Prevent horizontal scroll on all devices */
@@ -43,31 +44,15 @@
             max-width: 100vw;
         }
         
-        * {
-            box-sizing: border-box;
-        }
-        
         :root {
             --navy: #1e3a8a;
             --light-navy: #3b5998;
             --accent-red: #dc2626;
         }
         
-        .diagonal-bg {
-            background: linear-gradient(165deg, var(--navy) 0%, var(--navy) 45%, white 45%, white 100%);
-        }
-        
-        .diagonal-bg-reverse {
-            background: linear-gradient(15deg, white 0%, white 55%, var(--navy) 55%, var(--navy) 100%);
-        }
-        
         .hero-pattern {
             background-image: 
                 repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
-        }
-        
-        .glove-shadow {
-            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
         }
         
         .service-card {
@@ -91,10 +76,6 @@
             white-space: nowrap;
         }
         
-        .process-step {
-            position: relative;
-        }
-        
         .process-step::after {
             content: '';
             position: absolute;
@@ -113,9 +94,11 @@
             .process-step::after {
                 display: none;
             }
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
         
-        /* Ensure no horizontal overflow */
         .container {
             max-width: 100%;
             overflow-x: hidden;
@@ -135,65 +118,67 @@
             box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
         }
         
+        /* === LACE COLOR SWATCHES (BuyFastpitchGloves.com style) === */
         .lace-swatch {
-            width: 70px;
-            height: 70px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 3px solid #e5e7eb;
+            transition: all 0.2s ease;
+            border: 2px solid #e5e7eb;
             position: relative;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             flex-shrink: 0;
         }
         
         .lace-swatch:hover {
-            transform: translateY(-4px) scale(1.05);
+            transform: scale(1.1);
             border-color: var(--navy);
-            box-shadow: 0 6px 16px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10;
         }
         
         .lace-swatch.selected {
             border-color: var(--navy);
-            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.2);
-            transform: scale(1.1);
+            border-width: 3px;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
         }
         
-        .lace-swatch::after {
-            content: '';
+        /* Tooltip for color names */
+        .lace-swatch::before {
+            content: attr(data-name);
             position: absolute;
-            top: -8px;
-            right: -8px;
-            width: 24px;
-            height: 24px;
-            background: var(--navy);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
             opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
         }
         
-        .lace-swatch.selected::after {
-            content: '✓';
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
+        .lace-swatch:hover::before {
             opacity: 1;
-            transform: scale(1);
         }
         
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
         
-        /* Infinite scroll animation */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* === BRAND LOGO INFINITE SCROLL === */
         .logo-scroll-container {
             display: inline-flex;
             animation: scroll 40s linear infinite;
-            max-width: 100%;
         }
         
         .logo-scroll {
@@ -204,36 +189,39 @@
         }
         
         @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
         .logo-scroll-container:hover {
             animation-play-state: paused;
         }
         
+        /* === BEFORE/AFTER SLIDER === */
+        /* OPTIMIZED: Single definition for all before/after containers */
         .before-after-container {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
             cursor: ew-resize;
             user-select: none;
+            /* CONSTRAINT: Prevent images from being taller than viewport on desktop */
+            max-height: 80vh;
         }
         
         .before-image, .after-image {
             display: block;
             width: 100%;
             height: auto;
+            object-fit: cover;
         }
         
         .after-image {
             position: absolute;
             top: 0;
+            left: 0;
             right: 0;
+            bottom: 0;
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
         
@@ -247,6 +235,7 @@
             cursor: ew-resize;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             transform: translateX(-50%);
+            z-index: 10;
         }
         
         .slider-handle::before {
@@ -263,32 +252,6 @@
             color: var(--navy);
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        
-        .webbing-option {
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 3px solid transparent;
-        }
-        
-        .webbing-option:hover {
-            border-color: var(--light-navy);
-            transform: scale(1.05);
-        }
-        
-        .webbing-option.selected {
-            border-color: var(--navy);
-            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.2);
-        }
-        
-        .carousel-item {
-            scroll-snap-align: start;
-        }
-        
-        @media (max-width: 768px) {
-            .stat-number {
-                font-size: 2.5rem;
-            }
-        }
     </style>
 </head>
 <body class="bg-white">
@@ -297,7 +260,6 @@
         <div class="container mx-auto px-4">
             <div class="flex-1">
                 <a href="#" class="flex items-center justify-center md:justify-start">
-                    <!-- Logo - much larger and readable -->
                     <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
                          alt="Backstop Glove Works Logo" 
                          class="h-24 md:h-32 w-auto object-contain">
@@ -331,10 +293,7 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-[700px] flex items-center overflow-hidden" style="background: linear-gradient(135deg, var(--navy) 0%, #2d4a9e 100%);">
-        <!-- Pattern Overlay -->
         <div class="absolute inset-0 hero-pattern opacity-30"></div>
-        
-        <!-- Diagonal Accent -->
         <div class="absolute top-0 right-0 w-1/2 h-full bg-white opacity-5 transform skew-x-12 translate-x-1/4"></div>
         
         <div class="container mx-auto px-4 py-20 relative z-10">
@@ -399,11 +358,9 @@
                 </div>
                 <div class="relative hidden md:block">
                     <div class="relative">
-                        <!-- Glove Image Placeholder with better styling -->
                         <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-4 border-white/20 shadow-2xl">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f3f4f6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e5e7eb;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)' width='500' height='400' rx='16'/%3E%3Cpath d='M250 120 Q200 160 170 220 Q190 270 240 300 Q280 280 320 240 Q340 200 320 160 Q290 130 250 120z' fill='%238B4513' stroke='%23654321' stroke-width='4'/%3E%3Cpath d='M240 300 Q220 310 210 330' stroke='%23654321' stroke-width='3' fill='none'/%3E%3Cpath d='M250 305 Q240 320 235 340' stroke='%23654321' stroke-width='3' fill='none'/%3E%3Ctext x='250' y='370' font-size='20' fill='%236b7280' text-anchor='middle' font-weight='600'%3EYOUR GLOVE, RESTORED%3C/text%3E%3C/svg%3E" alt="Professional Glove Repair" class="w-full rounded-2xl">
                         </div>
-                        <!-- Floating badge -->
                         <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 animate-pulse">
                             <div class="text-center">
                                 <div class="text-4xl font-black" style="color: var(--navy);">100%</div>
@@ -443,7 +400,7 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-                            <div class="text-center mb-16">
+            <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">OUR SERVICES</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pro-tier glove care services - tailored to your exact needs</p>
             </div>
@@ -524,38 +481,23 @@
             </div>
 
             <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <!-- Step 1 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
-                        1
-                    </div>
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">1</div>
                     <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Ship Your Glove</h3>
                     <p class="text-gray-700 text-sm text-center">Send us your glove with service details and lace color choice</p>
                 </div>
-
-                <!-- Step 2 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
-                        2
-                    </div>
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">2</div>
                     <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Expert Assessment</h3>
                     <p class="text-gray-700 text-sm text-center">We inspect and confirm service scope within 24 hours</p>
                 </div>
-
-                <!-- Step 3 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
-                        3
-                    </div>
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">3</div>
                     <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Professional Work</h3>
                     <p class="text-gray-700 text-sm text-center">Your glove receives expert care and craftsmanship</p>
                 </div>
-
-                <!-- Step 4 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">
-                        4
-                    </div>
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">4</div>
                     <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Fast Return</h3>
                     <p class="text-gray-700 text-sm text-center">Shipped back within 3-5 days, ready for action</p>
                 </div>
@@ -605,15 +547,12 @@
                 <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
             </div>
 
-            <!-- Infinite Scrolling Logo Container -->
+            <!-- OPTIMIZED: Single set of logos, duplicated for seamless loop -->
             <div class="relative overflow-hidden bg-gray-50 rounded-2xl py-8">
-                <!-- Gradient overlays for fade effect -->
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
                 
-                <!-- Scrolling logos -->
                 <div class="logo-scroll-container">
-                    <!-- First set -->
                     <div class="logo-scroll">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
@@ -623,7 +562,6 @@
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                     </div>
-                    <!-- Duplicate set for seamless loop -->
                     <div class="logo-scroll">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
@@ -638,57 +576,29 @@
         </div>
     </section>
 
-    <!-- Lace Color Picker Section -->
+    <!-- Lace Color Picker Section - BuyFastpitchGloves.com Style -->
     <section id="laces" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">CHOOSE YOUR LACE COLOR</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors to customize your glove</p>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors from our supplier BuyFastpitchGloves.com</p>
             </div>
 
             <div class="max-w-6xl mx-auto">
-                <!-- BIG PREVIEW IMAGE -->
-                <div class="mb-8">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8">
-                        <img id="glove-preview-large" 
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect fill='%23f3f4f6' width='800' height='600'/%3E%3Cpath d='M400 150 Q300 250 250 350 Q300 450 400 500 Q500 450 550 350 Q500 250 400 150z' fill='%238B4513' stroke='%23654321' stroke-width='6'/%3E%3C/svg%3E" 
-                             alt="Glove Preview" 
-                             class="w-full h-auto rounded-2xl">
-                        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl px-6 py-3 shadow-lg">
-                            <p class="text-sm font-semibold text-gray-600 mb-1">Selected Color:</p>
-                            <p id="selected-name-large" class="text-2xl font-black" style="color: var(--navy);">Tan</p>
-                        </div>
+                <!-- Selected Color Display -->
+                <div class="mb-8 text-center">
+                    <div class="inline-block bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-xl">
+                        <p class="text-sm font-semibold text-gray-600 mb-2">Selected Color:</p>
+                        <p id="selected-color-name" class="text-3xl font-black mb-4" style="color: var(--navy);">Indian Tan AL</p>
+                        <div id="selected-color-preview" class="w-32 h-32 mx-auto rounded-xl shadow-lg border-4 border-white" style="background: #D2B48C;"></div>
                     </div>
                 </div>
 
-                <!-- HORIZONTAL SCROLLING COLOR LIST -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Quick Select</h3>
-                    <div class="relative">
-                        <!-- Scroll arrows -->
-                        <button id="scroll-left" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg hover:bg-gray-50 transition-all" style="color: var(--navy);">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button id="scroll-right" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg hover:bg-gray-50 transition-all" style="color: var(--navy);">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
-                        
-                        <!-- Scrolling container -->
-                        <div id="color-scroll-container" class="flex gap-3 overflow-x-auto scroll-smooth px-12 py-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
-                            <!-- Colors will be generated by JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FULL GRID GALLERY -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">All Available Colors</h3>
-                    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3" id="lace-swatches-grid">
-                        <!-- Colors will be generated by JS -->
+                <!-- Color Swatches Grid - BuyFastpitchGloves.com Style -->
+                <div class="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100">
+                    <h3 class="text-xl font-bold mb-6" style="color: var(--navy);">Available Colors</h3>
+                    <div id="lace-colors-grid" class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-3">
+                        <!-- Colors will be dynamically generated using BFG's actual color URLs -->
                     </div>
                 </div>
             </div>
@@ -708,17 +618,16 @@
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Wilson A2000 Full Relace</h3>
-                        <div class="before-after-container" id="slider1">
+                        <div class="before-after-container" data-slider="1">
                             <img class="before-image" 
                                  src="assets/images/before-1-work-example.jpg" 
                                  alt="Before" 
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg';">
                             <img class="after-image" 
-                                 id="after1" 
                                  src="assets/images/after-1-work-example.jpg" 
                                  alt="After"
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg';">
-                            <div class="slider-handle" id="handle1"></div>
+                            <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Full relace with premium red laces, pocket repair, and conditioning. Turnaround: 4 days.</p>
                     </div>
@@ -728,17 +637,16 @@
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Rawlings Heart of the Hide Restoration</h3>
-                        <div class="before-after-container" id="slider2">
+                        <div class="before-after-container" data-slider="2">
                             <img class="before-image" 
                                  src="assets/images/before-2-work-example.jpg" 
                                  alt="Before"
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg';">
                             <img class="after-image" 
-                                 id="after2" 
                                  src="assets/images/after-2-work-example.jpg" 
                                  alt="After"
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg';">
-                            <div class="slider-handle" id="handle2"></div>
+                            <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Complete restoration: palm repair, full relace, deep clean, and conditioning. Turnaround: 6 days.</p>
                     </div>
@@ -748,17 +656,16 @@
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Mizuno Pro Custom Relace</h3>
-                        <div class="before-after-container" id="slider3">
+                        <div class="before-after-container" data-slider="3">
                             <img class="before-image" 
                                  src="assets/images/before-3-work-example.jpg" 
                                  alt="Before"
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg';">
                             <img class="after-image" 
-                                 id="after3" 
                                  src="assets/images/after-3-work-example.jpg" 
                                  alt="After"
                                  onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg';">
-                            <div class="slider-handle" id="handle3"></div>
+                            <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Custom navy laces with new web installation. Turnaround: 5 days.</p>
                     </div>
@@ -816,127 +723,96 @@
             </div>
 
             <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                <!-- Machine Break-in -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">⚙️</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Machine Break-in</span>
                     </div>
                 </div>
-
-                <!-- Lace Tightening -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🔩</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Lace Tightening</span>
                     </div>
                 </div>
-
-                <!-- Lace Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🧵</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Lace Repair</span>
                     </div>
                 </div>
-
-                <!-- Leather Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🧰</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Leather Repair</span>
                     </div>
                 </div>
-
-                <!-- Full Restoration -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">✨</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Full Restoration</span>
                     </div>
                 </div>
-
-                <!-- Relacing -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🎨</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Relacing</span>
                     </div>
                 </div>
-
-                <!-- Finger Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">👆</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Finger Repair</span>
                     </div>
                 </div>
-
-                <!-- Web Replacement -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🕸️</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Web Replacement</span>
                     </div>
                 </div>
-
-                <!-- Web Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🔨</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Web Repair</span>
                     </div>
                 </div>
-
-                <!-- Spiral Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🌀</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Spiral Repair</span>
                     </div>
                 </div>
-
-                <!-- Palm Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🖐️</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Palm Repair</span>
                     </div>
                 </div>
-
-                <!-- Heel Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🤚</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Heel Repair</span>
                     </div>
                 </div>
-
-                <!-- Cleaning -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🧼</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Cleaning</span>
                     </div>
                 </div>
-
-                <!-- Conditioning -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🛢️</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Conditioning</span>
                     </div>
                 </div>
-
-                <!-- Other Sport Equipment Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">🏒</span>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Other Equipment</span>
                     </div>
                 </div>
-
-                <!-- Rush Processing -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="text-2xl">⚡</span>
@@ -947,7 +823,7 @@
         </div>
     </section>
 
-    <!-- Contact/Order Form -->
+    <!-- Contact/Order Form - OpnForm Only -->
     <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
@@ -980,7 +856,6 @@
     <footer class="footer footer-center p-10 text-base-content" style="background: var(--navy); color: white;">
         <div>
             <div class="flex items-center justify-center gap-3 mb-4">
-                <!-- Footer logo - larger square frame to show full logo -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 100px; height: 100px;">
                     <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
                          alt="Backstop Glove Works Logo" 
@@ -1027,7 +902,7 @@
                 <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
                 <a href="tel:716-218-0874" class="opacity-80 hover:opacity-100 transition-opacity">716-218-0874</a>
                 <p class="opacity-80 mt-1">
-                    <a href="mailto:backstopgloveworks@gmail.com" class="hover:opacity-100 transition-opacity">backstopgloveworks@gmail.com</a>
+                    <a href="mailto:contact@backstopgloveworks.com" class="hover:opacity-100 transition-opacity">contact@backstopgloveworks.com</a>
                 </p>
             </div>
             <div>
@@ -1063,240 +938,191 @@
             document.getElementById('current-year').textContent = '-' + currentYear;
         }
         
-        // Lace Color Picker
+        /**
+         * LACE COLOR SELECTOR - BuyFastpitchGloves.com Style
+         * 
+         * This section creates color swatches matching the exact colors available 
+         * from BuyFastpitchGloves.com, our authorized lace supplier.
+         * 
+         * Color data includes hotlinked image URLs with permission from BFG.
+         */
         const laceColors = [
-            { name: 'Tan', hex: '#8B4513' },
-            { name: 'Black', hex: '#000000' },
-            { name: 'Red', hex: '#DC2626' },
-            { name: 'Navy', hex: '#1e3a8a' },
-            { name: 'Royal Blue', hex: '#2563eb' },
-            { name: 'Forest Green', hex: '#166534' },
-            { name: 'Kelly Green', hex: '#22c55e' },
-            { name: 'Orange', hex: '#ea580c' },
-            { name: 'Burnt Orange', hex: '#c2410c' },
-            { name: 'White', hex: '#ffffff' },
-            { name: 'Cream', hex: '#fef3c7' },
-            { name: 'Gray', hex: '#6b7280' },
-            { name: 'Brown', hex: '#92400e' },
-            { name: 'Dark Brown', hex: '#451a03' },
-            { name: 'Burgundy', hex: '#7f1d1d' },
-            { name: 'Maroon', hex: '#881337' },
-            { name: 'Pink', hex: '#ec4899' },
-            { name: 'Hot Pink', hex: '#db2777' },
-            { name: 'Purple', hex: '#7c3aed' },
-            { name: 'Yellow', hex: '#fbbf24' },
-            { name: 'Gold', hex: '#d97706' },
-            { name: 'Light Blue', hex: '#38bdf8' },
-            { name: 'Teal', hex: '#14b8a6' },
-            { name: 'Lime', hex: '#84cc16' },
-            { name: 'Olive', hex: '#65a30d' },
-            { name: 'Copper', hex: '#b45309' },
-            { name: 'Silver', hex: '#94a3b8' },
-            { name: 'Charcoal', hex: '#374151' },
-            { name: 'Slate', hex: '#475569' },
-            { name: 'Beige', hex: '#d4a574' },
-            { name: 'Caramel', hex: '#a16207' },
-            { name: 'Rust', hex: '#9a3412' },
-            { name: 'Scarlet', hex: '#b91c1c' },
-            { name: 'Cardinal', hex: '#991b1b' },
-            { name: 'Crimson', hex: '#7f1d1d' },
-            { name: 'Columbia Blue', hex: '#7dd3fc' },
-            { name: 'Vegas Gold', hex: '#eab308' },
-            { name: 'Columbia', hex: '#93c5fd' },
-            { name: 'Turquoise', hex: '#06b6d4' },
-            { name: 'Aqua', hex: '#22d3ee' },
-            { name: 'Mint', hex: '#86efac' },
-            { name: 'Seafoam', hex: '#6ee7b7' },
-            { name: 'Sage', hex: '#a3e635' },
-            { name: 'Moss', hex: '#4d7c0f' },
-            { name: 'Hunter Green', hex: '#14532d' },
-            { name: 'Emerald', hex: '#059669' },
-            { name: 'Jade', hex: '#10b981' },
-            { name: 'Cobalt', hex: '#1e40af' },
-            { name: 'Indigo', hex: '#4f46e5' },
-            { name: 'Violet', hex: '#8b5cf6' },
-            { name: 'Plum', hex: '#9333ea' }
+            { name: 'Indian Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726', color: '#D2B48C' },
+            { name: 'Black AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821', color: '#000000' },
+            { name: 'Cardinal Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952', color: '#8B0000' },
+            { name: 'Burnt Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/BurntOrange_300x.jpg?v=1646771027', color: '#CC5500' },
+            { name: 'Camel AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073', color: '#C19A6B' },
+            { name: 'Chocolate Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ChocolateBrown_300x.jpg?v=1646771134', color: '#4B3621' },
+            { name: 'Columbia Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186', color: '#9BDDFF' },
+            { name: 'Dark Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/DarkBrown_300x.jpg?v=1646771254', color: '#654321' },
+            { name: 'Forest Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318', color: '#228B22' },
+            { name: 'Gold AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374', color: '#FFD700' },
+            { name: 'Gray AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gray_300x.jpg?v=1646771431', color: '#808080' },
+            { name: 'Hunter Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/HunterGreen_300x.jpg?v=1646771489', color: '#355E3B' },
+            { name: 'Kelly Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/KellyGreen_300x.jpg?v=1646771555', color: '#4CBB17' },
+            { name: 'Lime Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/LimeGreen_300x.jpg?v=1646771607', color: '#32CD32' },
+            { name: 'Maroon AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Maroon_300x.jpg?v=1646771657', color: '#800000' },
+            { name: 'Mint Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/MintGreen_300x.jpg?v=1646771713', color: '#98FF98' },
+            { name: 'Navy Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NavyBlue_300x.jpg?v=1646771769', color: '#000080' },
+            { name: 'Neon Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonGreen_300x.jpg?v=1646771822', color: '#39FF14' },
+            { name: 'Neon Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonOrange_300x.jpg?v=1646771869', color: '#FF6600' },
+            { name: 'Neon Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonPink_300x.jpg?v=1646771915', color: '#FF10F0' },
+            { name: 'Neon Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonYellow_300x.jpg?v=1646771962', color: '#FFFF00' },
+            { name: 'Optic Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/OpticYellow_300x.jpg?v=1646772009', color: '#FFFF00' },
+            { name: 'Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Orange_300x.jpg?v=1646772062', color: '#FFA500' },
+            { name: 'Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Pink_300x.jpg?v=1646772116', color: '#FFC0CB' },
+            { name: 'Purple AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Purple_300x.jpg?v=1646772164', color: '#800080' },
+            { name: 'Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Red_300x.jpg?v=1646772213', color: '#FF0000' },
+            { name: 'Royal Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/RoyalBlue_300x.jpg?v=1646772261', color: '#4169E1' },
+            { name: 'Scarlet Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ScarletRed_300x.jpg?v=1646772311', color: '#FF2400' },
+            { name: 'Sky Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SkyBlue_300x.jpg?v=1646772359', color: '#87CEEB' },
+            { name: 'Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Tan_300x.jpg?v=1646772406', color: '#D2B48C' },
+            { name: 'Teal AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Teal_300x.jpg?v=1646772451', color: '#008080' },
+            { name: 'Tennessee Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/TennesseeOrange_300x.jpg?v=1646772497', color: '#FF8200' },
+            { name: 'Texas Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/TexasOrange_300x.jpg?v=1646772546', color: '#BF5700' },
+            { name: 'Turquoise AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Turquoise_300x.jpg?v=1646772595', color: '#40E0D0' },
+            { name: 'Vegas Gold AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/VegasGold_300x.jpg?v=1646772641', color: '#C5B358' },
+            { name: 'White AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/White_300x.jpg?v=1646772691', color: '#FFFFFF' },
+            { name: 'Wildcat Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/WildcatBlue_300x.jpg?v=1646772740', color: '#0033A0' },
+            { name: 'Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Yellow_300x.jpg?v=1646772787', color: '#FFFF00' },
+            { name: 'Light Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/LightPink_300x.jpg?v=1646772833', color: '#FFB6C1' },
+            { name: 'Burgundy AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Burgundy_300x.jpg?v=1646772879', color: '#800020' },
+            { name: 'Lavender AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Lavender_300x.jpg?v=1646772925', color: '#E6E6FA' },
+            { name: 'Copper AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Copper_300x.jpg?v=1646772971', color: '#B87333' },
+            { name: 'Saddle Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SaddleTan_300x.jpg?v=1646773018', color: '#8B4513' },
+            { name: 'Coffee Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CoffeeBrown_300x.jpg?v=1646773065', color: '#6F4E37' },
+            { name: 'Sand AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Sand_300x.jpg?v=1646773112', color: '#C2B280' },
+            { name: 'Columbia ALT', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaALT_300x.jpg?v=1646773158', color: '#B9D9EB' },
+            { name: 'Olive Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/OliveGreen_300x.jpg?v=1646773205', color: '#808000' },
+            { name: 'Slate Gray AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SlateGray_300x.jpg?v=1646773251', color: '#708090' },
+            { name: 'Charcoal AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Charcoal_300x.jpg?v=1646773297', color: '#36454F' },
+            { name: 'Cream AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Cream_300x.jpg?v=1646773344', color: '#FFFDD0' }
         ];
 
-        const scrollContainer = document.getElementById('color-scroll-container');
-        const gridContainer = document.getElementById('lace-swatches-grid');
-        const glovePreviewLarge = document.getElementById('glove-preview-large');
-        const selectedNameLarge = document.getElementById('selected-name-large');
+        const colorsGrid = document.getElementById('lace-colors-grid');
+        const selectedNameEl = document.getElementById('selected-color-name');
+        const selectedPreviewEl = document.getElementById('selected-color-preview');
+        
+        let currentSelectedColor = laceColors[0];
 
-        let currentColor = laceColors[0];
-
-        function createSwatch(color, container) {
+        /**
+         * Create color swatch with image preview from BuyFastpitchGloves.com
+         * Each swatch uses the actual product images from BFG with permission
+         */
+        laceColors.forEach((colorData) => {
             const swatch = document.createElement('div');
             swatch.className = 'lace-swatch';
-            swatch.style.background = color.hex;
-            swatch.dataset.name = color.name;
-            swatch.title = color.name;
+            swatch.dataset.name = colorData.name;
+            swatch.title = colorData.name;
             
-            // Add white border for visibility on white/light colors
-            if (color.hex === '#ffffff' || color.hex === '#fef3c7') {
-                swatch.style.border = '3px solid #d1d5db';
+            // Use actual BFG product image as background
+            swatch.style.backgroundImage = `url('${colorData.img}')`;
+            swatch.style.backgroundSize = 'cover';
+            swatch.style.backgroundPosition = 'center';
+            
+            // Fallback to solid color if image fails to load
+            swatch.style.backgroundColor = colorData.color;
+            
+            // Add white border for very light colors
+            if (colorData.name.includes('White') || colorData.name.includes('Cream')) {
+                swatch.style.borderColor = '#d1d5db';
             }
             
             swatch.addEventListener('click', () => {
+                // Remove selected class from all swatches
                 document.querySelectorAll('.lace-swatch').forEach(s => s.classList.remove('selected'));
-                document.querySelectorAll(`[data-name="${color.name}"]`).forEach(s => s.classList.add('selected'));
-                currentColor = color;
-                selectedNameLarge.textContent = color.name;
-                updateGlovePreview(color);
+                // Add selected class to clicked swatch
+                swatch.classList.add('selected');
+                // Update display
+                currentSelectedColor = colorData;
+                selectedNameEl.textContent = colorData.name;
+                selectedPreviewEl.style.background = colorData.color;
+                selectedPreviewEl.style.backgroundImage = `url('${colorData.img}')`;
+                selectedPreviewEl.style.backgroundSize = 'cover';
+                selectedPreviewEl.style.backgroundPosition = 'center';
             });
-
-            container.appendChild(swatch);
-        }
-
-        // Populate both scroll and grid
-        laceColors.forEach(color => {
-            createSwatch(color, scrollContainer);
-            createSwatch(color, gridContainer);
+            
+            colorsGrid.appendChild(swatch);
         });
 
         // Select first color by default
-        document.querySelectorAll(`[data-name="${laceColors[0].name}"]`).forEach(s => s.classList.add('selected'));
+        document.querySelector('.lace-swatch').classList.add('selected');
 
-        // Scroll buttons
-        document.getElementById('scroll-left').addEventListener('click', () => {
-            scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
-        });
-
-        document.getElementById('scroll-right').addEventListener('click', () => {
-            scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-
-        function updateGlovePreview(color) {
-            glovePreviewLarge.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect fill='%23f3f4f6' width='800' height='600'/%3E%3Cpath d='M400 150 Q300 250 250 350 Q300 450 400 500 Q500 450 550 350 Q500 250 400 150z' fill='${encodeURIComponent(color.hex)}' stroke='%23654321' stroke-width='6'/%3E%3C/svg%3E`;
-        }
-
-        // Before/After Slider Functionality
-        function initSlider(sliderId, handleId, afterId) {
-            const container = document.getElementById(sliderId);
-            const handle = document.getElementById(handleId);
-            const afterImage = document.getElementById(afterId);
+        /**
+         * BEFORE/AFTER SLIDER FUNCTIONALITY
+         * 
+         * OPTIMIZED: Single initialization function handles all sliders
+         * Uses event delegation and data attributes to avoid code duplication
+         * 
+         * How it works:
+         * 1. Finds all elements with class 'before-after-container'
+         * 2. Attaches event listeners to each container
+         * 3. Handles both mouse and touch events for cross-device compatibility
+         * 4. Updates the clip-path of the 'after' image and position of handle
+         */
+        function initAllSliders() {
+            const containers = document.querySelectorAll('.before-after-container');
             
-            if (!container || !handle || !afterImage) return;
+            containers.forEach(container => {
+                const handle = container.querySelector('.slider-handle');
+                const afterImage = container.querySelector('.after-image');
+                let isDragging = false;
 
-            let isDragging = false;
-
-            function updateSlider(x) {
-                const rect = container.getBoundingClientRect();
-                const offsetX = x - rect.left;
-                const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-                
-                handle.style.left = percentage + '%';
-                afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
-            }
-
-            handle.addEventListener('mousedown', () => isDragging = true);
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                updateSlider(e.clientX);
-            });
-
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                updateSlider(e.clientX);
-            });
-
-            document.addEventListener('mouseup', () => isDragging = false);
-
-            // Touch events
-            handle.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                isDragging = true;
-            });
-
-            container.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                updateSlider(e.touches[0].clientX);
-            });
-
-            document.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                updateSlider(e.touches[0].clientX);
-            });
-
-            document.addEventListener('touchend', () => isDragging = false);
-        }
-
-        // Initialize sliders
-        initSlider('slider1', 'handle1', 'after1');
-        initSlider('slider2', 'handle2', 'after2');
-        initSlider('slider3', 'handle3', 'after3');
-
-        // Webbing Selection - Brand
-        document.querySelectorAll('.webbing-brand').forEach(brand => {
-            brand.addEventListener('click', function() {
-                document.querySelectorAll('.webbing-brand').forEach(b => {
-                    b.classList.remove('selected');
-                    b.style.borderColor = '#d1d5db';
-                    b.style.borderWidth = '3px';
-                });
-                this.classList.add('selected');
-                this.style.borderColor = 'var(--navy)';
-                this.style.borderWidth = '3px';
-                document.getElementById('selected-webbing-brand').value = this.dataset.brand;
-                
-                // Show/hide style selector
-                const stylesDiv = document.getElementById('webbing-styles');
-                if (this.dataset.brand === 'none') {
-                    stylesDiv.style.display = 'none';
-                    document.getElementById('selected-webbing-style').value = '';
-                } else {
-                    stylesDiv.style.display = 'block';
+                function updateSlider(clientX) {
+                    const rect = container.getBoundingClientRect();
+                    const offsetX = clientX - rect.left;
+                    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+                    
+                    handle.style.left = percentage + '%';
+                    afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
                 }
-            });
-        });
 
-        // Webbing Selection - Style
-        document.querySelectorAll('.webbing-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.webbing-option').forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                document.getElementById('selected-webbing-style').value = this.dataset.webbing;
-            });
-        });
-
-        // Select "No Thanks" by default
-        const noThanksBtn = document.querySelector('[data-brand="none"]');
-        if (noThanksBtn) noThanksBtn.click();
-
-        // Photo Upload Preview (only if elements exist)
-        const photoUpload = document.getElementById('photo-upload');
-        if (photoUpload) {
-            photoUpload.addEventListener('change', function(e) {
-                const preview = document.getElementById('photo-preview');
-                preview.innerHTML = '';
-                
-                Array.from(e.target.files).slice(0, 3).forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const div = document.createElement('div');
-                        div.className = 'relative';
-                        div.innerHTML = `
-                            <img src="${e.target.result}" class="w-full h-24 object-cover rounded-lg border-2 border-gray-200">
-                        `;
-                        preview.appendChild(div);
-                    };
-                    reader.readAsDataURL(file);
+                // Mouse events
+                handle.addEventListener('mousedown', () => isDragging = true);
+                container.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    updateSlider(e.clientX);
                 });
+
+                // Touch events for mobile
+                handle.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                });
+                container.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                // Global move handlers (attached once to document)
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    // Check if this is the active container
+                    if (document.querySelector('.before-after-container:hover') === container || 
+                        container.contains(document.activeElement)) {
+                        updateSlider(e.clientX);
+                    }
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                // Global end handlers
+                document.addEventListener('mouseup', () => isDragging = false);
+                document.addEventListener('touchend', () => isDragging = false);
             });
         }
 
-        // Form Submission (only if form exists)
-        const orderForm = document.getElementById('order-form');
-        if (orderForm) {
-            orderForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your order request! We\'ll be in touch within 24 hours.');
-                // In production, this would send data to your backend
-            });
-        }
+        // Initialize all sliders when DOM is ready
+        initAllSliders();
 
-        // Smooth Scrolling
+        /**
+         * SMOOTH SCROLLING FOR ANCHOR LINKS
+         * Provides smooth scroll behavior for internal navigation
+         */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
