@@ -836,10 +836,7 @@ img {
 }
 
 /* ============================================
-   SECTION: LACE GALLERY & COLOR SELECTOR
-   ============================================ */
-/* ============================================
-   LACE GALLERY SECTION - UPDATED LAYOUT
+   LACE GALLERY SECTION
    ============================================ */
 .lace-gallery-section {
     padding: var(--spacing-xl) 0;
@@ -849,8 +846,10 @@ img {
 .lace-gallery-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px;
     align-items: start;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 /* ============================================
@@ -859,13 +858,13 @@ img {
 .lace-main-display {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Tight spacing between preview and thumbnails */
+    gap: 20px;
 }
 
 .lace-image-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 1;
+    padding-bottom: 100%; /* Creates 1:1 aspect ratio */
     background: var(--bg-cream);
     border-radius: 20px;
     overflow: hidden;
@@ -874,6 +873,9 @@ img {
 }
 
 .lace-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
@@ -882,24 +884,25 @@ img {
 
 .lace-color-label {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 20px;
+    left: 20px;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     color: white;
-    padding: 16px 28px;
+    padding: 12px 24px;
     border-radius: 12px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 600;
     font-family: var(--font-display);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
 /* ============================================
-   THUMBNAIL GALLERY (Horizontal Scroll)
+   THUMBNAIL GALLERY
    ============================================ */
 .thumbnail-gallery-section {
-    width: 100%; /* Matches width of main preview */
+    width: 100%;
 }
 
 .thumbnail-gallery {
@@ -926,7 +929,8 @@ img {
 
 .thumbnail-item {
     min-width: 100px;
-    aspect-ratio: 1;
+    width: 100px;
+    height: 100px;
     border-radius: 12px;
     cursor: pointer;
     border: 3px solid transparent;
@@ -960,7 +964,7 @@ img {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
     color: white;
     padding: 16px 8px 8px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-align: center;
 }
@@ -971,11 +975,12 @@ img {
 .lace-controls {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
 }
 
-.lace-controls h3 {
-    font-size: 0.95rem;
+.color-grid-section h3,
+.size-options-section h3 {
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-medium);
     margin-bottom: 16px;
@@ -991,13 +996,23 @@ img {
 }
 
 .color-swatch {
-    aspect-ratio: 1;
+    width: 100%;
+    padding-bottom: 100%; /* Makes it square */
+    position: relative;
     border-radius: 8px;
     cursor: pointer;
     border: 3px solid transparent;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 }
 
 .color-swatch:hover {
@@ -1027,6 +1042,7 @@ img {
     color: #999;
     font-size: 1.2rem;
     font-weight: bold;
+    z-index: 5;
 }
 
 /* SIZE OPTIONS */
@@ -1060,27 +1076,12 @@ img {
 }
 
 /* ============================================
-   RESPONSIVE - MOBILE LAYOUT
+   RESPONSIVE - MOBILE
    ============================================ */
 @media (max-width: 1024px) {
     .lace-gallery-grid {
         grid-template-columns: 1fr;
         gap: 40px;
-    }
-
-    /* Mobile: Change order to: Image → Thumbnails → Color Grid → Size */
-    .lace-gallery-grid {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    /* Order on mobile */
-    .lace-main-display {
-        order: 1; /* Image + Thumbnails first */
-    }
-    
-    .lace-controls {
-        order: 2; /* Color grid + Size second */
     }
 
     .color-grid {
@@ -1089,23 +1090,21 @@ img {
 }
 
 @media (max-width: 640px) {
-    .lace-main-display {
-        gap: 16px;
-    }
-
     .color-grid {
         grid-template-columns: repeat(7, 1fr);
     }
 
     .thumbnail-item {
-        min-width: 90px;
+        min-width: 80px;
+        width: 80px;
+        height: 80px;
     }
     
     .lace-color-label {
-        font-size: 1.1rem;
-        padding: 12px 20px;
-        bottom: 20px;
-        left: 20px;
+        font-size: 1rem;
+        padding: 10px 20px;
+        bottom: 16px;
+        left: 16px;
     }
 }
 
@@ -1116,7 +1115,9 @@ img {
     }
     
     .thumbnail-item {
-        min-width: 80px;
+        min-width: 70px;
+        width: 70px;
+        height: 70px;
     }
 }
 
