@@ -205,15 +205,31 @@
             border-radius: 12px;
             cursor: ew-resize;
             user-select: none;
-            /* CONSTRAINT: Prevent images from being taller than viewport on desktop */
-            max-height: 80vh;
         }
         
-        .before-image, .after-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
+        /* Desktop: Contain images within reasonable height */
+        @media (min-width: 768px) {
+            .before-after-container {
+                max-height: 70vh;
+            }
+            
+            .before-image, .after-image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                max-height: 70vh;
+                object-fit: contain; /* Contain instead of cover on desktop */
+            }
+        }
+        
+        /* Mobile: Full width, natural aspect ratio */
+        @media (max-width: 767px) {
+            .before-image, .after-image {
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
         }
         
         .after-image {
@@ -581,7 +597,7 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">CHOOSE YOUR LACE COLOR</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors</p>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors from our supplier BuyFastpitchGloves.com</p>
             </div>
 
             <div class="max-w-6xl mx-auto">
@@ -617,16 +633,16 @@
                 <!-- Before/After Slider 1 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Wilson A2000 Full Relace</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Mizuno Pro Custom Relace</h3>
                         <div class="before-after-container" data-slider="1">
                             <img class="before-image" 
-                                 src="assets/images/before-1-work-example.jpg" 
-                                 alt="Before" 
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg';">
-                            <img class="after-image" 
                                  src="assets/images/after-1-work-example.jpg" 
+                                 alt="Before" 
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg\';">
+                            <img class="after-image" 
+                                 src="assets/images/before-1-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg';">
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg\';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Full relace with premium red laces, pocket repair, and conditioning. Turnaround: 4 days.</p>
@@ -636,16 +652,16 @@
                 <!-- Before/After Slider 2 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Rawlings Heart of the Hide Restoration</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Wilson A2400 Complete Catcher\'s Mitt Restoration</h3>
                         <div class="before-after-container" data-slider="2">
                             <img class="before-image" 
-                                 src="assets/images/before-2-work-example.jpg" 
-                                 alt="Before"
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg';">
-                            <img class="after-image" 
                                  src="assets/images/after-2-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg\';">
+                            <img class="after-image" 
+                                 src="assets/images/before-2-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg';">
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg\';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Complete restoration: palm repair, full relace, deep clean, and conditioning. Turnaround: 6 days.</p>
@@ -655,16 +671,16 @@
                 <!-- Before/After Slider 3 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Mizuno Pro Custom Relace</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Rawlings Renegade Catcher\'s Mitt</h3>
                         <div class="before-after-container" data-slider="3">
                             <img class="before-image" 
-                                 src="assets/images/before-3-work-example.jpg" 
-                                 alt="Before"
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg';">
-                            <img class="after-image" 
                                  src="assets/images/after-3-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg\';">
+                            <img class="after-image" 
+                                 src="assets/images/before-3-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg';">
+                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg\';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Custom navy laces with new web installation. Turnaround: 5 days.</p>
@@ -723,99 +739,148 @@
             </div>
 
             <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                <!-- Machine Break-in -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">⚙️</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Machine Break-in</span>
                     </div>
                 </div>
+                <!-- Lace Tightening -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🔩</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Lace Tightening</span>
                     </div>
                 </div>
+                <!-- Lace Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🧵</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Lace Repair</span>
                     </div>
                 </div>
+                <!-- Leather Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🧰</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Leather Repair</span>
                     </div>
                 </div>
+                <!-- Full Restoration -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">✨</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Full Restoration</span>
                     </div>
                 </div>
+                <!-- Relacing -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🎨</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Relacing</span>
                     </div>
                 </div>
+                <!-- Finger Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">👆</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Finger Repair</span>
                     </div>
                 </div>
+                <!-- Web Replacement -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🕸️</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M4 12h16M4 20h16M8 8v8m8-8v8"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Web Replacement</span>
                     </div>
                 </div>
+                <!-- Web Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🔨</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Web Repair</span>
                     </div>
                 </div>
+                <!-- Spiral Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🌀</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Spiral Repair</span>
                     </div>
                 </div>
+                <!-- Palm Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🖐️</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Palm Repair</span>
                     </div>
                 </div>
+                <!-- Heel Repair -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🤚</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Heel Repair</span>
                     </div>
                 </div>
+                <!-- Cleaning -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🧼</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Cleaning</span>
                     </div>
                 </div>
+                <!-- Conditioning -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🛢️</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Conditioning</span>
                     </div>
                 </div>
+                <!-- Other Equipment -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">🏒</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Other Equipment</span>
                     </div>
                 </div>
+                <!-- Rush Processing -->
                 <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">⚡</span>
+                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
                         <span class="font-semibold text-sm" style="color: var(--navy);">Rush Processing</span>
                     </div>
                 </div>
