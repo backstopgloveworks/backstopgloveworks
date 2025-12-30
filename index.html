@@ -5,28 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backstop Glove Works | Professional Baseball Glove Repair & Relacing Services</title>
     <meta name="description" content="Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed. Custom lacing in 50+ colors available.">
-    <meta name="keywords" content="baseball glove repair, glove relacing, glove restoration, custom glove lacing, professional glove services">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Backstop Glove Works - Professional Glove Services">
-    <meta property="og:description" content="Expert baseball glove repair, relacing, and restoration services with fast turnaround.">
-    <meta property="og:type" content="website">
-    
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Backstop Glove Works",
-        "description": "Professional baseball glove repair and relacing services",
-        "image": "logo-url-here",
-        "priceRange": "$$",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US"
-        }
-    }
-    </script>
     
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,16 +16,16 @@
             box-sizing: border-box;
         }
         
-        /* Prevent horizontal scroll on all devices */
         html, body {
             overflow-x: hidden;
             max-width: 100vw;
         }
         
         :root {
-            --navy: #1e3a8a;
-            --light-navy: #3b5998;
-            --accent-red: #dc2626;
+            --navy: #272263;
+            --navy-dark: #1a1548;
+            --orange: #f05c23;
+            --orange-light: #ff7a47;
         }
         
         .hero-pattern {
@@ -61,42 +39,19 @@
         
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.25);
+            box-shadow: 0 20px 50px rgba(39, 34, 99, 0.25);
         }
         
         .stat-number {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
             line-height: 1;
-            background: linear-gradient(135deg, var(--navy), var(--light-navy));
+            background: linear-gradient(135deg, #272263, #1a1548);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             word-break: keep-all;
             white-space: nowrap;
-        }
-        
-        .process-step::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -50%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--navy), transparent);
-        }
-        
-        .process-step:last-child::after {
-            display: none;
-        }
-        
-        @media (max-width: 768px) {
-            .process-step::after {
-                display: none;
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
         }
         
         .container {
@@ -105,7 +60,7 @@
         }
         
         .btn-primary {
-            background: var(--navy);
+            background: linear-gradient(135deg, #272263 0%, #1a1548 100%);
             border: none;
             font-weight: 600;
             text-transform: uppercase;
@@ -113,12 +68,12 @@
         }
         
         .btn-primary:hover {
-            background: var(--light-navy);
+            background: linear-gradient(135deg, #1a1548 0%, #272263 100%);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 8px 20px rgba(39, 34, 99, 0.4);
         }
         
-        /* === LACE COLOR SWATCHES (BuyFastpitchGloves.com style) === */
+        /* Lace Color Swatches */
         .lace-swatch {
             width: 48px;
             height: 48px;
@@ -132,18 +87,17 @@
         
         .lace-swatch:hover {
             transform: scale(1.1);
-            border-color: var(--navy);
+            border-color: #272263;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             z-index: 10;
         }
         
         .lace-swatch.selected {
-            border-color: var(--navy);
+            border-color: #272263;
             border-width: 3px;
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+            box-shadow: 0 0 0 3px rgba(39, 34, 99, 0.2);
         }
         
-        /* Tooltip for color names */
         .lace-swatch::before {
             content: attr(data-name);
             position: absolute;
@@ -175,10 +129,10 @@
             scrollbar-width: none;
         }
         
-        /* === BRAND LOGO INFINITE SCROLL === */
+        /* Brand Logo Infinite Scroll */
         .logo-scroll-container {
             display: inline-flex;
-            animation: scroll 40s linear infinite;
+            animation: scroll 50s linear infinite;
         }
         
         .logo-scroll {
@@ -197,8 +151,7 @@
             animation-play-state: paused;
         }
         
-        /* === BEFORE/AFTER SLIDER === */
-        /* OPTIMIZED: Single definition for all before/after containers */
+        /* Before/After Slider */
         .before-after-container {
             position: relative;
             overflow: hidden;
@@ -207,7 +160,6 @@
             user-select: none;
         }
         
-        /* Desktop: Contain images within reasonable height */
         @media (min-width: 768px) {
             .before-after-container {
                 max-height: 70vh;
@@ -218,11 +170,10 @@
                 width: 100%;
                 height: 100%;
                 max-height: 70vh;
-                object-fit: contain; /* Contain instead of cover on desktop */
+                object-fit: contain;
             }
         }
         
-        /* Mobile: Full width, natural aspect ratio */
         @media (max-width: 767px) {
             .before-image, .after-image {
                 display: block;
@@ -265,8 +216,64 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
-            color: var(--navy);
+            color: #272263;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Process Timeline Animations */
+        .process-step-wrapper {
+            position: relative;
+            transition: transform 0.3s ease;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .process-step-wrapper h3 {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .process-step-wrapper p {
+            flex: 1;
+        }
+        
+        .process-step-wrapper:hover {
+            transform: translateY(-8px);
+        }
+        
+        .process-step-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f05c23, #ff7a47);
+            transition: width 0.4s ease;
+            border-radius: 8px 8px 0 0;
+            z-index: 10;
+        }
+        
+        .process-step-wrapper:hover::before {
+            width: 100%;
+        }
+        
+        /* Animated Arrows */
+        .process-arrow {
+            animation: shiftArrow 2s ease-in-out infinite;
+        }
+        
+        @keyframes shiftArrow {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
         }
     </style>
 </head>
@@ -287,7 +294,7 @@
                     <li><a href="#process">Process</a></li>
                     <li><a href="#laces">Lace Colors</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact" class="btn btn-primary text-white ml-4">Order Now</a></li>
+                    <li><a href="#contact" class="btn btn-primary text-white ml-4">Get Quote</a></li>
                 </ul>
             </div>
             <div class="flex-none md:hidden">
@@ -308,21 +315,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[700px] flex items-center overflow-hidden" style="background: linear-gradient(135deg, var(--navy) 0%, #2d4a9e 100%);">
+    <section class="relative min-h-[700px] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #272263 0%, #1a1548 100%);">
         <div class="absolute inset-0 hero-pattern opacity-30"></div>
         <div class="absolute top-0 right-0 w-1/2 h-full bg-white opacity-5 transform skew-x-12 translate-x-1/4"></div>
         
         <div class="container mx-auto px-4 py-20 relative z-10">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="text-white">
-                    <div class="inline-block bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
+                    <div class="inline-block text-white px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-lg" style="background: #f05c23;">
                         PRO-TIER CRAFTSMANSHIP
                     </div>
                     <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
                         EXPERT GLOVE<br/>
                         RESTORATION
                     </h1>
-                    <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed font-medium">
+                    <p class="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed font-medium">
                         Professional relacing, repair, and restoration services that bring your glove back to peak performance.
                     </p>
                     <div class="grid grid-cols-2 gap-3 mb-8 max-w-xl">
@@ -364,27 +371,23 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#services" class="btn btn-lg text-white border-none shadow-xl hover:scale-105 transition-transform" style="background: #dc2626;">
+                        <a href="#services" class="btn btn-lg text-white border-none shadow-xl hover:scale-105 transition-transform" style="background: #f05c23;">
                             View Services
                         </a>
-                        <a href="#laces" class="btn btn-outline btn-lg text-white border-2 border-white hover:bg-white hover:border-white transition-all" style="--tw-text-opacity: 1; color: white;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='white'">
+                        <a href="#laces" class="btn btn-outline btn-lg text-white border-2 border-white hover:bg-white transition-all" style="--tw-text-opacity: 1; color: white;" onmouseover="this.style.color='#272263'" onmouseout="this.style.color='white'">
                             Choose Laces
                         </a>
                     </div>
                 </div>
+                
+                <!-- Banner Image -->
                 <div class="relative hidden md:block">
                     <div class="relative">
-                        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-4 border-white/20 shadow-2xl">
-                            <img src="https://www.buyfastpitchgloves.com/cdn/shop/files/Akadema-APM43-ProSoft-Design-Series-Bk-WhiteBlue-Laces-33-Catchers-Mitt-768x576_1400x.jpg?v=1698071485" 
+                        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-4 border-white/20 shadow-2xl overflow-hidden">
+                            <img src="banner.jpg" 
                                  alt="Professional Baseball Glove" 
                                  class="w-full rounded-2xl"
-                                 onerror="this.src='https://www.buyfastpitchgloves.com/cdn/shop/products/AHC94-Front_1400x.jpg?v=1614795584'">
-                        </div>
-                        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 animate-pulse">
-                            <div class="text-center">
-                                <div class="text-4xl font-black" style="color: var(--navy);">100%</div>
-                                <div class="text-sm font-bold text-gray-600">Satisfaction</div>
-                            </div>
+                                 onerror="this.src='https://www.buyfastpitchgloves.com/cdn/shop/files/Akadema-APM43-ProSoft-Design-Series-Bk-WhiteBlue-Laces-33-Catchers-Mitt-768x576_1400x.jpg?v=1698071485'">
                         </div>
                     </div>
                 </div>
@@ -392,25 +395,25 @@
         </div>
     </section>
 
-    <!-- Trust Signals / Stats -->
+    <!-- Trust Signals -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                 <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-                    <div class="stat-number">3-5</div>
-                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Day Turnaround</div>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-                    <div class="stat-number">50+</div>
-                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Lace Colors</div>
+                    <div class="stat-number">Pro</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Craftsmanship</div>
                 </div>
                 <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
                     <div class="stat-number">100%</div>
                     <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Satisfaction</div>
                 </div>
                 <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-                    <div class="stat-number">Pro</div>
-                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Craftsmanship</div>
+                    <div class="stat-number">50+</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Lace Colors</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">3-5</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Day Turnaround</div>
                 </div>
             </div>
         </div>
@@ -420,21 +423,42 @@
     <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">OUR SERVICES</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">OUR SERVICES</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pro-tier glove care services - tailored to your exact needs</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Relace Service -->
+                <!-- Service 1 -->
                 <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
                     <div class="card-body">
-                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Full Restoration</h3>
+                        <p class="text-gray-600 mb-4">Complete overhaul: relacing, repairs, deep cleaning, conditioning, and refinishing. Bring vintage gloves back to life.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Deep clean, repair all damage, complete relace, condition leather, restore color and finish</p>
+                            <p><strong>Turnaround:</strong> 5-7 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                             </svg>
                         </div>
-                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Full Relace</h3>
-                        <p class="text-gray-600 mb-4">Complete glove relacing, with your choice of 50+ colors of premium leather lace. Includes thorough inspection and minor repairs.</p>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Full Re-lace</h3>
+                        <p class="text-gray-600 mb-4">Complete glove relacing with your choice of 50+ premium leather lace colors. Includes thorough inspection and minor repairs.</p>
                         <div class="divider"></div>
                         <div class="text-sm text-gray-500 space-y-2">
                             <p><strong>Process:</strong> Remove all old lacing, inspect for damage, repair worn areas, install new laces with professional technique</p>
@@ -446,20 +470,20 @@
                     </div>
                 </div>
 
-                <!-- Repair Service -->
+                <!-- Service 3 -->
                 <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
                     <div class="card-body">
-                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
                             </svg>
                         </div>
-                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Repairs</h3>
-                        <p class="text-gray-600 mb-4">Expert repairs for torn leather, broken webbing, palm damage, and structural issues. We restore your glove's integrity.</p>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Lace Repair</h3>
+                        <p class="text-gray-600 mb-4">Professional repair of broken or worn laces. We replace damaged sections and restore your glove's structure and integrity.</p>
                         <div class="divider"></div>
                         <div class="text-sm text-gray-500 space-y-2">
-                            <p><strong>Process:</strong> Assessment, leather reinforcement, stitching repair, structural restoration, conditioning</p>
-                            <p><strong>Turnaround:</strong> 3-5 business days</p>
+                            <p><strong>Process:</strong> Identify damaged laces, remove and replace broken sections, match existing lace color, tighten and adjust</p>
+                            <p><strong>Turnaround:</strong> 2-3 business days</p>
                         </div>
                         <div class="card-actions justify-end mt-6">
                             <a href="#contact" class="btn btn-primary text-white">Order Now</a>
@@ -467,20 +491,62 @@
                     </div>
                 </div>
 
-                <!-- Restoration Service -->
+                <!-- Service 4 -->
                 <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
                     <div class="card-body">
-                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: var(--navy);">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
                             </svg>
                         </div>
-                        <h3 class="card-title text-2xl font-bold mb-3" style="color: var(--navy);">Full Restoration</h3>
-                        <p class="text-gray-600 mb-4">Complete overhaul: relacing, repairs, deep cleaning, conditioning, and refinishing. Bring vintage gloves back to life.</p>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Cleaning/Conditioning</h3>
+                        <p class="text-gray-600 mb-4">Deep cleaning and professional conditioning to restore leather flexibility, remove dirt and grime, and extend glove life.</p>
                         <div class="divider"></div>
                         <div class="text-sm text-gray-500 space-y-2">
-                            <p><strong>Process:</strong> Deep clean, repair all damage, relace completely, condition leather, restore color and finish</p>
-                            <p><strong>Turnaround:</strong> 5-7 business days</p>
+                            <p><strong>Process:</strong> Deep clean with leather-safe products, apply premium conditioner, restore suppleness, protect against cracking</p>
+                            <p><strong>Turnaround:</strong> 3-4 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Break-in Service</h3>
+                        <p class="text-gray-600 mb-4">Professional break-in and conditioning service. We shape and soften your glove to game-ready perfection using proven techniques.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Steam treatment, professional pounding and shaping, pocket formation, conditioning, game-ready preparation</p>
+                            <p><strong>Turnaround:</strong> 4-6 business days</p>
+                        </div>
+                        <div class="card-actions justify-end mt-6">
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Leather Repair</h3>
+                        <p class="text-gray-600 mb-4">Expert repair of tears, worn areas, and damaged leather. We restore your glove's integrity with quality leather patches and expert stitching.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Assess damage, source matching leather, reinforce weak areas, professional stitching, blend and color-match</p>
+                            <p><strong>Turnaround:</strong> 4-5 business days</p>
                         </div>
                         <div class="card-actions justify-end mt-6">
                             <a href="#contact" class="btn btn-primary text-white">Order Now</a>
@@ -495,61 +561,146 @@
     <section id="process" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">HOW IT WORKS</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">HOW IT WORKS</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Simple, transparent process from start to finish</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">1</div>
-                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Ship Your Glove</h3>
-                    <p class="text-gray-700 text-sm text-center">Send us your glove with service details and lace color choice</p>
+            <!-- Desktop: Horizontal Timeline -->
+            <div class="hidden md:flex items-start justify-between gap-6 max-w-6xl mx-auto">
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Select Service & Get Quote</h3>
+                    <p class="text-gray-600 text-sm">Choose a service and submit the form to receive pricing and instructions</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">2</div>
-                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Expert Assessment</h3>
-                    <p class="text-gray-700 text-sm text-center">We inspect and confirm service scope within 24 hours</p>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M50.73 58.53C58.86 42.27 75.48 32 93.67 32H160V160H32L50.73 58.53zM32 192H160V352H93.67c-18.19 0-34.81-10.27-42.94-26.53L32 192zM192 32H352V160H192V32zm0 160H352V352H192V192zm160-160h66.33c18.19 0 34.81 10.27 42.94 26.53L480 192H352V32zM480 224L461.27 325.47C453.14 341.73 436.52 352 418.33 352H352V224H480zM0 176c0-8.84 7.16-16 16-16H496c8.84 0 16 7.16 16 16s-7.16 16-16 16H16c-8.84 0-16-7.16-16-16z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Send Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Send your glove to us with any additional requests</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">3</div>
-                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Professional Work</h3>
-                    <p class="text-gray-700 text-sm text-center">Your glove receives expert care and craftsmanship</p>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M78.6 5C69.1-2.4 55.6-1.5 47 7L7 47c-8.5 8.5-9.4 22-2.1 31.6l80 104c4.5 5.9 11.6 9.4 19 9.4h54.1l109 109c-14.7 29-10 65.4 14.3 89.6l112 112c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-112-112c-24.2-24.2-60.6-29-89.6-14.3l-109-109V104c0-7.5-3.5-14.5-9.4-19L78.6 5zM19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L233.7 374.3c-7.8-20.9-9-43.6-3.6-65.1l-61.7-61.7L19.9 396.1zM512 144c0-10.5-1.1-20.7-3.2-30.5c-2.4-11.2-16.1-14.1-24.2-6l-63.9 63.9c-3 3-7.1 4.7-11.3 4.7H352c-8.8 0-16-7.2-16-16V102.6c0-4.2 1.7-8.3 4.7-11.3l63.9-63.9c8.1-8.1 5.2-21.8-6-24.2C388.7 1.1 378.5 0 368 0C288.5 0 224 64.5 224 144l0 .8 85.3 85.3c36-9.1 75.8 .5 104 28.7L429 274.5c49-23 83-72.8 83-130.5zM56 432a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Confirm & Start Repairs</h3>
+                    <p class="text-gray-600 text-sm">We confirm work and return date before starting</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black shadow-md" style="background: var(--navy); color: white;">4</div>
-                    <h3 class="text-xl font-bold mb-3 text-center" style="color: var(--navy);">Fast Return</h3>
-                    <p class="text-gray-700 text-sm text-center">Shipped back within 3-5 days, ready for action</p>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Quality Check</h3>
+                    <p class="text-gray-600 text-sm">Thorough inspection of finished product</p>
+                </div>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C10.5 2 9.2 2.4 8 3.1C6.8 3.8 5.8 4.8 5.1 6C4.4 7.2 4 8.5 4 10C4 11.1 4.2 12.1 4.6 13C3.7 13.3 3 14.1 3 15C3 16.1 3.9 17 5 17H6V20C6 21.1 6.9 22 8 22H16C17.1 22 18 21.1 18 20V17H19C20.1 17 21 16.1 21 15C21 14.1 20.3 13.3 19.4 13C19.8 12.1 20 11.1 20 10C20 8.5 19.6 7.2 18.9 6C18.2 4.8 17.2 3.8 16 3.1C14.8 2.4 13.5 2 12 2M8 4.5C8.8 4.2 9.8 4 11 4C11.7 4 12.4 4.1 13 4.3V10.5C13 11.3 12.3 12 11.5 12H8.5C7.7 12 7 11.3 7 10.5V6C7 5.4 7.4 4.8 8 4.5M15 4.3C15.6 4.1 16.3 4 17 4C18.2 4 19.2 4.2 20 4.5C20.6 4.8 21 5.4 21 6V10.5C21 11.3 20.3 12 19.5 12H16.5C15.7 12 15 11.3 15 10.5V4.3M8 14H11V20H8V14M13 14H16V20H13V14Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Receive Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Your beautifully restored glove returned!</p>
+                </div>
+            </div>
+
+            <!-- Mobile: Vertical Stack -->
+            <div class="md:hidden space-y-8">
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Select Service & Get Quote</h3>
+                    <p class="text-gray-600 text-sm">Choose service and submit form</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M50.73 58.53C58.86 42.27 75.48 32 93.67 32H160V160H32L50.73 58.53zM32 192H160V352H93.67c-18.19 0-34.81-10.27-42.94-26.53L32 192zM192 32H352V160H192V32zm0 160H352V352H192V192zm160-160h66.33c18.19 0 34.81 10.27 42.94 26.53L480 192H352V32zM480 224L461.27 325.47C453.14 341.73 436.52 352 418.33 352H352V224H480zM0 176c0-8.84 7.16-16 16-16H496c8.84 0 16 7.16 16 16s-7.16 16-16 16H16c-8.84 0-16-7.16-16-16z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Send Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Send your glove to us</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M78.6 5C69.1-2.4 55.6-1.5 47 7L7 47c-8.5 8.5-9.4 22-2.1 31.6l80 104c4.5 5.9 11.6 9.4 19 9.4h54.1l109 109c-14.7 29-10 65.4 14.3 89.6l112 112c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-112-112c-24.2-24.2-60.6-29-89.6-14.3l-109-109V104c0-7.5-3.5-14.5-9.4-19L78.6 5zM19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L233.7 374.3c-7.8-20.9-9-43.6-3.6-65.1l-61.7-61.7L19.9 396.1zM512 144c0-10.5-1.1-20.7-3.2-30.5c-2.4-11.2-16.1-14.1-24.2-6l-63.9 63.9c-3 3-7.1 4.7-11.3 4.7H352c-8.8 0-16-7.2-16-16V102.6c0-4.2 1.7-8.3 4.7-11.3l63.9-63.9c8.1-8.1 5.2-21.8-6-24.2C388.7 1.1 378.5 0 368 0C288.5 0 224 64.5 224 144l0 .8 85.3 85.3c36-9.1 75.8 .5 104 28.7L429 274.5c49-23 83-72.8 83-130.5zM56 432a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Confirm & Start Repairs</h3>
+                    <p class="text-gray-600 text-sm">We confirm before starting</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Quality Check</h3>
+                    <p class="text-gray-600 text-sm">Thorough inspection</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C10.5 2 9.2 2.4 8 3.1C6.8 3.8 5.8 4.8 5.1 6C4.4 7.2 4 8.5 4 10C4 11.1 4.2 12.1 4.6 13C3.7 13.3 3 14.1 3 15C3 16.1 3.9 17 5 17H6V20C6 21.1 6.9 22 8 22H16C17.1 22 18 21.1 18 20V17H19C20.1 17 21 16.1 21 15C21 14.1 20.3 13.3 19.4 13C19.8 12.1 20 11.1 20 10C20 8.5 19.6 7.2 18.9 6C18.2 4.8 17.2 3.8 16 3.1C14.8 2.4 13.5 2 12 2M8 4.5C8.8 4.2 9.8 4 11 4C11.7 4 12.4 4.1 13 4.3V10.5C13 11.3 12.3 12 11.5 12H8.5C7.7 12 7 11.3 7 10.5V6C7 5.4 7.4 4.8 8 4.5M15 4.3C15.6 4.1 16.3 4 17 4C18.2 4 19.2 4.2 20 4.5C20.6 4.8 21 5.4 21 6V10.5C21 11.3 20.3 12 19.5 12H16.5C15.7 12 15 11.3 15 10.5V4.3M8 14H11V20H8V14M13 14H16V20H13V14Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Receive Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Beautifully restored!</p>
                 </div>
             </div>
 
             <div class="mt-16 mb-24 max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-2xl">
-                <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--navy);">Our Guarantees</h3>
+                <h3 class="text-2xl font-bold mb-6 text-center" style="color: #272263;">Our Guarantees</h3>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="flex gap-4">
                         <div class="text-green-500 text-2xl">✓</div>
                         <div>
-                            <h4 class="font-bold mb-1" style="color: var(--navy);">Quality Workmanship</h4>
+                            <h4 class="font-bold mb-1" style="color: #272263;">Quality Workmanship</h4>
                             <p class="text-sm text-gray-600">Every repair backed by professional craftsmanship</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-green-500 text-2xl">✓</div>
                         <div>
-                            <h4 class="font-bold mb-1" style="color: var(--navy);">Fast Turnaround</h4>
+                            <h4 class="font-bold mb-1" style="color: #272263;">Fast Turnaround</h4>
                             <p class="text-sm text-gray-600">3-5 day standard service, rush available</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-green-500 text-2xl">✓</div>
                         <div>
-                            <h4 class="font-bold mb-1" style="color: var(--navy);">Premium Materials</h4>
+                            <h4 class="font-bold mb-1" style="color: #272263;">Premium Materials</h4>
                             <p class="text-sm text-gray-600">High-quality leather laces in 50+ colors</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-green-500 text-2xl">✓</div>
                         <div>
-                            <h4 class="font-bold mb-1" style="color: var(--navy);">Satisfaction Guarantee</h4>
+                            <h4 class="font-bold mb-1" style="color: #272263;">Satisfaction Guarantee</h4>
                             <p class="text-sm text-gray-600">We stand behind every glove we service</p>
                         </div>
                     </div>
@@ -558,15 +709,14 @@
         </div>
     </section>
 
-    <!-- We Work With All Makes Section -->
+    <!-- We Work With All Makes -->
     <section class="py-20 bg-white border-t-2 border-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">WE WORK WITH ALL MAKES</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">WE WORK WITH ALL MAKES</h2>
                 <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
             </div>
 
-            <!-- OPTIMIZED: Single set of logos, duplicated for seamless loop -->
             <div class="relative overflow-hidden bg-gray-50 rounded-2xl py-8">
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
@@ -580,7 +730,10 @@
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
+                        <div class="h-20 w-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs" title="Rawlings - Add logo manually">RAWLINGS</div>
+                        <div class="h-20 w-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs" title="44Pro - Add logo manually">44PRO</div>
                     </div>
+                    <!-- Duplicate for seamless loop -->
                     <div class="logo-scroll">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
@@ -589,322 +742,314 @@
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
                         <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
+                        <div class="h-20 w-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs" title="Rawlings - Add logo manually">RAWLINGS</div>
+                        <div class="h-20 w-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs" title="44Pro - Add logo manually">44PRO</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lace Color Picker Section - BuyFastpitchGloves.com Style -->
+    <!-- Lace Color Picker - INTERACTIVE -->
     <section id="laces" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">CHOOSE YOUR LACE COLOR</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">CHOOSE YOUR LACE COLOR</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors</p>
             </div>
 
-            <div class="max-w-6xl mx-auto">
-                <!-- Selected Color Display -->
-                <div class="mb-8 text-center">
-                    <div class="inline-block bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-xl">
-                        <p class="text-sm font-semibold text-gray-600 mb-2">Selected Color:</p>
-                        <p id="selected-color-name" class="text-3xl font-black mb-4" style="color: var(--navy);">Indian Tan AL</p>
-                        <div id="selected-color-preview" class="w-32 h-32 mx-auto rounded-xl shadow-lg border-4 border-white" style="background: #D2B48C;"></div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="relative w-full aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-xl mb-4">
+                        <img id="laceMainImage" 
+                             src="https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726" 
+                             alt="Selected Lace Color" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-4 left-4 bg-black/80 text-white px-4 py-2 rounded-lg">
+                            <span id="laceColorName" class="font-bold">Indian Tan AL</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Color Swatches Grid - BuyFastpitchGloves.com Style -->
-                <div class="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100">
-                    <h3 class="text-xl font-bold mb-6" style="color: var(--navy);">Available Colors</h3>
-                    <div id="lace-colors-grid" class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-3">
-                        <!-- Colors will be dynamically generated using BFG's actual color URLs -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4" style="color: #272263;">Lace Color</h3>
+                    <div id="laceColorGrid" class="grid grid-cols-10 gap-2 mb-6">
+                        <!-- Colors added by JavaScript -->
                     </div>
+
+                    <div class="mt-8 bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-sm mb-3" style="color: #272263;">Our Lace Sizes:</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm">3/16 x 72 inch</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm">1/4 x 72 inch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-center" style="color: #272263;">Browse All Colors</h3>
+                <div id="laceThumbnailGallery" class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+                    <!-- Thumbnails added by JavaScript -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with Before/After Sliders -->
+    <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">OUR WORK</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">OUR WORK</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">See the quality difference professional restoration makes</p>
             </div>
 
             <div class="max-w-5xl mx-auto space-y-8">
-                <!-- Before/After Slider 1 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Mizuno Pro Custom Relace</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #272263;">Mizuno Pro Custom Relace</h3>
                         <div class="before-after-container" data-slider="1">
                             <img class="before-image" 
                                  src="assets/images/after-1-work-example.jpg" 
                                  alt="Before" 
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg';">
                             <img class="after-image" 
                                  src="assets/images/before-1-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Full relace with premium red laces, pocket repair, and conditioning. Turnaround: 4 days.</p>
                     </div>
                 </div>
 
-                <!-- Before/After Slider 2 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Wilson A2400 Complete Catcher\'s Mitt Restoration</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #272263;">Wilson A2400 Complete Catcher's Mitt Restoration</h3>
                         <div class="before-after-container" data-slider="2">
                             <img class="before-image" 
                                  src="assets/images/after-2-work-example.jpg" 
                                  alt="Before"
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg';">
                             <img class="after-image" 
                                  src="assets/images/before-2-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Complete restoration: palm repair, full relace, deep clean, and conditioning. Turnaround: 6 days.</p>
                     </div>
                 </div>
 
-                <!-- Before/After Slider 3 -->
                 <div class="card bg-white shadow-xl">
                     <div class="card-body">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Rawlings Renegade Catcher\'s Mitt</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #272263;">Rawlings Renegade Catcher's Mitt</h3>
                         <div class="before-after-container" data-slider="3">
                             <img class="before-image" 
                                  src="assets/images/after-3-work-example.jpg" 
                                  alt="Before"
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg';">
                             <img class="after-image" 
                                  src="assets/images/before-3-work-example.jpg" 
                                  alt="After"
-                                 onerror="this.onerror=null; this.src=\'https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg\';">
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg';">
                             <div class="slider-handle"></div>
                         </div>
                         <p class="text-sm text-gray-600 mt-4">Custom navy laces with new web installation. Turnaround: 5 days.</p>
                     </div>
                 </div>
-
-                <!-- Carousel for more examples -->
-                <div class="mt-12">
-                    <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--navy);">More Examples</h3>
-                    <div class="carousel carousel-center space-x-4 p-4 bg-white rounded-2xl shadow-xl">
-                        <div class="carousel-item w-full md:w-1/3">
-                            <div class="card bg-base-100 shadow-lg w-full">
-                                <figure class="px-4 pt-4">
-                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3ECustom Navy Laces%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
-                                </figure>
-                                <div class="card-body items-center text-center">
-                                    <h4 class="card-title text-lg">Mizuno Pro</h4>
-                                    <p class="text-sm text-gray-600">Custom navy relace</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item w-full md:w-1/3">
-                            <div class="card bg-base-100 shadow-lg w-full">
-                                <figure class="px-4 pt-4">
-                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3EVintage Restoration%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
-                                </figure>
-                                <div class="card-body items-center text-center">
-                                    <h4 class="card-title text-lg">1960s MacGregor</h4>
-                                    <p class="text-sm text-gray-600">Full vintage restoration</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item w-full md:w-1/3">
-                            <div class="card bg-base-100 shadow-lg w-full">
-                                <figure class="px-4 pt-4">
-                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='200' y='150' font-size='16' fill='%236b7280' text-anchor='middle'%3EWebbing Replacement%3C/text%3E%3C/svg%3E" alt="Example" class="rounded-xl">
-                                </figure>
-                                <div class="card-body items-center text-center">
-                                    <h4 class="card-title text-lg">Nokona X2</h4>
-                                    <p class="text-sm text-gray-600">New web + relace</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- All Services Offered Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-50 to-white">
+    <!-- All Services Offered -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">ALL SERVICES OFFERED</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">ALL SERVICES OFFERED</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive care for your equipment</p>
             </div>
 
-            <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                <!-- Machine Break-in -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Machine Break-in</span>
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-start">
+                                <div class="flex-1 md:w-[60%] grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <!-- Full Restoration -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Full Restoration</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Relacing -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Relacing</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Lace Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Lace Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Leather Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Leather Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Finger Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Finger Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Web Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Palm Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Palm Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Heel Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Heel Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Spiral Repair -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Spiral Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Replacement -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M4 12h16M4 20h16M8 8v8m8-8v8"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Web Replacement</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cleaning/Conditioning -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Cleaning/Conditioning</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine Break-in -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Machine Break-In</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Equipment -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Other Equipment</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Rush Processing -->
+                    <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: #272263;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            <span class="font-semibold text-sm" style="color: #272263;">Rush Processing</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Lace Tightening -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Lace Tightening</span>
-                    </div>
-                </div>
-                <!-- Lace Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Lace Repair</span>
-                    </div>
-                </div>
-                <!-- Leather Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Leather Repair</span>
-                    </div>
-                </div>
-                <!-- Full Restoration -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Full Restoration</span>
-                    </div>
-                </div>
-                <!-- Relacing -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Relacing</span>
-                    </div>
-                </div>
-                <!-- Finger Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Finger Repair</span>
-                    </div>
-                </div>
-                <!-- Web Replacement -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M4 12h16M4 20h16M8 8v8m8-8v8"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Web Replacement</span>
-                    </div>
-                </div>
-                <!-- Web Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Web Repair</span>
-                    </div>
-                </div>
-                <!-- Spiral Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Spiral Repair</span>
-                    </div>
-                </div>
-                <!-- Palm Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Palm Repair</span>
-                    </div>
-                </div>
-                <!-- Heel Repair -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Heel Repair</span>
-                    </div>
-                </div>
-                <!-- Cleaning -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Cleaning</span>
-                    </div>
-                </div>
-                <!-- Conditioning -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Conditioning</span>
-                    </div>
-                </div>
-                <!-- Other Equipment -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Other Equipment</span>
-                    </div>
-                </div>
-                <!-- Rush Processing -->
-                <div class="bg-white rounded-xl px-4 py-3 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" style="color: var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                        <span class="font-semibold text-sm" style="color: var(--navy);">Rush Processing</span>
+
+                <div class="hidden md:block md:w-[40%]">
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100">
+                        <img src="parts_of_glove.jpg" 
+                             alt="Parts of a Baseball Glove" 
+                             class="w-full rounded-lg"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'%3E%3Crect fill=\'%23f3f4f6\' width=\'400\' height=\'500\'/%3E%3Ctext x=\'200\' y=\'250\' font-size=\'18\' fill=\'%236b7280\' text-anchor=\'middle\' font-family=\'Arial\'%3EParts of Glove Image%3C/text%3E%3Ctext x=\'200\' y=\'280\' font-size=\'14\' fill=\'%239ca3af\' text-anchor=\'middle\' font-family=\'Arial\'%3E(Add parts_of_glove.jpg)%3C/text%3E%3C/svg%3E';">
+                        <p class="text-center text-sm text-gray-600 mt-4 font-semibold">Glove Anatomy Reference</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact/Order Form - OpnForm Only -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative" style="background: url('lace-wall.jpg') center/cover fixed; background-color: #272263;">
+        <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--navy);">GET STARTED</h2>
+                <div class="text-center mb-12 bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">GET STARTED</h2>
                     <p class="text-xl text-gray-600">Fill out the form below to request service for your glove</p>
                 </div>
 
                 <div class="card bg-white shadow-2xl border-2 border-gray-100">
                     <div class="card-body p-0">
-                        <!-- OpnForm Embedded Form -->
                         <iframe 
-                            style="border:none;width:100%;min-height:800px;" 
+                            style="border:none;width:100%;min-height:700px;" 
                             id="backstop-glove-works-glove-intake-form-aoaswm" 
                             src="https://opnform.com/forms/backstop-glove-works-glove-intake-form-aoaswm"
                             title="Backstop Glove Works Intake Form">
@@ -921,7 +1066,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer footer-center p-10 text-base-content" style="background: var(--navy); color: white;">
+    <footer class="footer footer-center p-10 text-base-content text-white" style="background: #272263;">
         <div>
             <div class="flex items-center justify-center gap-3 mb-4">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 100px; height: 100px;">
@@ -931,7 +1076,7 @@
                 </div>
                 <div class="text-left">
                     <div class="text-2xl font-black tracking-wide">BACKSTOP GLOVE WORKS</div>
-                    <div class="text-sm opacity-80 font-semibold" style="color: #DC2626;">Professional Glove Services</div>
+                    <div class="text-sm opacity-80 font-semibold" style="color: #f05c23;">Professional Glove Services</div>
                 </div>
             </div>
             <p class="max-w-md opacity-80">
@@ -947,7 +1092,6 @@
                 <a class="link link-hover">Contact</a>
             </div>
             
-            <!-- Social Media Buttons -->
             <div class="flex gap-3 justify-center mb-6">
                 <a href="https://www.instagram.com/backstopgloveworks" target="_blank" rel="noopener noreferrer" 
                    class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
@@ -964,13 +1108,12 @@
             </div>
         </div>
         
-        <!-- Contact Info -->
         <div class="grid md:grid-cols-3 gap-6 text-center md:text-left max-w-4xl w-full">
             <div>
                 <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
                 <a href="tel:716-218-0874" class="opacity-80 hover:opacity-100 transition-opacity">716-218-0874</a>
                 <p class="opacity-80 mt-1">
-                    <a href="mailto:contact@backstopgloveworks.com" class="hover:opacity-100 transition-opacity">contact@backstopgloveworks.com</a>
+                    <a href="mailto:backstopgloveworks@gmail.com" class="hover:opacity-100 transition-opacity">backstopgloveworks@gmail.com</a>
                 </p>
             </div>
             <div>
@@ -984,7 +1127,6 @@
             </div>
         </div>
         
-        <!-- Neon Sign Logo -->
         <div class="my-8">
             <div class="inline-block bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl hover:bg-white/10 transition-all duration-500">
                 <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Backstop-Glove-Works-Neon-Light-Stylized.png" 
@@ -1000,134 +1142,139 @@
     </footer>
 
     <script>
-        // Set current year in footer
         const currentYear = new Date().getFullYear();
         if (currentYear > 2024) {
             document.getElementById('current-year').textContent = '-' + currentYear;
         }
         
-        /**
-         * LACE COLOR SELECTOR - BuyFastpitchGloves.com Style
-         * 
-         * This section creates color swatches matching the exact colors available 
-         * from BuyFastpitchGloves.com, our authorized lace supplier.
-         * 
-         * Color data includes hotlinked image URLs with permission from BFG.
-         */
+        // LACE COLOR PICKER - USING LOCAL PRODUCT IMAGES
+        // All 52 colors with standardized filenames
+        // Path: lace-grid-images/
         const laceColors = [
-            { name: 'Indian Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726', color: '#D2B48C' },
-            { name: 'Black AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821', color: '#000000' },
-            { name: 'Cardinal Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952', color: '#8B0000' },
-            { name: 'Burnt Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/BurntOrange_300x.jpg?v=1646771027', color: '#CC5500' },
-            { name: 'Camel AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073', color: '#C19A6B' },
-            { name: 'Chocolate Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ChocolateBrown_300x.jpg?v=1646771134', color: '#4B3621' },
-            { name: 'Columbia Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186', color: '#9BDDFF' },
-            { name: 'Dark Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/DarkBrown_300x.jpg?v=1646771254', color: '#654321' },
-            { name: 'Forest Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318', color: '#228B22' },
-            { name: 'Gold AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374', color: '#FFD700' },
-            { name: 'Gray AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gray_300x.jpg?v=1646771431', color: '#808080' },
-            { name: 'Hunter Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/HunterGreen_300x.jpg?v=1646771489', color: '#355E3B' },
-            { name: 'Kelly Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/KellyGreen_300x.jpg?v=1646771555', color: '#4CBB17' },
-            { name: 'Lime Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/LimeGreen_300x.jpg?v=1646771607', color: '#32CD32' },
-            { name: 'Maroon AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Maroon_300x.jpg?v=1646771657', color: '#800000' },
-            { name: 'Mint Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/MintGreen_300x.jpg?v=1646771713', color: '#98FF98' },
-            { name: 'Navy Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NavyBlue_300x.jpg?v=1646771769', color: '#000080' },
-            { name: 'Neon Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonGreen_300x.jpg?v=1646771822', color: '#39FF14' },
-            { name: 'Neon Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonOrange_300x.jpg?v=1646771869', color: '#FF6600' },
-            { name: 'Neon Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonPink_300x.jpg?v=1646771915', color: '#FF10F0' },
-            { name: 'Neon Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/NeonYellow_300x.jpg?v=1646771962', color: '#FFFF00' },
-            { name: 'Optic Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/OpticYellow_300x.jpg?v=1646772009', color: '#FFFF00' },
-            { name: 'Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Orange_300x.jpg?v=1646772062', color: '#FFA500' },
-            { name: 'Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Pink_300x.jpg?v=1646772116', color: '#FFC0CB' },
-            { name: 'Purple AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Purple_300x.jpg?v=1646772164', color: '#800080' },
-            { name: 'Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Red_300x.jpg?v=1646772213', color: '#FF0000' },
-            { name: 'Royal Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/RoyalBlue_300x.jpg?v=1646772261', color: '#4169E1' },
-            { name: 'Scarlet Red AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ScarletRed_300x.jpg?v=1646772311', color: '#FF2400' },
-            { name: 'Sky Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SkyBlue_300x.jpg?v=1646772359', color: '#87CEEB' },
-            { name: 'Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Tan_300x.jpg?v=1646772406', color: '#D2B48C' },
-            { name: 'Teal AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Teal_300x.jpg?v=1646772451', color: '#008080' },
-            { name: 'Tennessee Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/TennesseeOrange_300x.jpg?v=1646772497', color: '#FF8200' },
-            { name: 'Texas Orange AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/TexasOrange_300x.jpg?v=1646772546', color: '#BF5700' },
-            { name: 'Turquoise AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Turquoise_300x.jpg?v=1646772595', color: '#40E0D0' },
-            { name: 'Vegas Gold AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/VegasGold_300x.jpg?v=1646772641', color: '#C5B358' },
-            { name: 'White AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/White_300x.jpg?v=1646772691', color: '#FFFFFF' },
-            { name: 'Wildcat Blue AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/WildcatBlue_300x.jpg?v=1646772740', color: '#0033A0' },
-            { name: 'Yellow AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Yellow_300x.jpg?v=1646772787', color: '#FFFF00' },
-            { name: 'Light Pink AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/LightPink_300x.jpg?v=1646772833', color: '#FFB6C1' },
-            { name: 'Burgundy AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Burgundy_300x.jpg?v=1646772879', color: '#800020' },
-            { name: 'Lavender AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Lavender_300x.jpg?v=1646772925', color: '#E6E6FA' },
-            { name: 'Copper AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Copper_300x.jpg?v=1646772971', color: '#B87333' },
-            { name: 'Saddle Tan AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SaddleTan_300x.jpg?v=1646773018', color: '#8B4513' },
-            { name: 'Coffee Brown AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CoffeeBrown_300x.jpg?v=1646773065', color: '#6F4E37' },
-            { name: 'Sand AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Sand_300x.jpg?v=1646773112', color: '#C2B280' },
-            { name: 'Columbia ALT', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaALT_300x.jpg?v=1646773158', color: '#B9D9EB' },
-            { name: 'Olive Green AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/OliveGreen_300x.jpg?v=1646773205', color: '#808000' },
-            { name: 'Slate Gray AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/SlateGray_300x.jpg?v=1646773251', color: '#708090' },
-            { name: 'Charcoal AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Charcoal_300x.jpg?v=1646773297', color: '#36454F' },
-            { name: 'Cream AL', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Cream_300x.jpg?v=1646773344', color: '#FFFDD0' }
+            // BLACKS & GRAYS (8 colors)
+            { name: 'Black AL', img: 'lace-grid-images/black-al.jpeg' },
+            { name: 'Black SC', img: 'lace-grid-images/black-sc.jpeg' },
+            { name: 'Black TT', img: 'lace-grid-images/black-tt.jpeg' },
+            { name: 'Black Metallic AL', img: 'lace-grid-images/black_metallic-al.jpeg' },
+            { name: 'Dark Gray', img: 'lace-grid-images/dark_gray.jpeg' },
+            { name: 'Gray TT', img: 'lace-grid-images/gray-tt.jpeg' },
+            { name: 'Light Gray', img: 'lace-grid-images/light_gray.jpeg' },
+            { name: 'Smoke Gray', img: 'lace-grid-images/smoke_gray.jpeg' },
+            
+            // BROWNS & TANS (14 colors)
+            { name: 'Bean Cherokee', img: 'lace-grid-images/bean_cherokee.jpeg' },
+            { name: 'Camel AL', img: 'lace-grid-images/camel-al.jpeg' },
+            { name: 'Camel TT', img: 'lace-grid-images/camel-tt.jpeg' },
+            { name: 'Chestnut AL', img: 'lace-grid-images/chestnut-al.jpeg' },
+            { name: 'Cheyenne TT', img: 'lace-grid-images/cheyenne-tt.jpeg' },
+            { name: 'Chieftan Tan SC', img: 'lace-grid-images/chieftan_tan-sc.jpeg' },
+            { name: 'Chocolate AL', img: 'lace-grid-images/chocolate-al.jpeg' },
+            { name: 'Dark Brown AL', img: 'lace-grid-images/dark_brown-al.jpeg' },
+            { name: 'Dark Chocolate AL', img: 'lace-grid-images/dark_chocolate-al.jpeg' },
+            { name: 'Dark Chocolate TT', img: 'lace-grid-images/dark_chocolate-tt.jpeg' },
+            { name: 'Havana Tan TT', img: 'lace-grid-images/havana_tan-tt.jpeg' },
+            { name: 'Indian Tan AL', img: 'lace-grid-images/indian_tan-al.jpeg' },
+            { name: 'Japan Tan TT', img: 'lace-grid-images/japan_tan-tt.jpeg' },
+            { name: 'Vanilla Cream', img: 'lace-grid-images/vanilla_cream.jpeg' },
+            
+            // REDS & PINKS (7 colors)
+            { name: 'Blood Red TT', img: 'lace-grid-images/blood_red-tt.jpeg' },
+            { name: 'Bright Red', img: 'lace-grid-images/bright_red.jpeg' },
+            { name: 'Burgundy Prime', img: 'lace-grid-images/burgundy-prime.jpeg' },
+            { name: 'Cardinal Red TT', img: 'lace-grid-images/cardinal_red-tt.jpeg' },
+            { name: 'Maroon TT', img: 'lace-grid-images/maroon-tt.jpeg' },
+            { name: 'Bright Pink Tulip', img: 'lace-grid-images/bright_pink_tulip.jpeg' },
+            { name: 'Passion Pink TT', img: 'lace-grid-images/passion_pink-tt.jpeg' },
+            
+            // BLUES (7 colors)
+            { name: 'Carolina Blue TT', img: 'lace-grid-images/carolina_blue-tt.jpeg' },
+            { name: 'Electric Blue AD', img: 'lace-grid-images/electric_blue-ad.jpeg' },
+            { name: 'Navy TT', img: 'lace-grid-images/navy-tt.jpeg' },
+            { name: 'Royal Blue', img: 'lace-grid-images/royal_blue.jpeg' },
+            { name: 'Sapphire Blue', img: 'lace-grid-images/sapphire_blue.jpeg' },
+            { name: 'Teal', img: 'lace-grid-images/teal.jpeg' },
+            { name: 'Wildcat Blue AL', img: 'lace-grid-images/wildcat_blue-al.jpeg' },
+            
+            // GREENS (6 colors)
+            { name: 'Aqua Green', img: 'lace-grid-images/aqua_green.jpeg' },
+            { name: 'Dark Green TT', img: 'lace-grid-images/dark_green-tt.jpeg' },
+            { name: 'Kelly Green', img: 'lace-grid-images/kelly_green.jpeg' },
+            { name: 'Mint', img: 'lace-grid-images/mint.jpeg' },
+            { name: 'Neon Green', img: 'lace-grid-images/neon_green.jpeg' },
+            { name: 'Ocean Mint', img: 'lace-grid-images/ocean_mint.jpeg' },
+            
+            // YELLOWS & ORANGES (6 colors)
+            { name: 'Gold Metallic AL', img: 'lace-grid-images/gold_metallic-al.jpeg' },
+            { name: 'Lemon Yellow', img: 'lace-grid-images/lemon_yellow.jpeg' },
+            { name: 'Orange Peel AD', img: 'lace-grid-images/orange_peel-ad.jpeg' },
+            { name: 'Orange TT', img: 'lace-grid-images/orange-tt.jpeg' },
+            { name: 'Pirate Yellow AL', img: 'lace-grid-images/pirate_yellow-al.jpeg' },
+            { name: 'Yellow TT', img: 'lace-grid-images/yellow-tt.jpeg' },
+            
+            // PURPLES (1 color)
+            { name: 'Purple TT', img: 'lace-grid-images/purple-tt.jpeg' },
+            
+            // WHITES & METALLICS (3 colors)
+            { name: 'Gold Foil', img: 'lace-grid-images/gold_foil.jpeg' },
+            { name: 'Silver Foil', img: 'lace-grid-images/silver_foil.jpeg' },
+            { name: 'White TT', img: 'lace-grid-images/white-tt.jpeg' }
         ];
 
-        const colorsGrid = document.getElementById('lace-colors-grid');
-        const selectedNameEl = document.getElementById('selected-color-name');
-        const selectedPreviewEl = document.getElementById('selected-color-preview');
-        
-        let currentSelectedColor = laceColors[0];
+        let selectedColorIndex = 0;
 
-        /**
-         * Create color swatch with image preview from BuyFastpitchGloves.com
-         * Each swatch uses the actual product images from BFG with permission
-         */
-        laceColors.forEach((colorData) => {
+        const colorGrid = document.getElementById('laceColorGrid');
+        laceColors.forEach((color, index) => {
             const swatch = document.createElement('div');
             swatch.className = 'lace-swatch';
-            swatch.dataset.name = colorData.name;
-            swatch.title = colorData.name;
+            swatch.dataset.name = color.name;
+            swatch.dataset.index = index;
             
-            // Use actual BFG product image as background
-            swatch.style.backgroundImage = `url('${colorData.img}')`;
+            // USE ACTUAL LACE IMAGE AS BACKGROUND (not a solid color!)
+            swatch.style.backgroundImage = `url('${color.img}')`;
             swatch.style.backgroundSize = 'cover';
             swatch.style.backgroundPosition = 'center';
             
-            // Fallback to solid color if image fails to load
-            swatch.style.backgroundColor = colorData.color;
+            if (index === 0) swatch.classList.add('selected');
             
-            // Add white border for very light colors
-            if (colorData.name.includes('White') || colorData.name.includes('Cream')) {
-                swatch.style.borderColor = '#d1d5db';
-            }
+            swatch.addEventListener('click', () => selectLaceColor(index));
             
-            swatch.addEventListener('click', () => {
-                // Remove selected class from all swatches
-                document.querySelectorAll('.lace-swatch').forEach(s => s.classList.remove('selected'));
-                // Add selected class to clicked swatch
-                swatch.classList.add('selected');
-                // Update display
-                currentSelectedColor = colorData;
-                selectedNameEl.textContent = colorData.name;
-                selectedPreviewEl.style.background = colorData.color;
-                selectedPreviewEl.style.backgroundImage = `url('${colorData.img}')`;
-                selectedPreviewEl.style.backgroundSize = 'cover';
-                selectedPreviewEl.style.backgroundPosition = 'center';
-            });
-            
-            colorsGrid.appendChild(swatch);
+            colorGrid.appendChild(swatch);
         });
 
-        // Select first color by default
-        document.querySelector('.lace-swatch').classList.add('selected');
+        const thumbnailGallery = document.getElementById('laceThumbnailGallery');
+        laceColors.forEach((color, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = 'relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer border-3 transition-all' + (index === 0 ? ' border-blue-900' : ' border-gray-300');
+            thumb.innerHTML = `
+                <img src="${color.img}" alt="${color.name}" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 text-center">${color.name}</div>
+            `;
+            thumb.addEventListener('click', () => selectLaceColor(index));
+            thumb.dataset.index = index;
+            thumbnailGallery.appendChild(thumb);
+        });
 
-        /**
-         * BEFORE/AFTER SLIDER FUNCTIONALITY
-         * 
-         * OPTIMIZED: Single initialization function handles all sliders
-         * Uses event delegation and data attributes to avoid code duplication
-         * 
-         * How it works:
-         * 1. Finds all elements with class 'before-after-container'
-         * 2. Attaches event listeners to each container
-         * 3. Handles both mouse and touch events for cross-device compatibility
-         * 4. Updates the clip-path of the 'after' image and position of handle
-         */
+        function selectLaceColor(index) {
+            const color = laceColors[index];
+            selectedColorIndex = index;
+            
+            document.getElementById('laceMainImage').src = color.img;
+            document.getElementById('laceColorName').textContent = color.name;
+            
+            document.querySelectorAll('.lace-swatch').forEach(swatch => {
+                swatch.classList.remove('selected');
+            });
+            document.querySelector(`.lace-swatch[data-index="${index}"]`).classList.add('selected');
+            
+            document.querySelectorAll('#laceThumbnailGallery > div').forEach(thumb => {
+                if (parseInt(thumb.dataset.index) === index) {
+                    thumb.className = thumb.className.replace('border-gray-300', 'border-blue-900');
+                } else {
+                    thumb.className = thumb.className.replace('border-blue-900', 'border-gray-300');
+                }
+            });
+        }
+
         function initAllSliders() {
             const containers = document.querySelectorAll('.before-after-container');
             
@@ -1145,18 +1292,15 @@
                     afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
                 }
                 
-                // Initialize slider at 50% position on load
                 handle.style.left = '50%';
                 afterImage.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
 
-                // Mouse events
                 handle.addEventListener('mousedown', () => isDragging = true);
                 container.addEventListener('mousedown', (e) => {
                     isDragging = true;
                     updateSlider(e.clientX);
                 });
 
-                // Touch events for mobile
                 handle.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     isDragging = true;
@@ -1166,10 +1310,8 @@
                     updateSlider(e.touches[0].clientX);
                 });
 
-                // Global move handlers (attached once to document)
                 document.addEventListener('mousemove', (e) => {
                     if (!isDragging) return;
-                    // Check if this is the active container
                     if (document.querySelector('.before-after-container:hover') === container || 
                         container.contains(document.activeElement)) {
                         updateSlider(e.clientX);
@@ -1182,19 +1324,13 @@
                     updateSlider(e.touches[0].clientX);
                 });
 
-                // Global end handlers
                 document.addEventListener('mouseup', () => isDragging = false);
                 document.addEventListener('touchend', () => isDragging = false);
             });
         }
 
-        // Initialize all sliders when DOM is ready
         initAllSliders();
 
-        /**
-         * SMOOTH SCROLLING FOR ANCHOR LINKS
-         * Provides smooth scroll behavior for internal navigation
-         */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
