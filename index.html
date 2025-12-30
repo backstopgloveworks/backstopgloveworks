@@ -1230,13 +1230,18 @@
             swatch.dataset.index = index;
             
             // USE ACTUAL LACE IMAGE AS BACKGROUND (not a solid color!)
-            swatch.style.backgroundImage = `url('${color.img}')`;
+            swatch.dataset.img = color.img; // Store path in data attribute
+swatch.style.backgroundColor = '#e5e7eb'; // Placeholder gray
             swatch.style.backgroundSize = 'cover';
             swatch.style.backgroundPosition = 'center';
             
             if (index === 0) swatch.classList.add('selected');
             
-            swatch.addEventListener('click', () => selectLaceColor(index));
+            swatch.addEventListener('mouseenter', function() {
+    if (!this.style.backgroundImage) {
+        this.style.backgroundImage = `url('${this.dataset.img}')`;
+    }
+}, { once: true }); // Only run once
             
             colorGrid.appendChild(swatch);
         });
@@ -1246,9 +1251,12 @@
             const thumb = document.createElement('div');
             thumb.className = 'relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer border-3 transition-all' + (index === 0 ? ' border-blue-900' : ' border-gray-300');
             thumb.innerHTML = `
-                <img src="${color.img}" alt="${color.name}" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 text-center">${color.name}</div>
-            `;
+    <img src="${color.img}" 
+         alt="${color.name}" 
+         loading="lazy"
+         class="w-full h-full object-cover">
+    <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 text-center">${color.name}</div>
+`;
             thumb.addEventListener('click', () => selectLaceColor(index));
             thumb.dataset.index = index;
             thumbnailGallery.appendChild(thumb);
