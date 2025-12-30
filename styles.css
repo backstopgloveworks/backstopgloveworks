@@ -1636,3 +1636,21 @@ img {
         font-size: 0.95rem;
     }
 }
+/* Add to the <style> section */
+.lace-swatch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f3f4f6;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    pointer-events: none;
+}
+
+.lace-swatch[style*="background-image"]::after {
+    display: none;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+}
