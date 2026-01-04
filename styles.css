@@ -1,0 +1,311 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Base Styles */
+* {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* CSS Variables */
+:root {
+    --navy: #272263;
+    --navy-dark: #1a1548;
+    --orange: #f05c23;
+    --orange-light: #ff7a47;
+}
+
+/* Hero Pattern */
+.hero-pattern {
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+}
+
+/* Service Cards */
+.service-card {
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(39, 34, 99, 0.25);
+}
+
+/* Stat Numbers */
+.stat-number {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #272263, #1a1548);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+/* Container */
+.container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Primary Button */
+.btn-primary {
+    background: linear-gradient(135deg, #272263 0%, #1a1548 100%);
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1a1548 0%, #272263 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(39, 34, 99, 0.4);
+}
+
+/* Lace Color Swatches */
+.lace-swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid #e5e7eb;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.lace-swatch:hover {
+    transform: scale(1.1);
+    border-color: #272263;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.lace-swatch.selected {
+    border-color: #272263;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px rgba(39, 34, 99, 0.2);
+}
+
+.lace-swatch::before {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+
+.lace-swatch:hover::before {
+    opacity: 1;
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Brand Logo Infinite Scroll */
+.logo-scroll-container {
+    display: inline-flex;
+    animation: scroll 50s linear infinite;
+}
+
+.logo-scroll {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.logo-scroll-container:hover {
+    animation-play-state: paused;
+}
+
+/* Before/After Slider */
+.before-after-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: ew-resize;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .before-after-container {
+        max-height: 70vh;
+    }
+    
+    .before-image, .after-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 767px) {
+    .before-image, .after-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+.after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: white;
+    cursor: ew-resize;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.slider-handle::before {
+    content: '◄ ►';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #272263;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Process Timeline Animations */
+.process-step-wrapper {
+    position: relative;
+    transition: transform 0.3s ease;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.process-step-wrapper h3 {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.process-step-wrapper p {
+    flex: 1;
+}
+
+.process-step-wrapper:hover {
+    transform: translateY(-8px);
+}
+
+.process-step-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f05c23, #ff7a47);
+    transition: width 0.4s ease;
+    border-radius: 8px 8px 0 0;
+    z-index: 10;
+}
+
+.process-step-wrapper:hover::before {
+    width: 100%;
+}
+
+/* Animated Arrows */
+.process-arrow {
+    animation: shiftArrow 2s ease-in-out infinite;
+}
+
+@keyframes shiftArrow {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+/* OPTIMIZATIONS */
+
+/* Main image fade effect */
+#laceMainImage {
+    transition: opacity 0.3s ease;
+}
+
+/* Carousel scrolling */
+#laceThumbnailGallery {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #272263 #f1f1f1;
+}
+
+/* Custom scrollbar for carousel */
+#laceThumbnailGallery::-webkit-scrollbar {
+    height: 8px;
+}
+
+#laceThumbnailGallery::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#laceThumbnailGallery::-webkit-scrollbar-thumb {
+    background: #272263;
+    border-radius: 10px;
+}
+
+#laceThumbnailGallery::-webkit-scrollbar-thumb:hover {
+    background: #1a1548;
+}
