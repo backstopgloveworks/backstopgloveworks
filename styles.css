@@ -276,11 +276,6 @@ html, body {
 
 /* OPTIMIZATIONS */
 
-/* Main image fade effect */
-#laceMainImage {
-    transition: opacity 0.3s ease;
-}
-
 /* Carousel scrolling */
 #laceThumbnailGallery {
     overflow-x: auto;
@@ -291,7 +286,6 @@ html, body {
     scrollbar-color: #272263 #f1f1f1;
 }
 
-/* Custom scrollbar for carousel */
 #laceThumbnailGallery::-webkit-scrollbar {
     height: 8px;
 }
@@ -308,4 +302,9 @@ html, body {
 
 #laceThumbnailGallery::-webkit-scrollbar-thumb:hover {
     background: #1a1548;
+}
+
+/* Main image fade effect */
+#laceMainImage {
+    transition: opacity 0.3s ease;
 }
