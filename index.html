@@ -1147,54 +1147,78 @@
             document.getElementById('current-year').textContent = '-' + currentYear;
         }
         
+        // LACE COLOR PICKER - USING LOCAL PRODUCT IMAGES
+        // All images are real product photographs stored locally
+        // NO external URLs - everything loads from assets/images/laces/
+        // FINAL VERSION: Based on actual GitHub repo (52 colors)
         const laceColors = [
-            { name: 'Black', hex: '#2b2b2b', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821' },
-            { name: 'Black AD', hex: '#1a1a1a', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821' },
-            { name: 'Black TX', hex: '#0d0d0d', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821' },
-            { name: 'Saddle Tan', hex: '#8B4513', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073' },
-            { name: 'Tan', hex: '#D2691E', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726' },
-            { name: 'Gold', hex: '#DAA520', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Orange', hex: '#FF6B35', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/BurntOrange_300x.jpg?v=1646771027' },
-            { name: 'Cream', hex: '#F5DEB3', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073' },
-            { name: 'Beige', hex: '#C4A574', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073' },
-            { name: 'Wheat', hex: '#D4B896', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Camel_300x.jpg?v=1646771073' },
-            { name: 'White', hex: '#FFFFFF', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726', soldOut: true },
-            { name: 'Brown', hex: '#654321', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ChocolateBrown_300x.jpg?v=1646771134' },
-            { name: 'Dark Brown', hex: '#3d2817', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/DarkBrown_300x.jpg?v=1646771254' },
-            { name: 'Dark Brown TX', hex: '#2d1810', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/DarkBrown_300x.jpg?v=1646771254' },
-            { name: 'Burgundy', hex: '#800020', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Maroon', hex: '#691b1b', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Cardinal', hex: '#8B1A1A', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Red', hex: '#DC143C', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Bright Red', hex: '#FF0000', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Scarlet', hex: '#C8102E', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Pink', hex: '#FF69B4', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Hot Pink', hex: '#FF1493', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Purple', hex: '#800080', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/CardinalRed_300x.jpg?v=1646770952' },
-            { name: 'Orange AD', hex: '#FF8C00', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/BurntOrange_300x.jpg?v=1646771027' },
-            { name: 'Orange TX', hex: '#FF4500', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/BurntOrange_300x.jpg?v=1646771027' },
-            { name: 'Yellow', hex: '#FFD700', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Canary', hex: '#FFFF99', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Neon Yellow', hex: '#CCFF00', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Olive', hex: '#6B8E23', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318' },
-            { name: 'Gray', hex: '#808080', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821' },
-            { name: 'Silver', hex: '#C0C0C0', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/IndianTan_300x.jpg?v=1646770726' },
-            { name: 'Forest Green', hex: '#228B22', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318' },
-            { name: 'Teal', hex: '#008080', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Mint', hex: '#98FF98', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318' },
-            { name: 'Tiger', hex: '#CC8800', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Camo', hex: '#4a5d23', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318' },
-            { name: 'Vegas Gold', hex: '#C5B358', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Gold_300x.jpg?v=1646771374' },
-            { name: 'Dark Brown AD', hex: '#362214', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/DarkBrown_300x.jpg?v=1646771254' },
-            { name: 'Royal Blue', hex: '#0041C2', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Navy Blue', hex: '#1e3a5f', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Electric Blue', hex: '#0080FF', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Navy', hex: '#000080', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Black Blue', hex: '#1a1a2e', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/Black_1_300x.jpg?v=1646770821' },
-            { name: 'Columbia Blue', hex: '#B9D9EB', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Turquoise', hex: '#40E0D0', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186' },
-            { name: 'Aqua', hex: '#00FFFF', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ColumbiaBlue_300x.jpg?v=1646771186', soldOut: true },
-            { name: 'Seafoam', hex: '#93E9BE', img: 'https://www.buyfastpitchgloves.com/cdn/shop/products/ForestGreen_300x.jpg?v=1646771318' }
+            // BLACKS & GRAYS (8 colors)
+            { name: 'Black AL', img: 'assets/images/laces/black-al.jpeg' },
+            { name: 'Black SC', img: 'assets/images/laces/black-sc.jpeg' },
+            { name: 'Black TT', img: 'assets/images/laces/black-tt.jpeg' },
+            { name: 'Black Metallic AL', img: 'assets/images/laces/black_metallic-al.jpeg' },
+            { name: 'Dark Gray', img: 'assets/images/laces/dark_gray.jpeg' },
+            { name: 'Gray TT', img: 'assets/images/laces/gray-tt.jpeg' },
+            { name: 'Light Gray', img: 'assets/images/laces/light_gray.jpeg' },
+            { name: 'Smoke Gray', img: 'assets/images/laces/smoke_gray.jpeg' },
+            
+            // BROWNS & TANS (14 colors)
+            { name: 'Bean Cherokee', img: 'assets/images/laces/bean_cherokee.jpeg' },
+            { name: 'Camel AL', img: 'assets/images/laces/camel-al.jpeg' },
+            { name: 'Camel TT', img: 'assets/images/laces/camel-tt.jpeg' },
+            { name: 'Chestnut AL', img: 'assets/images/laces/chestnut-al.jpeg' },
+            { name: 'Cheyenne TT', img: 'assets/images/laces/cheyenne-tt.jpeg' },
+            { name: 'Chieftan Tan SC', img: 'assets/images/laces/chieftan_tan-sc.jpeg' },
+            { name: 'Chocolate AL', img: 'assets/images/laces/chocolate-al.jpeg' },
+            { name: 'Dark Brown AL', img: 'assets/images/laces/dark_brown-al.jpeg' },
+            { name: 'Dark Chocolate AL', img: 'assets/images/laces/dark_chocolate-al.jpeg' },
+            { name: 'Dark Chocolate TT', img: 'assets/images/laces/dark_chocolate-tt.jpeg' },
+            { name: 'Havana Tan TT', img: 'assets/images/laces/havana_tan-tt.jpeg' },
+            { name: 'Indian Tan AL', img: 'assets/images/laces/indian_tan-al.jpeg' },
+            { name: 'Japan Tan TT', img: 'assets/images/laces/japan_tan-tt.jpeg' },
+            { name: 'Vanilla Cream', img: 'assets/images/laces/vanilla_cream.jpeg' },
+            
+            // REDS & PINKS (7 colors)
+            { name: 'Blood Red TT', img: 'assets/images/laces/blood_red-tt.jpeg' },
+            { name: 'Bright Red', img: 'assets/images/laces/bright_red.jpeg' },
+            { name: 'Burgundy Prime', img: 'assets/images/laces/burgundy-prime.jpeg' },
+            { name: 'Cardinal Red TT', img: 'assets/images/laces/cardinal_red-tt.jpeg' },
+            { name: 'Maroon TT', img: 'assets/images/laces/maroon-tt.jpeg' },
+            { name: 'Bright Pink Tulip', img: 'assets/images/laces/bright_pink_tulip.jpeg' },
+            { name: 'Passion Pink TT', img: 'assets/images/laces/passion_pink-tt.jpeg' },
+            
+            // BLUES (7 colors)
+            { name: 'Carolina Blue TT', img: 'assets/images/laces/carolina_blue-tt.jpeg' },
+            { name: 'Electric Blue AD', img: 'assets/images/laces/electric_blue-ad.jpeg' },
+            { name: 'Navy TT', img: 'assets/images/laces/navy-tt.jpeg' },
+            { name: 'Royal Blue', img: 'assets/images/laces/royal_blue.jpeg' },
+            { name: 'Sapphire Blue', img: 'assets/images/laces/sapphire_blue.jpeg' },
+            { name: 'Teal', img: 'assets/images/laces/teal.jpeg' },
+            { name: 'Wildcat Blue AL', img: 'assets/images/laces/wildcat_blue-al.jpeg' },
+            
+            // GREENS (6 colors)
+            { name: 'Aqua Green', img: 'assets/images/laces/aqua_green.jpeg' },
+            { name: 'Dark Green TT', img: 'assets/images/laces/dark_green-tt.jpeg' },
+            { name: 'Kelly Green', img: 'assets/images/laces/kelly_green.jpeg' },
+            { name: 'Mint', img: 'assets/images/laces/mint.jpeg' },
+            { name: 'Neon Green', img: 'assets/images/laces/neon_green.jpeg' },
+            { name: 'Ocean Mint', img: 'assets/images/laces/ocean_mint.jpeg' },
+            
+            // YELLOWS & ORANGES (6 colors)
+            { name: 'Gold Metallic AL', img: 'assets/images/laces/gold_metallic-al.jpeg' },
+            { name: 'Lemon Yellow', img: 'assets/images/laces/lemon_yellow.jpeg' },
+            { name: 'Orange Peel AD', img: 'assets/images/laces/orange_peel-ad.jpeg' },
+            { name: 'Orange TT', img: 'assets/images/laces/orange-tt.jpeg' },
+            { name: 'Pirate Yellow AL', img: 'assets/images/laces/pirate_yellow-al.jpeg' },
+            { name: 'Yellow TT', img: 'assets/images/laces/yellow-tt.jpeg' },
+            
+            // PURPLES (1 color)
+            { name: 'Purple TT', img: 'assets/images/laces/purple-tt.jpeg' },
+            
+            // WHITES & METALLICS (3 colors)
+            { name: 'Gold Foil', img: 'assets/images/laces/gold_foil.jpeg' },
+            { name: 'Silver Foil', img: 'assets/images/laces/silver_foil.jpeg' },
+            { name: 'White TT', img: 'assets/images/laces/white-tt.jpeg' }
         ];
 
         let selectedColorIndex = 0;
@@ -1202,24 +1226,24 @@
         const colorGrid = document.getElementById('laceColorGrid');
         laceColors.forEach((color, index) => {
             const swatch = document.createElement('div');
-            swatch.className = 'lace-swatch' + (color.soldOut ? ' opacity-50 cursor-not-allowed' : '');
-            swatch.style.backgroundColor = color.hex;
+            swatch.className = 'lace-swatch';
             swatch.dataset.name = color.name;
             swatch.dataset.index = index;
             
+            // USE ACTUAL LACE IMAGE AS BACKGROUND (not a solid color!)
+            swatch.style.backgroundImage = `url('${color.img}')`;
+            swatch.style.backgroundSize = 'cover';
+            swatch.style.backgroundPosition = 'center';
+            
             if (index === 0) swatch.classList.add('selected');
             
-            if (!color.soldOut) {
-                swatch.addEventListener('click', () => selectLaceColor(index));
-            }
+            swatch.addEventListener('click', () => selectLaceColor(index));
             
             colorGrid.appendChild(swatch);
         });
 
         const thumbnailGallery = document.getElementById('laceThumbnailGallery');
         laceColors.forEach((color, index) => {
-            if (color.soldOut) return; // Skip sold-out colors
-            
             const thumb = document.createElement('div');
             thumb.className = 'relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer border-3 transition-all' + (index === 0 ? ' border-blue-900' : ' border-gray-300');
             thumb.innerHTML = `
@@ -1233,8 +1257,6 @@
 
         function selectLaceColor(index) {
             const color = laceColors[index];
-            if (color.soldOut) return;
-            
             selectedColorIndex = index;
             
             document.getElementById('laceMainImage').src = color.img;
