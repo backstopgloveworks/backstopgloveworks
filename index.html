@@ -238,30 +238,34 @@
             }
         }
         
-        /* ===================================== */
-        /* BRAND LOGO INFINITE SCROLL */
-        /* ===================================== */
-        
-        .logo-scroll-container {
-            display: inline-flex;
-            animation: scroll 40s linear infinite;
-        }
-        
-        .logo-scroll {
-            display: flex;
-            gap: 6rem;
-            align-items: center;
-            padding: 0 3rem;
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .logo-scroll-container:hover {
-            animation-play-state: paused;
-        }
+/* ===================================== */
+/* BRAND LOGO INFINITE SCROLL */
+/* ===================================== */
+
+.logo-scroll-wrapper {
+    display: inline-flex;
+    animation: scroll 35s linear infinite;
+    gap: 6rem;
+}
+
+.logo-scroll-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.logo-scroll-track {
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.logo-scroll-track img {
+    max-width: 180px;
+    height: 80px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
         
         /* ===================================== */
         /* BEFORE/AFTER SLIDER */
@@ -800,41 +804,42 @@
     </section>
 
     <!-- We Work With All Makes -->
-    <section class="py-20 bg-white border-t-2 border-gray-100">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">WE WORK WITH ALL MAKES</h2>
-                <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
-            </div>
+   <!-- We Work With All Makes -->
+<section class="py-20 bg-white border-t-2 border-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">WE WORK WITH ALL MAKES</h2>
+            <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
+        </div>
 
-            <div class="relative overflow-hidden bg-gray-50 rounded-2xl py-8">
-                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
-                
-                <div class="logo-scroll-container">
-                    <div class="logo-scroll">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="logo-scroll">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                        <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" onerror="this.style.display='none';">
-                    </div>
+        <div class="relative overflow-hidden bg-gray-50 rounded-2xl py-8">
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="flex logo-scroll-wrapper">
+                <div class="flex gap-24 logo-scroll-track">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex gap-24 logo-scroll-track">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Lace Color Picker - INTERACTIVE -->
     <section id="laces" class="py-20 bg-white">
