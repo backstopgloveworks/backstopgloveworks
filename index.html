@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backstop Glove Works | Professional Baseball Glove Repair & Relacing Services</title>
+    <meta name="description" content="Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed. Custom lacing in 50+ colors available.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+        :root {
+            --navy: #272263;
+            --navy-dark: #1a1548;
+            --orange: #f05c23;
+            --orange-light: #ff7a47;
+        }
+        
+        .hero-pattern {
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(39, 34, 99, 0.25);
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #272263, #1a1548);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        
+        .container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #272263 0%, #1a1548 100%);
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1a1548 0%, #272263 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 34, 99, 0.4);
+        }
+        
+        /* ===================================== */
+        /* LACE COLOR PICKER STYLES */
+        /* ===================================== */
+        
+        /* Lace Grid Swatches */
+        .lace-swatch {
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .lace-swatch:hover {
+            transform: scale(1.1);
+            border-color: #272263;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .lace-swatch.selected {
+            border-color: #272263;
+            border-width: 3px;
+            box-shadow: 0 0 0 3px rgba(39, 34, 99, 0.2);
+        }
+        
+        .lace-swatch::before {
+            content: attr(data-name);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+        
+        .lace-swatch:hover::before {
+            opacity: 1;
+        }
+        
+        /* Gray shimmer while loading */
+        .lace-swatch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            pointer-events: none;
+        }
+        
+        .lace-swatch[style*="background-image"]::after {
+            display: none;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Main preview image fade */
+        #laceMainImage {
+            transition: opacity 0.3s ease;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* ===================================== */
+        /* CONTACT SECTION BACKGROUND FIX */
+        /* ===================================== */
+        
+        /* Mobile: Fix lace wall background zoom issue */
+        @media (max-width: 768px) {
+            #contact {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center center !important;
+            }
+        }
+        
+        /* ===================================== */
+        /* SCROLL TO TOP BUTTON */
+        /* ===================================== */
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(240, 92, 35, 0.85), rgba(255, 122, 71, 0.85));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(240, 92, 35, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, rgba(240, 92, 35, 0.95), rgba(255, 122, 71, 0.95));
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(240, 92, 35, 0.4), 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* Carousel scrollbar styling */
+        #laceThumbnailGallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        #laceThumbnailGallery::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+        
+        #laceThumbnailGallery::-webkit-scrollbar-thumb {
+            background: #272263;
+            border-radius: 4px;
+        }
+        
+        #laceThumbnailGallery::-webkit-scrollbar-thumb:hover {
+            background: #1a1548;
+        }
+        
+        #laceThumbnailGallery {
+            scrollbar-width: thin;
+            scrollbar-color: #272263 #f3f4f6;
+        }
+        
+        /* Carousel navigation arrows */
+        .carousel-nav {
+            position: relative;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #272263, #1a1548);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(39, 34, 99, 0.3);
+        }
+        
+        .carousel-arrow:hover {
+            background: linear-gradient(135deg, #1a1548, #272263);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(39, 34, 99, 0.5);
+        }
+        
+        .carousel-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .carousel-arrow-left {
+            left: -20px;
+        }
+        
+        .carousel-arrow-right {
+            right: -20px;
+        }
+        
+        .carousel-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Hide arrows on mobile */
+        @media (max-width: 768px) {
+            .carousel-arrow {
+                display: none;
+            }
+        }
+        
+/* ===================================== */
+/* BRAND LOGO INFINITE SCROLL */
+/* ===================================== */
+
+.logo-scroll-wrapper {
+    display: inline-flex;
+    animation: scroll 19.7s linear infinite;
+    gap: 6rem;
+}
+
+.logo-scroll-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.logo-scroll-wrapper.paused {
+    animation-play-state: paused;
+}
+
+.logo-scroll-track {
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.logo-scroll-track img {
+    max-width: 180px;
+    height: 80px;
+}
+
+/* Enable drag/swipe scrolling on both desktop and mobile */
+.logo-scroll-container {
+    overflow-x: auto;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.logo-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.logo-scroll-container:active {
+    cursor: grabbing;
+}
+
+/* Mobile: Faster animation speed */
+@media (max-width: 768px) {
+    .logo-scroll-wrapper {
+        animation: scroll 5.25s linear infinite;
+    }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+        
+        /* ===================================== */
+        /* BEFORE/AFTER SLIDER */
+        /* ===================================== */
+        
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: ew-resize;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .before-after-container {
+                max-height: 70vh;
+            }
+            
+            .before-image, .after-image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                max-height: 70vh;
+                object-fit: contain;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .before-image, .after-image {
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+        
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .slider-handle::before {
+            content: '◄ ►';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #272263;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* ===================================== */
+        /* PROCESS TIMELINE ANIMATIONS */
+        /* ===================================== */
+        
+        .process-step-wrapper {
+            position: relative;
+            transition: transform 0.3s ease;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .process-step-wrapper h3 {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .process-step-wrapper p {
+            flex: 1;
+        }
+        
+        .process-step-wrapper:hover {
+            transform: translateY(-8px);
+        }
+        
+        .process-step-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f05c23, #ff7a47);
+            transition: width 0.4s ease;
+            border-radius: 8px 8px 0 0;
+            z-index: 10;
+        }
+        
+        .process-step-wrapper:hover::before {
+            width: 100%;
+        }
+        
+        /* Animated Arrows */
+        .process-arrow {
+            animation: shiftArrow 2s ease-in-out infinite;
+        }
+        
+        @keyframes shiftArrow {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="navbar bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex-1">
+                <a href="#" class="flex items-center justify-center md:justify-start">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
+                         alt="Backstop Glove Works Logo" 
+                         class="h-24 md:h-32 w-auto object-contain">
+                </a>
+            </div>
+            <div class="flex-none hidden md:flex">
+                <ul class="menu menu-horizontal px-1 font-semibold">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#laces">Lace Colors</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact" class="btn btn-primary text-white ml-4">Get Quote</a></li>
+                </ul>
+            </div>
+            <div class="flex-none md:hidden">
+                <button class="btn btn-square btn-ghost" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute top-full left-0 shadow-lg">
+            <ul class="menu menu-vertical px-4 py-2 font-semibold">
+                <li><a href="#services" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a></li>
+                <li><a href="#process" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Process</a></li>
+                <li><a href="#laces" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Lace Colors</a></li>
+                <li><a href="#gallery" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Gallery</a></li>
+                <li><a href="#contact" class="btn btn-primary text-white mt-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Order Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[700px] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #272263 0%, #1a1548 100%);">
+        <div class="absolute inset-0 hero-pattern opacity-30"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-white opacity-5 transform skew-x-12 translate-x-1/4"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-white">
+                    <div class="inline-block text-white px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-lg" style="background: #f05c23;">
+                        PRO-TIER CRAFTSMANSHIP
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                        EXPERT GLOVE<br/>
+                        RESTORATION
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed font-medium">
+                        Professional relacing, repair, and restoration services that bring your glove back to peak performance.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 mb-8 max-w-xl">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">Baseball/Softball</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">All Makes & Models</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">50+ Lace Colors</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">Full or Partial Relace</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">Cleaning & Restoration</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base md:text-lg font-semibold">Fast Turnaround</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="btn btn-lg shadow-xl hover:scale-105 transition-transform" style="background: #f05c23 !important; color: white !important; border: none !important;">
+                            View Services
+                        </a>
+                        <a href="#laces" class="btn btn-lg shadow-xl hover:bg-white transition-all" style="background: transparent !important; border: 2px solid white !important; color: white !important;" onmouseover="this.style.color='#272263'; this.style.background='white';" onmouseout="this.style.color='white'; this.style.background='transparent';">
+                            Choose Laces
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Banner Image -->
+                <div class="relative hidden md:block">
+                    <div class="relative">
+                        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border-4 border-white/20 shadow-2xl overflow-hidden">
+                            <img src="banner.jpg" 
+                                 alt="Professional Baseball Glove" 
+                                 class="w-full rounded-2xl"
+                                 onerror="this.src='https://www.buyfastpitchgloves.com/cdn/shop/files/Akadema-APM43-ProSoft-Design-Series-Bk-WhiteBlue-Laces-33-Catchers-Mitt-768x576_1400x.jpg?v=1698071485'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">Pro</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Craftsmanship</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">100%</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Satisfaction</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">50+</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Lace Colors</div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <div class="stat-number">Fast</div>
+                    <div class="text-sm md:text-lg font-semibold text-gray-700 mt-2">Turnaround</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">OUR SERVICES</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pro-tier glove care services - tailored to your exact needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1: Full Restoration -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Full Restoration</h3>
+                        <p class="text-gray-600 mb-4">Bring your glove back to its former glory. It's like a spa day for your glove. Full relace with deep cleaning and conditioning.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Remove existing laces, deep cleaning, minor repairs, leather conditioning, and install new laces.</p>
+                            <p><strong>Turnaround:</strong> 5-7 business days</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Starting at $100</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Full Relace -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Full Relace</h3>
+                        <p class="text-gray-600 mb-4">Worn out laces? New team colors? Over 50 colors of lace to choose from to fully customize the lacing throughout your glove.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Remove existing laces, minor repairs, and install new laces</p>
+                            <p><strong>Turnaround:</strong> 3-5 business days</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Starting at $70</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Lace Repairs -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Lace Repairs</h3>
+                        <p class="text-gray-600 mb-4">Broken lace or worn-down lace? Dog chewed through a lace? Looking for a pop of color? Whether pinky/thumb, web, fingers/spiral, heel, or palm, we've got you.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Remove old, damaged lace and replace with new laces</p>
+                            <p><strong>Turnaround:</strong> 1-2 business days</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Starting at $20</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Clean & Condition -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Clean & Condition</h3>
+                        <p class="text-gray-600 mb-4">Remove dirt, sweat, and buildup while restoring moisture and color back to the leather. Keep your glove soft, protected, and game-ready without breaking down.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Deep clean of the leather and conditioner application.</p>
+                            <p><strong>Turnaround:</strong> 2-3 business days</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Starting at $30</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: Break-in Service -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Break-in Service</h3>
+                        <p class="text-gray-600 mb-4">Brand new glove with stiff leather? We'll get your glove or mitt broken in about 85%-90% so that you can apply the final touches how you like them.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Working to soften the pocket and hinge points so the glove closes naturally and keeps its structure.</p>
+                            <p><strong>Turnaround:</strong> 7-10 business days</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Starting at $55</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Leather Repair -->
+                <div class="service-card card bg-white shadow-xl border-2 border-gray-100">
+                    <div class="card-body">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(135deg, #272263, #1a1548);">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-2xl font-bold mb-3" style="color: #272263;">Leather Repair</h3>
+                        <p class="text-gray-600 mb-4">Repair worn, torn, or weakened leather to restore durability and extend the life of your glove.</p>
+                        <div class="divider"></div>
+                        <div class="text-sm text-gray-500 space-y-2">
+                            <p><strong>Process:</strong> Inspect damage, confirm repair plan, repair or patch leather to restore glove.</p>
+                            <p><strong>Turnaround:</strong> TBD based on repair</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <p class="text-lg font-bold" style="color: #272263;">Price TBD</p>
+                            <a href="#contact" class="btn btn-primary text-white">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section id="process" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">HOW IT WORKS</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Simple, transparent process from start to finish</p>
+            </div>
+
+            <!-- Desktop: Horizontal Timeline -->
+            <div class="hidden md:flex items-start justify-between gap-6 max-w-6xl mx-auto">
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Select Service & Get Quote</h3>
+                    <p class="text-gray-600 text-sm">Choose a service and submit form for pricing</p>
+                </div>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Send Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Send your glove to us with any additional requests</p>
+                </div>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M78.6 5C69.1-2.4 55.6-1.5 47 7L7 47c-8.5 8.5-9.4 22-2.1 31.6l80 104c4.5 5.9 11.6 9.4 19 9.4h54.1l109 109c-14.7 29-10 65.4 14.3 89.6l112 112c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-112-112c-24.2-24.2-60.6-29-89.6-14.3l-109-109V104c0-7.5-3.5-14.5-9.4-19L78.6 5zM19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L233.7 374.3c-7.8-20.9-9-43.6-3.6-65.1l-61.7-61.7L19.9 396.1zM512 144c0-10.5-1.1-20.7-3.2-30.5c-2.4-11.2-16.1-14.1-24.2-6l-63.9 63.9c-3 3-7.1 4.7-11.3 4.7H352c-8.8 0-16-7.2-16-16V102.6c0-4.2 1.7-8.3 4.7-11.3l63.9-63.9c8.1-8.1 5.2-21.8-6-24.2C388.7 1.1 378.5 0 368 0C288.5 0 224 64.5 224 144l0 .8 85.3 85.3c36-9.1 75.8 .5 104 28.7L429 274.5c49-23 83-72.8 83-130.5zM56 432a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Confirm & Start Repairs</h3>
+                    <p class="text-gray-600 text-sm">We confirm work and return date before starting</p>
+                </div>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Quality Check</h3>
+                    <p class="text-gray-600 text-sm">Thorough inspection of finished product</p>
+                </div>
+                <div class="flex items-center mt-12 text-3xl process-arrow" style="color: #f05c23;">→</div>
+                <div class="process-step-wrapper flex-1 text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/>
+                            <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/>
+                            <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/>
+                            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" style="color: #272263;">Receive Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Your beautifully restored glove returned!</p>
+                </div>
+            </div>
+
+            <!-- Mobile: Vertical Stack -->
+            <div class="md:hidden space-y-8">
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Select Service & Get Quote</h3>
+                    <p class="text-gray-600 text-sm">Choose service and submit form</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Send Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Send your glove to us</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M78.6 5C69.1-2.4 55.6-1.5 47 7L7 47c-8.5 8.5-9.4 22-2.1 31.6l80 104c4.5 5.9 11.6 9.4 19 9.4h54.1l109 109c-14.7 29-10 65.4 14.3 89.6l112 112c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-112-112c-24.2-24.2-60.6-29-89.6-14.3l-109-109V104c0-7.5-3.5-14.5-9.4-19L78.6 5zM19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L233.7 374.3c-7.8-20.9-9-43.6-3.6-65.1l-61.7-61.7L19.9 396.1zM512 144c0-10.5-1.1-20.7-3.2-30.5c-2.4-11.2-16.1-14.1-24.2-6l-63.9 63.9c-3 3-7.1 4.7-11.3 4.7H352c-8.8 0-16-7.2-16-16V102.6c0-4.2 1.7-8.3 4.7-11.3l63.9-63.9c8.1-8.1 5.2-21.8-6-24.2C388.7 1.1 378.5 0 368 0C288.5 0 224 64.5 224 144l0 .8 85.3 85.3c36-9.1 75.8 .5 104 28.7L429 274.5c49-23 83-72.8 83-130.5zM56 432a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Confirm & Start Repairs</h3>
+                    <p class="text-gray-600 text-sm">We confirm before starting</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Quality Check</h3>
+                    <p class="text-gray-600 text-sm">Thorough inspection</p>
+                </div>
+                <div class="text-center text-3xl process-arrow" style="color: #f05c23;">↓</div>
+                <div class="process-step-wrapper text-center bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-black shadow-lg" style="background: linear-gradient(135deg, #f05c23, #ff7a47);">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/>
+                            <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/>
+                            <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/>
+                            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: #272263;">Receive Your Glove</h3>
+                    <p class="text-gray-600 text-sm">Beautifully restored!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- We Work With All Makes -->
+   <!-- We Work With All Makes -->
+<section class="py-20 bg-white border-t-2 border-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">WE WORK WITH ALL MAKES</h2>
+            <p class="text-xl text-gray-600">Professional service for every major glove brand</p>
+        </div>
+
+        <div class="relative overflow-hidden bg-gray-50 rounded-2xl py-8 logo-scroll-container">
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="flex logo-scroll-wrapper">
+                <div class="flex gap-24 logo-scroll-track">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-8-scroller.png" alt="44 Pro" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex gap-24 logo-scroll-track">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-1-scroller.png" alt="Rawlings" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-2-scroller.png" alt="Wilson" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-3-scroller.png" alt="Mizuno" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-4-scroller.png" alt="Nokona" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-5-scroller.png" alt="All-Star" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-6-scroller.png" alt="Easton" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-7-scroller.png" alt="Louisville Slugger" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/baseball-brand-logos/glovebrand-8-scroller.png" alt="44 Pro" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 flex-shrink-0" onerror="this.style.display='none';">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Lace Color Picker - INTERACTIVE -->
+    <section id="laces" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">CHOOSE YOUR LACE COLOR</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select from 50+ premium leather lace colors</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="relative w-full aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-xl mb-4">
+                        <img id="laceMainImage" 
+                             src="lace-grid-images/black-al.jpeg" 
+                             alt="Selected Lace Color" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute bottom-4 left-4 bg-black/80 text-white px-4 py-2 rounded-lg">
+                            <span id="laceColorName" class="font-bold">Black AL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4" style="color: #272263;">Lace Color</h3>
+                    <div id="laceColorGrid" class="grid grid-cols-10 gap-2 mb-6">
+                        <!-- Colors added by JavaScript -->
+                    </div>
+
+                    <div class="mt-8 bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-sm mb-3" style="color: #272263;">Our Lace Sizes:</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm">3/16 x 72 inch</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm">1/4 x 72 inch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-center" style="color: #272263;">Browse All Colors</h3>
+                <div class="carousel-nav">
+                    <button class="carousel-arrow carousel-arrow-left" id="carouselLeft" aria-label="Scroll left">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="laceThumbnailGallery" class="flex gap-3 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+                        <!-- Thumbnails added by JavaScript -->
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="carouselRight" aria-label="Scroll right">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">OUR WORK</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">See the quality difference professional restoration makes</p>
+            </div>
+
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white shadow-xl h-full">
+                    <div class="card-body">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4" style="color: #272263;">Mizuno Pro Custom Relace</h3>
+                        <div class="before-after-container" data-slider="1">
+                            <img class="before-image" 
+                                 src="assets/images/after-1-work-example.jpg" 
+                                 alt="Before" 
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-1-work-example.jpg';">
+                            <img class="after-image" 
+                                 src="assets/images/before-1-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-1-work-example.jpg';">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Full relace with premium red laces, pocket repair, and conditioning. Turnaround: 4 days.</p>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-xl h-full">
+                    <div class="card-body">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4" style="color: #272263;">Wilson A2400 Complete Catcher's Mitt Restoration</h3>
+                        <div class="before-after-container" data-slider="2">
+                            <img class="before-image" 
+                                 src="assets/images/after-2-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-2-work-example.jpg';">
+                            <img class="after-image" 
+                                 src="assets/images/before-2-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-2-work-example.jpg';">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Complete restoration: palm repair, full relace, deep clean, and conditioning. Turnaround: 6 days.</p>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-xl h-full">
+                    <div class="card-body">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4" style="color: #272263;">Rawlings Renegade Catcher's Mitt</h3>
+                        <div class="before-after-container" data-slider="3">
+                            <img class="before-image" 
+                                 src="assets/images/after-3-work-example.jpg" 
+                                 alt="Before"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/after-3-work-example.jpg';">
+                            <img class="after-image" 
+                                 src="assets/images/before-3-work-example.jpg" 
+                                 alt="After"
+                                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/before-3-work-example.jpg';">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Custom navy laces with new web installation. Turnaround: 5 days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative" style="background: url('lace-wall.jpg') center/cover fixed; background-color: #272263;">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4" style="color: #272263;">GET STARTED</h2>
+                    <p class="text-xl text-gray-600">Fill out the form below to request service for your glove</p>
+                </div>
+
+                <div class="card bg-white shadow-2xl border-2 border-gray-100">
+                    <div class="card-body p-0">
+                        <iframe 
+                            style="border:none;width:100%;min-height:700px;" 
+                            id="backstop-glove-works-glove-intake-form-aoaswm" 
+                            src="https://opnform.com/forms/backstop-glove-works-glove-intake-form-aoaswm"
+                            title="Backstop Glove Works Intake Form">
+                        </iframe>
+                        <script 
+                            type="text/javascript" 
+                            onload="initEmbed('backstop-glove-works-glove-intake-form-aoaswm', { autoResize: true })" 
+                            src="https://opnform.com/widgets/iframe.min.js">
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 text-base-content text-white" style="background: #272263;">
+        <div>
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 100px; height: 100px;">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png" 
+                         alt="Backstop Glove Works Logo" 
+                         class="w-full h-full object-contain p-2">
+                </div>
+                <div class="text-left">
+                    <div class="text-2xl font-black tracking-wide">BACKSTOP GLOVE WORKS</div>
+                    <div class="text-sm opacity-80 font-semibold" style="color: #f05c23;">Professional Glove Services</div>
+                </div>
+            </div>
+            <p class="max-w-md opacity-80">
+                Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed.
+            </p>
+        </div>
+        
+        <div>
+            <div class="grid grid-flow-col gap-4 mb-6">
+                <a href="#services" class="link link-hover">Services</a>
+                <a href="#process" class="link link-hover">Process</a>
+                <a href="#laces" class="link link-hover">Lace Colors</a>
+                <a href="#gallery" class="link link-hover">Gallery</a>
+                <a href="#contact" class="link link-hover">Contact</a>
+            </div>
+            
+            <div class="flex gap-3 justify-center mb-6">
+                <a href="https://www.instagram.com/backstopgloveworks" target="_blank" rel="noopener noreferrer" 
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/backstopgloveworks" target="_blank" rel="noopener noreferrer" 
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Neon Light Stylized Logo -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 230px; height: 230px;">
+                <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Backstop-Glove-Works-Neon-Light-Stylized.png" 
+                     alt="Backstop Glove Works Neon" 
+                     class="w-full h-full object-contain p-2"
+                     loading="lazy"
+                     width="230"
+                     height="230">
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6 text-center max-w-2xl w-full mx-auto">
+            <div>
+                <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
+                <p class="opacity-80 mt-1">
+                    <a href="/cdn-cgi/l/email-protection#3f5d5e5c544c4b504f585350495a48504d544c7f58525e5653115c5052" class="hover:opacity-100 transition-opacity">'<span class="__cf_email__" data-cfemail="e48685878f97908b9483888b9281938b968f97a48389858d88ca878b89">[email&#160;protected]</span>'</a>
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-2">Our Location</h4>
+                <p class="opacity-80">Buffalo, NY</p>
+            </div>
+        </div>
+        
+        <div>
+            <p class="opacity-60">© 2024<span id="current-year"></span> Backstop Glove Works. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Up Arrow -->
+            <path d="M16 4L16 20M16 4L10 10M16 4L22 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- TOP Text -->
+            <text x="16" y="32" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">TOP</text>
+        </svg>
+    </button>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // YEAR COPYRIGHT UPDATE
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2024) {
+            document.getElementById('current-year').textContent = '-' + currentYear;
+        }
+        
+        // ===============================================
+        // LACE COLOR PICKER - TWO FOLDER SETUP WITH GRAY SHIMMER
+        // ===============================================
+        
+        const laceColors = [
+            // BLACKS & GRAYS (8 colors)
+            { name: 'Black AL', imgSmall: 'lace-grid-small/black-al.jpeg', imgLarge: 'lace-grid-images/black-al.jpeg' },
+            { name: 'Black SC', imgSmall: 'lace-grid-small/black-sc.jpeg', imgLarge: 'lace-grid-images/black-sc.jpeg' },
+            { name: 'Black TT', imgSmall: 'lace-grid-small/black-tt.jpeg', imgLarge: 'lace-grid-images/black-tt.jpeg' },
+            { name: 'Black Metallic AL', imgSmall: 'lace-grid-small/black_metallic-al.jpeg', imgLarge: 'lace-grid-images/black_metallic-al.jpeg' },
+            { name: 'Dark Gray', imgSmall: 'lace-grid-small/dark_gray.jpeg', imgLarge: 'lace-grid-images/dark_gray.jpeg' },
+            { name: 'Gray TT', imgSmall: 'lace-grid-small/gray-tt.jpeg', imgLarge: 'lace-grid-images/gray-tt.jpeg' },
+            { name: 'Light Gray', imgSmall: 'lace-grid-small/light_gray.jpeg', imgLarge: 'lace-grid-images/light_gray.jpeg' },
+            { name: 'Smoke Gray', imgSmall: 'lace-grid-small/smoke_gray.jpeg', imgLarge: 'lace-grid-images/smoke_gray.jpeg' },
+            
+            // BROWNS & TANS (13 colors)
+            { name: 'Bean Cherokee', imgSmall: 'lace-grid-small/bean_cherokee.jpeg', imgLarge: 'lace-grid-images/bean_cherokee.jpeg' },
+            { name: 'Camel TT', imgSmall: 'lace-grid-small/camel-tt.jpeg', imgLarge: 'lace-grid-images/camel-tt.jpeg' },
+            { name: 'Chestnut AL', imgSmall: 'lace-grid-small/chestnut-al.jpeg', imgLarge: 'lace-grid-images/chestnut-al.jpeg' },
+            { name: 'Cheyenne TT', imgSmall: 'lace-grid-small/cheyenne-tt.jpeg', imgLarge: 'lace-grid-images/cheyenne-tt.jpeg' },
+            { name: 'Chieftan Tan SC', imgSmall: 'lace-grid-small/chieftan_tan-sc.jpeg', imgLarge: 'lace-grid-images/chieftan_tan-sc.jpeg' },
+            { name: 'Chocolate AL', imgSmall: 'lace-grid-small/chocolate-al.jpeg', imgLarge: 'lace-grid-images/chocolate-al.jpeg' },
+            { name: 'Dark Brown AL', imgSmall: 'lace-grid-small/dark_brown-al.jpeg', imgLarge: 'lace-grid-images/dark_brown-al.jpeg' },
+            { name: 'Dark Chocolate AL', imgSmall: 'lace-grid-small/dark_chocolate-al.jpeg', imgLarge: 'lace-grid-images/dark_chocolate-al.jpeg' },
+            { name: 'Dark Chocolate TT', imgSmall: 'lace-grid-small/dark_chocolate-tt.jpeg', imgLarge: 'lace-grid-images/dark_chocolate-tt.jpeg' },
+            { name: 'Havana Tan TT', imgSmall: 'lace-grid-small/havana_tan-tt.jpeg', imgLarge: 'lace-grid-images/havana_tan-tt.jpeg' },
+            { name: 'Indian Tan AL', imgSmall: 'lace-grid-small/indian_tan-al.jpeg', imgLarge: 'lace-grid-images/indian_tan-al.jpeg' },
+            { name: 'Japan Tan TT', imgSmall: 'lace-grid-small/japan_tan-tt.jpeg', imgLarge: 'lace-grid-images/japan_tan-tt.jpeg' },
+            { name: 'Vanilla Cream', imgSmall: 'lace-grid-small/vanilla_cream.jpeg', imgLarge: 'lace-grid-images/vanilla_cream.jpeg' },
+            
+            // REDS & PINKS (6 colors)
+            { name: 'Bright Red', imgSmall: 'lace-grid-small/bright_red.jpeg', imgLarge: 'lace-grid-images/bright_red.jpeg' },
+            { name: 'Burgundy Prime', imgSmall: 'lace-grid-small/burgundy_prime.jpeg', imgLarge: 'lace-grid-images/burgundy_prime.jpeg' },
+            { name: 'Cardinal Red TT', imgSmall: 'lace-grid-small/cardinal_red-tt.jpeg', imgLarge: 'lace-grid-images/cardinal_red-tt.jpeg' },
+            { name: 'Maroon TT', imgSmall: 'lace-grid-small/maroon-tt.jpeg', imgLarge: 'lace-grid-images/maroon-tt.jpeg' },
+            { name: 'Bright Pink Tulip', imgSmall: 'lace-grid-small/bright_pink_tulip.jpeg', imgLarge: 'lace-grid-images/bright_pink_tulip.jpeg' },
+            { name: 'Passion Pink TT', imgSmall: 'lace-grid-small/passion_pink-tt.jpeg', imgLarge: 'lace-grid-images/passion_pink-tt.jpeg' },
+            
+            // BLUES (7 colors)
+            { name: 'Carolina Blue TT', imgSmall: 'lace-grid-small/carolina_blue-tt.jpeg', imgLarge: 'lace-grid-images/carolina_blue-tt.jpeg' },
+            { name: 'Electric Blue AD', imgSmall: 'lace-grid-small/electric_blue-ad.jpeg', imgLarge: 'lace-grid-images/electric_blue-ad.jpeg' },
+            { name: 'Navy TT', imgSmall: 'lace-grid-small/navy-tt.jpeg', imgLarge: 'lace-grid-images/navy-tt.jpeg' },
+            { name: 'Royal Blue', imgSmall: 'lace-grid-small/royal_blue.jpeg', imgLarge: 'lace-grid-images/royal_blue.jpeg' },
+            { name: 'Sapphire Blue', imgSmall: 'lace-grid-small/sapphire_blue.jpeg', imgLarge: 'lace-grid-images/sapphire_blue.jpeg' },
+            { name: 'Teal', imgSmall: 'lace-grid-small/teal.jpeg', imgLarge: 'lace-grid-images/teal.jpeg' },
+            { name: 'Wildcat Blue AL', imgSmall: 'lace-grid-small/wildcat_blue-al.jpeg', imgLarge: 'lace-grid-images/wildcat_blue-al.jpeg' },
+            
+            // GREENS (6 colors)
+            { name: 'Aqua Green', imgSmall: 'lace-grid-small/aqua_green.jpeg', imgLarge: 'lace-grid-images/aqua_green.jpeg' },
+            { name: 'Dark Green TT', imgSmall: 'lace-grid-small/dark_green-tt.jpeg', imgLarge: 'lace-grid-images/dark_green-tt.jpeg' },
+            { name: 'Kelly Green', imgSmall: 'lace-grid-small/kelly_green.jpeg', imgLarge: 'lace-grid-images/kelly_green.jpeg' },
+            { name: 'Mint', imgSmall: 'lace-grid-small/mint.jpeg', imgLarge: 'lace-grid-images/mint.jpeg' },
+            { name: 'Neon Green', imgSmall: 'lace-grid-small/neon_green.jpeg', imgLarge: 'lace-grid-images/neon_green.jpeg' },
+            { name: 'Ocean Mint', imgSmall: 'lace-grid-small/ocean_mint.jpeg', imgLarge: 'lace-grid-images/ocean_mint.jpeg' },
+            
+            // YELLOWS & ORANGES (6 colors)
+            { name: 'Gold Metallic AL', imgSmall: 'lace-grid-small/gold_metallic-al.jpeg', imgLarge: 'lace-grid-images/gold_metallic-al.jpeg' },
+            { name: 'Lemon Yellow', imgSmall: 'lace-grid-small/lemon_yellow.jpeg', imgLarge: 'lace-grid-images/lemon_yellow.jpeg' },
+            { name: 'Orange Peel AD', imgSmall: 'lace-grid-small/orange_peel-ad.jpeg', imgLarge: 'lace-grid-images/orange_peel-ad.jpeg' },
+            { name: 'Orange TT', imgSmall: 'lace-grid-small/orange-tt.jpeg', imgLarge: 'lace-grid-images/orange-tt.jpeg' },
+            { name: 'Pirate Yellow AL', imgSmall: 'lace-grid-small/pirate_yellow-al.jpeg', imgLarge: 'lace-grid-images/pirate_yellow-al.jpeg' },
+            { name: 'Yellow TT', imgSmall: 'lace-grid-small/yellow-tt.jpeg', imgLarge: 'lace-grid-images/yellow-tt.jpeg' },
+            
+            // PURPLES (1 color)
+            { name: 'Purple TT', imgSmall: 'lace-grid-small/purple-tt.jpeg', imgLarge: 'lace-grid-images/purple-tt.jpeg' },
+            
+            // WHITES & METALLICS (3 colors)
+            { name: 'Gold Foil', imgSmall: 'lace-grid-small/gold_foil.jpeg', imgLarge: 'lace-grid-images/gold_foil.jpeg' },
+            { name: 'Silver Foil', imgSmall: 'lace-grid-small/silver_foil.jpeg', imgLarge: 'lace-grid-images/silver_foil.jpeg' },
+            { name: 'White TT', imgSmall: 'lace-grid-small/white-tt.jpeg', imgLarge: 'lace-grid-images/white-tt.jpeg' }
+        ];
+
+        let selectedColorIndex = 0; // First color (default)
+
+        // CREATE GRID SWATCHES
+        const colorGrid = document.getElementById('laceColorGrid');
+        if (colorGrid) {
+            laceColors.forEach((color, index) => {
+                const swatch = document.createElement('div');
+                swatch.className = 'lace-swatch';
+                swatch.dataset.name = color.name;
+                swatch.dataset.index = index;
+                
+                // LOAD SMALL IMAGE IMMEDIATELY (triggers removal of gray shimmer via CSS)
+                swatch.style.backgroundImage = `url('${color.imgSmall}')`;
+                swatch.style.backgroundSize = 'cover';
+                swatch.style.backgroundPosition = 'center';
+                
+                if (index === 0) swatch.classList.add('selected'); // First color default
+                
+                swatch.addEventListener('click', () => selectLaceColor(index));
+                
+                colorGrid.appendChild(swatch);
+            });
+        }
+
+        // CREATE CAROUSEL
+        const thumbnailGallery = document.getElementById('laceThumbnailGallery');
+        if (thumbnailGallery) {
+            laceColors.forEach((color, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'relative flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden cursor-pointer border-3 transition-all' + 
+                                 (index === 0 ? ' border-4' : ' border-2');
+                thumb.style.borderColor = index === 0 ? '#272263' : '#e5e7eb';
+                thumb.innerHTML = `
+                    <img src="${color.imgSmall}" 
+                         alt="${color.name}" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-xs p-2 text-center font-semibold">${color.name}</div>
+                `;
+                thumb.addEventListener('click', () => selectLaceColor(index));
+                thumb.dataset.index = index;
+                thumbnailGallery.appendChild(thumb);
+            });
+        }
+
+        // SELECT COLOR FUNCTION
+        function selectLaceColor(index) {
+            const color = laceColors[index];
+            selectedColorIndex = index;
+            
+            // Update main image (use LARGE version)
+            const mainImg = document.getElementById('laceMainImage');
+            if (mainImg) {
+                mainImg.style.opacity = '0.3';
+                mainImg.src = color.imgLarge;
+                mainImg.onload = function() {
+                    this.style.opacity = '1';
+                };
+            }
+            
+            // Update color name
+            const colorName = document.getElementById('laceColorName');
+            if (colorName) {
+                colorName.textContent = color.name;
+            }
+            
+            // Update grid swatches
+            document.querySelectorAll('.lace-swatch').forEach(swatch => {
+                swatch.classList.remove('selected');
+            });
+            const selectedSwatch = document.querySelector(`.lace-swatch[data-index="${index}"]`);
+            if (selectedSwatch) {
+                selectedSwatch.classList.add('selected');
+            }
+            
+            // Update carousel borders (no scrolling)
+            document.querySelectorAll('#laceThumbnailGallery > div').forEach(thumb => {
+                const thumbIndex = parseInt(thumb.dataset.index);
+                if (thumbIndex === index) {
+                    thumb.className = thumb.className.replace('border-2', 'border-4');
+                    thumb.style.borderColor = '#272263';
+                } else {
+                    thumb.className = thumb.className.replace('border-4', 'border-2');
+                    thumb.style.borderColor = '#e5e7eb';
+                }
+            });
+        }
+
+        // ===============================================
+        // CAROUSEL NAVIGATION ARROWS
+        // ===============================================
+        const carouselLeftBtn = document.getElementById('carouselLeft');
+        const carouselRightBtn = document.getElementById('carouselRight');
+        const carousel = document.getElementById('laceThumbnailGallery');
+        
+        if (carouselLeftBtn && carouselRightBtn && carousel) {
+            // Scroll amount (width of 3 thumbnails + gaps)
+            const scrollAmount = 400;
+            
+            carouselLeftBtn.addEventListener('click', () => {
+                carousel.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+            
+            carouselRightBtn.addEventListener('click', () => {
+                carousel.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // ===============================================
+        // BEFORE/AFTER SLIDERS
+        // ===============================================
+        function initAllSliders() {
+            const containers = document.querySelectorAll('.before-after-container');
+            
+            containers.forEach(container => {
+                const handle = container.querySelector('.slider-handle');
+                const afterImage = container.querySelector('.after-image');
+                let isDragging = false;
+
+                function updateSlider(clientX) {
+                    const rect = container.getBoundingClientRect();
+                    const offsetX = clientX - rect.left;
+                    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+                    
+                    handle.style.left = percentage + '%';
+                    afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+                }
+                
+                handle.style.left = '50%';
+                afterImage.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
+
+                handle.addEventListener('mousedown', () => isDragging = true);
+                container.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    updateSlider(e.clientX);
+                });
+
+                handle.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                });
+                container.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    if (document.querySelector('.before-after-container:hover') === container || 
+                        container.contains(document.activeElement)) {
+                        updateSlider(e.clientX);
+                    }
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                document.addEventListener('mouseup', () => isDragging = false);
+                document.addEventListener('touchend', () => isDragging = false);
+            });
+        }
+
+        initAllSliders();
+
+        // ===============================================
+        // LOGO SCROLLER DRAG/SWIPE INTERACTION (DESKTOP & MOBILE)
+        // ===============================================
+        const scrollerContainer = document.querySelector('.logo-scroll-container');
+        const scrollerWrapper = document.querySelector('.logo-scroll-wrapper');
+        
+        if (scrollerContainer && scrollerWrapper) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isTouch = false;
+            
+            // Desktop: Mouse drag functionality
+            scrollerContainer.addEventListener('mousedown', function(e) {
+                isDown = true;
+                isTouch = false;
+                scrollerWrapper.classList.add('paused');
+                scrollerContainer.style.cursor = 'grabbing';
+                startX = e.pageX - scrollerContainer.offsetLeft;
+                scrollLeft = scrollerContainer.scrollLeft;
+            });
+            
+            scrollerContainer.addEventListener('mouseleave', function() {
+                isDown = false;
+                scrollerContainer.style.cursor = 'grab';
+            });
+            
+            scrollerContainer.addEventListener('mouseup', function() {
+                isDown = false;
+                scrollerContainer.style.cursor = 'grab';
+            });
+            
+            scrollerContainer.addEventListener('mousemove', function(e) {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - scrollerContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed multiplier
+                scrollerContainer.scrollLeft = scrollLeft - walk;
+            });
+            
+            // Mobile: Touch/swipe functionality with native scrolling
+            scrollerContainer.addEventListener('touchstart', function(e) {
+                isTouch = true;
+                scrollerWrapper.classList.add('paused');
+            });
+            
+            scrollerContainer.addEventListener('touchend', function() {
+                isTouch = false;
+            });
+            
+            // Also pause when user scrolls the container
+            scrollerContainer.addEventListener('scroll', function() {
+                scrollerWrapper.classList.add('paused');
+            });
+            
+            // Detect when user scrolls away from logo section - resume animation
+            const logoSection = scrollerContainer.closest('section');
+            if (logoSection) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        // When section leaves viewport, resume animation
+                        if (!entry.isIntersecting && !isDown && !isTouch) {
+                            scrollerWrapper.classList.remove('paused');
+                        }
+                    });
+                }, { threshold: 0 });
+                
+                observer.observe(logoSection);
+            }
+        }
+
+
+        // ===============================================
+        // SMOOTH SCROLLING
+        // ===============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===============================================
+        // SCROLL TO TOP BUTTON
+        // ===============================================
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        if (scrollToTopBtn) {
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Scroll to top when clicked
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+          
