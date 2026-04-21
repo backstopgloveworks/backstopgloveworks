@@ -342,10 +342,14 @@
                         <!-- Magazine Cover Thumbnail -->
                         <div class="md:col-span-1">
                             <a href="assets/WS_Living_Magazine.pdf" target="_blank" rel="noopener noreferrer" class="block">
-                                <img src="assets/images/ws_living_cover.jpg" 
-                                     alt="West Seneca Living Magazine Cover featuring Backstop Glove Works" 
-                                     class="w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                                     onerror="this.src='https://via.placeholder.com/400x520/272263/ffffff?text=West+Seneca+Living+Magazine'">
+                                <picture>
+                                    <source srcset="assets/images/ws_living_cover.webp" type="image/webp">
+                                    <img src="assets/images/ws_living_cover.jpg"
+                                         alt="West Seneca Living Magazine Cover featuring Backstop Glove Works"
+                                         class="w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                                         width="800" height="1045"
+                                         loading="lazy">
+                                </picture>
                             </a>
                         </div>
                         
