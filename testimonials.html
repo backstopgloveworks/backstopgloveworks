@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Backstop Glove Works</title>
+    <meta name="description" content="Read what Backstop Glove Works customers are saying about our professional baseball glove revitalization, relacing, and repair services.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/glove_favicon_256.png">
+    <link rel="shortcut icon" type="image/png" href="assets/images/glove_favicon_256.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/glove_favicon_256.png">
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="754d8478-3201-4cf0-b7d4-8b53806d4a44"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        :root {
+            --navy: #272263;
+            --navy-dark: #1a1548;
+            --orange: #f05c23;
+            --orange-light: #ff7a47;
+        }
+
+        .hero-pattern {
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #272263 0%, #1a1548 100%);
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1a1548 0%, #272263 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 34, 99, 0.4);
+        }
+
+        .btn-primary,
+        .btn.btn-primary {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            padding-top: 16px !important;
+            padding-bottom: 16px !important;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 2px solid #f3f4f6;
+            box-shadow: 0 10px 30px rgba(39, 34, 99, 0.08);
+            padding: 2rem 2rem 2.25rem;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-self: start;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(39, 34, 99, 0.18);
+        }
+
+        .testimonial-quote-mark {
+            position: absolute;
+            top: -22px;
+            left: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f05c23, #ff7a47);
+            color: #fff;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 42px;
+            line-height: 1;
+            box-shadow: 0 6px 18px rgba(240, 92, 35, 0.35);
+        }
+
+        .testimonial-stars {
+            color: #f59e0b;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-content {
+            position: relative;
+            overflow: hidden;
+            max-height: 170px;
+            transition: max-height 0.45s ease;
+        }
+
+        .testimonial-content.expanded {
+            max-height: 3000px;
+        }
+
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), #ffffff 90%);
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-content.expanded::after {
+            opacity: 0;
+        }
+
+        .testimonial-expand {
+            margin-top: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            align-self: center;
+            color: #272263;
+            background: #f3f4f6;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .testimonial-expand:hover {
+            background: #272263;
+            color: #ffffff;
+        }
+
+        .testimonial-expand svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-expand[aria-expanded="true"] svg {
+            transform: rotate(180deg);
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            padding: 24px 6px 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.45s ease;
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-slide { flex: 0 0 50%; }
+        }
+
+        @media (min-width: 1024px) {
+            .carousel-slide { flex: 0 0 33.3333%; }
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            background: #272263;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(39, 34, 99, 0.3);
+            z-index: 5;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: #f05c23;
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-arrow svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .carousel-arrow.prev { left: -8px; }
+        .carousel-arrow.next { right: -8px; }
+
+        @media (min-width: 768px) {
+            .carousel-arrow.prev { left: -28px; }
+            .carousel-arrow.next { right: -28px; }
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.75rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            background: #d1d5db;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s ease, width 0.2s ease;
+        }
+
+        .carousel-dot.active {
+            background: #f05c23;
+            width: 32px;
+        }
+
+        .google-cta {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 10px 30px rgba(39, 34, 99, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .google-cta:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(39, 34, 99, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="navbar bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex-1">
+                <a href="index.html" class="flex items-center justify-center md:justify-start">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png"
+                         alt="Backstop Glove Works Logo"
+                         class="h-24 md:h-32 w-auto object-contain">
+                </a>
+            </div>
+            <div class="flex-none hidden md:flex">
+                <ul class="menu menu-horizontal px-1 font-semibold">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#process">Process</a></li>
+                    <li><a href="index.html#laces">Lace Colors</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="testimonials.html" style="color: #f05c23;">Testimonials</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#contact" class="btn btn-primary text-white ml-4">Get Quote</a></li>
+                </ul>
+            </div>
+            <div class="flex-none md:hidden">
+                <button class="btn btn-square btn-ghost" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute top-full left-0 shadow-lg">
+            <ul class="menu menu-vertical px-4 py-2 font-semibold">
+                <li><a href="index.html#services" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a></li>
+                <li><a href="index.html#process" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Process</a></li>
+                <li><a href="index.html#laces" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Lace Colors</a></li>
+                <li><a href="index.html#gallery" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Gallery</a></li>
+                <li><a href="testimonials.html" onclick="document.getElementById('mobile-menu').classList.add('hidden')" style="color: #f05c23;">Testimonials</a></li>
+                <li><a href="about.html" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary text-white mt-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative flex items-center overflow-hidden" style="background: linear-gradient(135deg, #272263 0%, #1a1548 100%);">
+        <div class="absolute inset-0 hero-pattern opacity-30"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-white opacity-5 transform skew-x-12 translate-x-1/4"></div>
+
+        <div class="container mx-auto px-4 py-20 relative z-10 text-center">
+            <div class="inline-block text-white px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-lg" style="background: #f05c23;">
+                WHAT OUR CUSTOMERS SAY
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-white">
+                TESTIMONIALS
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 leading-relaxed font-medium max-w-3xl mx-auto">
+                Real feedback from real players whose gloves came back better than they imagined.
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20" style="background: linear-gradient(to bottom, #f9fafb 0%, #ffffff 18%, #ffffff 82%, #f9fafb 100%);">
+        <div class="container mx-auto px-4">
+            <div class="testimonial-carousel" id="testimonialCarousel">
+                <button type="button" class="carousel-arrow prev" aria-label="Previous testimonial">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button type="button" class="carousel-arrow next" aria-label="Next testimonial">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <!-- Testimonial 1: Doug L81 -->
+                        <div class="carousel-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote-mark">&ldquo;</div>
+                                <div class="testimonial-stars mb-4">★★★★★</div>
+                                <div class="testimonial-content">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Beyond Impressed! I recently sent my glove to Backstop Glove Works for a full restoration, and the entire experience was absolutely flawless.<br/><br/>
+                                        From the very beginning, the communication was top-notch. They kept me updated every step of the way, making the whole process simple and smooth. On top of that, the speed of the turnaround was incredible&mdash;I had my glove back in the mail much faster than I anticipated.<br/><br/>
+                                        As for the craftsmanship, it is simply elite. I originally bought this glove back in the mid-80s, and they made it look like 30 years of use have been completely erased. The attention to detail is obvious the moment you hold it. Honestly, when I opened the package, the glove was even better than I expected. It looks and feels fantastic, completely exceeding my expectations.<br/><br/>
+                                        If you need your glove reconditioned, relaced, or fully restored, don&rsquo;t look anywhere else. Backstop Glove Works is a top-tier operation that takes immense pride in their work. I will absolutely be using them for any future glove needs.
+                                    </p>
+                                </div>
+                                <button type="button" class="testimonial-expand" aria-expanded="false">
+                                    <span class="expand-label">Read more</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="pt-4 border-t border-gray-100 mt-6">
+                                    <p class="font-bold text-lg" style="color: #272263;">Doug L81</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2: Joseph Dorney -->
+                        <div class="carousel-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote-mark">&ldquo;</div>
+                                <div class="testimonial-stars mb-4">★★★★★</div>
+                                <div class="testimonial-content">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Communication was AMAZING, and execution of repair was even better!! Trust this business and their recommendations, you will not regret it!
+                                    </p>
+                                </div>
+                                <button type="button" class="testimonial-expand" aria-expanded="false">
+                                    <span class="expand-label">Read more</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="pt-4 border-t border-gray-100 mt-6">
+                                    <p class="font-bold text-lg" style="color: #272263;">Joseph Dorney</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3: Nate Liberati -->
+                        <div class="carousel-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote-mark">&ldquo;</div>
+                                <div class="testimonial-stars mb-4">★★★★★</div>
+                                <div class="testimonial-content">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Working with Kevin at Backstop Glove Works was easy and quick. The quality of the work was outstanding as well. The glove I sent for service was my high school baseball glove that was very worn, but sentimental in wanting to restore. He patched the leather in the heel, revitalized the leather, and re-laced the glove, returning a 20+ year old glove to its old glory. Thank you Kevin!
+                                    </p>
+                                </div>
+                                <button type="button" class="testimonial-expand" aria-expanded="false">
+                                    <span class="expand-label">Read more</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="pt-4 border-t border-gray-100 mt-6">
+                                    <p class="font-bold text-lg" style="color: #272263;">Nate Liberati</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4: M Wojo -->
+                        <div class="carousel-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote-mark">&ldquo;</div>
+                                <div class="testimonial-stars mb-4">★★★★★</div>
+                                <div class="testimonial-content">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        If I could give Backstop Glove Works 10 stars, I would!<br/><br/>
+                                        I found their website after a national name brand store that advertises re-lacing and breaking in new gloves would not service our son&rsquo;s infielder glove at the start of high school season.<br/><br/>
+                                        Then I found and decided to give Backstop Glove Works a try&mdash;even though we are not local, we live in the Chicago area. From the start, I received great communication from Backstop, I was quoted a fair price for re-lacing the glove, and the cost for the work completed did not increase once I sent the glove in.<br/><br/>
+                                        The work was completed in the amount of time estimated, and the quality of the laces, the craftsmanship and condition of the glove exceeded our expectations when we received it back.<br/><br/>
+                                        I am so grateful we didn&rsquo;t have to break in a new glove after high school season had already started.<br/><br/>
+                                        I highly recommend Backstop Glove Works.
+                                    </p>
+                                </div>
+                                <button type="button" class="testimonial-expand" aria-expanded="false">
+                                    <span class="expand-label">Read more</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="pt-4 border-t border-gray-100 mt-6">
+                                    <p class="font-bold text-lg" style="color: #272263;">M Wojo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-dots" role="tablist" aria-label="Testimonial navigation"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews CTA -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto google-cta text-center">
+                <svg class="w-14 h-14" viewBox="0 0 48 48" aria-hidden="true">
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+                <h2 class="text-3xl md:text-4xl font-black" style="color: #272263;">See All of Our Reviews</h2>
+                <p class="text-lg text-gray-600 max-w-xl">
+                    Visit our Google listing to read every review, see customer photos, and share your own experience after we work on your glove.
+                </p>
+                <a href="https://www.google.com/search?q=backstop+glove+works#lrd=0x89d3739a9e3b5651:0x69410c3c737109e5,1"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-block px-8 py-4 rounded-lg text-white font-semibold text-base transition-all duration-300 cursor-pointer"
+                   style="background: #f05c23; box-shadow: 0 4px 16px rgba(240, 92, 35, 0.4);"
+                   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(240, 92, 35, 0.5)';"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(240, 92, 35, 0.4)';">
+                    Read Reviews on Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA to Services -->
+    <section class="py-20" style="background: linear-gradient(135deg, #272263 0%, #1a1548 100%);">
+        <div class="absolute inset-0 hero-pattern opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <h2 class="text-3xl md:text-5xl font-black mb-4">READY FOR YOUR GLOVE TO BE NEXT?</h2>
+            <p class="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl mx-auto">
+                Browse our services and get in touch for a quote&mdash;we&rsquo;d love to bring your glove back to peak performance.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="index.html#services"
+                   class="inline-block px-8 py-4 rounded-lg text-white font-semibold text-base transition-all duration-300 cursor-pointer"
+                   style="background: #f05c23; box-shadow: 0 4px 16px rgba(240, 92, 35, 0.4);"
+                   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(240, 92, 35, 0.5)';"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(240, 92, 35, 0.4)';">
+                    View Services
+                </a>
+                <a href="index.html#contact"
+                   class="inline-block px-8 py-4 rounded-lg font-semibold text-base transition-all duration-300 cursor-pointer"
+                   style="background: transparent; color: #ffffff; border: 2px solid #ffffff;"
+                   onmouseover="this.style.background='#ffffff'; this.style.color='#272263'; this.style.transform='translateY(-3px)';"
+                   onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0)';">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 text-base-content text-white" style="background: #272263;">
+        <div>
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 100px; height: 100px;">
+                    <img src="https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png"
+                         alt="Backstop Glove Works Logo"
+                         class="w-full h-full object-contain p-2">
+                </div>
+                <div class="text-left">
+                    <div class="text-2xl font-black tracking-wide">BACKSTOP GLOVE WORKS</div>
+                    <div class="text-sm opacity-80 font-semibold" style="color: #f05c23;">Professional Glove Services</div>
+                </div>
+            </div>
+            <p class="max-w-md opacity-80">
+                Expert baseball glove repair, relacing, and restoration services. Fast turnaround, quality guaranteed.
+            </p>
+        </div>
+
+        <div>
+            <div class="grid grid-flow-col gap-4 mb-6">
+                <a href="index.html#services" class="link link-hover">Services</a>
+                <a href="index.html#process" class="link link-hover">Process</a>
+                <a href="index.html#laces" class="link link-hover">Lace Colors</a>
+                <a href="index.html#gallery" class="link link-hover">Gallery</a>
+                <a href="testimonials.html" class="link link-hover">Testimonials</a>
+                <a href="about.html" class="link link-hover">About</a>
+                <a href="index.html#contact" class="link link-hover">Contact</a>
+            </div>
+
+            <div class="flex gap-3 justify-center mb-6">
+                <a href="https://www.instagram.com/backstopgloveworks" target="_blank" rel="noopener noreferrer"
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/backstopgloveworks" target="_blank" rel="noopener noreferrer"
+                   class="w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-center max-w-2xl w-full mx-auto">
+            <div>
+                <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
+                <p class="opacity-80 mt-1">
+                    <a href="mailto:backstopgloveworks@gmail.com" class="hover:opacity-100 transition-opacity">backstopgloveworks@gmail.com</a>
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-2">Our Location</h4>
+                <p class="opacity-80">Buffalo, NY</p>
+            </div>
+        </div>
+
+        <div>
+            <p class="opacity-60">© 2024<span id="current-year"></span> Backstop Glove Works. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2024) {
+            document.getElementById('current-year').textContent = '-' + currentYear;
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Testimonial expand/collapse
+        function collapseCard(card) {
+            const content = card.querySelector('.testimonial-content');
+            const button = card.querySelector('.testimonial-expand');
+            if (!content || !button) return;
+            if (button.dataset.alwaysOpen === 'true') return;
+            content.classList.remove('expanded');
+            button.setAttribute('aria-expanded', 'false');
+            const label = button.querySelector('.expand-label');
+            if (label) label.textContent = 'Read more';
+        }
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            const content = card.querySelector('.testimonial-content');
+            const button = card.querySelector('.testimonial-expand');
+            if (!content || !button) return;
+
+            requestAnimationFrame(() => {
+                if (content.scrollHeight <= content.clientHeight + 4) {
+                    button.style.display = 'none';
+                    button.dataset.alwaysOpen = 'true';
+                    content.style.maxHeight = 'none';
+                    content.classList.add('expanded');
+                }
+            });
+
+            button.addEventListener('click', () => {
+                const nowExpanded = !content.classList.contains('expanded');
+                content.classList.toggle('expanded', nowExpanded);
+                button.setAttribute('aria-expanded', nowExpanded);
+                button.querySelector('.expand-label').textContent = nowExpanded ? 'Read less' : 'Read more';
+            });
+        });
+
+        // Testimonial carousel
+        (function () {
+            const carousel = document.getElementById('testimonialCarousel');
+            if (!carousel) return;
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+            const prevBtn = carousel.querySelector('.carousel-arrow.prev');
+            const nextBtn = carousel.querySelector('.carousel-arrow.next');
+            const dotsWrap = carousel.querySelector('.carousel-dots');
+            if (!track || !slides.length) return;
+
+            let current = 0;
+
+            function getVisibleCount() {
+                if (window.innerWidth >= 1024) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+
+            function maxIndex() {
+                return Math.max(0, slides.length - getVisibleCount());
+            }
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+                const pages = maxIndex() + 1;
+                if (pages <= 1) {
+                    dotsWrap.style.display = 'none';
+                    return;
+                }
+                dotsWrap.style.display = 'flex';
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+                    dot.setAttribute('aria-label', `Show testimonials starting at ${i + 1}`);
+                    dot.addEventListener('click', () => goTo(i));
+                    dotsWrap.appendChild(dot);
+                }
+            }
+
+            function updateArrows() {
+                const hide = maxIndex() === 0;
+                if (prevBtn) prevBtn.style.display = hide ? 'none' : '';
+                if (nextBtn) nextBtn.style.display = hide ? 'none' : '';
+            }
+
+            function applyTransform() {
+                const step = 100 / getVisibleCount();
+                track.style.transform = `translateX(-${current * step}%)`;
+            }
+
+            function goTo(index) {
+                const max = maxIndex();
+                if (index < 0) index = max;
+                if (index > max) index = 0;
+                slides.forEach(slide => {
+                    const card = slide.querySelector('.testimonial-card');
+                    if (card) collapseCard(card);
+                });
+                current = index;
+                applyTransform();
+                dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goTo(current - 1);
+                if (e.key === 'ArrowRight') goTo(current + 1);
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (current > maxIndex()) current = maxIndex();
+                    buildDots();
+                    updateArrows();
+                    applyTransform();
+                }, 120);
+            });
+
+            buildDots();
+            updateArrows();
+            applyTransform();
+        })();
+    </script>
+</body>
+</html>
