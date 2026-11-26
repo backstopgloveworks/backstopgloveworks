@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <!-- Homepage -->
   <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/</loc>
-    <lastmod>2026-01-26</lastmod>
+    <loc>https://www.backstopgloveworks.com/</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Services Section -->
+
+  <!-- About Page -->
   <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/#services</loc>
-    <lastmod>2026-01-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Process Section -->
-  <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/#process</loc>
-    <lastmod>2026-01-26</lastmod>
+    <loc>https://www.backstopgloveworks.com/about.html</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Lace Colors Section -->
+
+  <!-- Testimonials Page -->
   <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/#laces</loc>
-    <lastmod>2026-01-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Gallery Section -->
-  <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/#gallery</loc>
-    <lastmod>2026-01-26</lastmod>
+    <loc>https://www.backstopgloveworks.com/testimonials.html</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://www.backstopgloveworks.com/#services</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Process Section -->
+  <url>
+    <loc>https://www.backstopgloveworks.com/#process</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Lace Colors Section -->
+  <url>
+    <loc>https://www.backstopgloveworks.com/#laces</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Gallery Section -->
+  <url>
+    <loc>https://www.backstopgloveworks.com/#gallery</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Contact Section -->
   <url>
-    <loc>https://backstopgloveworks.github.io/backstopgloveworks/#contact</loc>
-    <lastmod>2026-01-26</lastmod>
+    <loc>https://www.backstopgloveworks.com/#contact</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

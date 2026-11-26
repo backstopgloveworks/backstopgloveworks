@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://backstopgloveworks.github.io/backstopgloveworks/sitemap.xml
+Sitemap: https://www.backstopgloveworks.com/sitemap.xml
