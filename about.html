@@ -13,7 +13,76 @@
     
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="754d8478-3201-4cf0-b7d4-8b53806d4a44"></script>
-    
+
+    <link rel="canonical" href="https://www.backstopgloveworks.com/about.html">
+
+    <!-- Structured data: AboutPage + Person (Kevin) + Article (magazine feature) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "AboutPage",
+          "@id": "https://www.backstopgloveworks.com/about.html#aboutpage",
+          "url": "https://www.backstopgloveworks.com/about.html",
+          "name": "About Backstop Glove Works",
+          "description": "Meet the craftsman behind Backstop Glove Works. Player, coach, and glove restoration expert serving Buffalo and the baseball community nationwide.",
+          "about": { "@id": "https://www.backstopgloveworks.com/#business" },
+          "mainEntity": { "@id": "https://www.backstopgloveworks.com/#kevin" },
+          "isPartOf": { "@id": "https://www.backstopgloveworks.com/#website" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.backstopgloveworks.com/#kevin",
+          "name": "Kevin",
+          "jobTitle": "Owner & Glove Craftsman",
+          "worksFor": { "@id": "https://www.backstopgloveworks.com/#business" },
+          "description": "Lifelong baseball player and coach with 40+ years in the game. Founder and craftsman behind Backstop Glove Works, specializing in glove revitalization, relacing, leather repair, and cleaning.",
+          "knowsAbout": [
+            "Baseball glove restoration",
+            "Baseball glove relacing",
+            "Catchers mitt repair",
+            "Leather conditioning",
+            "Baseball coaching",
+            "Softball glove repair"
+          ],
+          "image": "https://raw.githubusercontent.com/backstopgloveworks/backstopgloveworks/main/assets/images/Logo-Transparent.png"
+        },
+        {
+          "@type": ["LocalBusiness", "ProfessionalService"],
+          "@id": "https://www.backstopgloveworks.com/#business",
+          "name": "Backstop Glove Works",
+          "url": "https://www.backstopgloveworks.com/",
+          "email": "backstopgloveworks@gmail.com",
+          "telephone": "+1-716-228-5844",
+          "foundingDate": "2024",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Buffalo",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.backstopgloveworks.com/about.html#magazine-feature",
+          "headline": "Backstop Glove Works featured in West Seneca Living Magazine",
+          "description": "Feature article in West Seneca Living Magazine (April 2026) about Backstop Glove Works and owner Kevin's craftsmanship restoring baseball gloves.",
+          "about": { "@id": "https://www.backstopgloveworks.com/#business" },
+          "mentions": { "@id": "https://www.backstopgloveworks.com/#kevin" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "West Seneca Living Magazine"
+          },
+          "datePublished": "2026-04-01",
+          "url": "https://www.backstopgloveworks.com/assets/WS_Living_Magazine.pdf",
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
@@ -456,11 +525,17 @@
             </div>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-6 text-center max-w-2xl w-full mx-auto">
+        <div class="grid md:grid-cols-3 gap-6 text-center max-w-3xl w-full mx-auto">
             <div>
                 <h4 class="font-bold text-lg mb-2">We'd Love to Chat</h4>
                 <p class="opacity-80 mt-1">
                     <a href="mailto:backstopgloveworks@gmail.com" class="hover:opacity-100 transition-opacity">backstopgloveworks@gmail.com</a>
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-2">Give Us a Ring</h4>
+                <p class="opacity-80 mt-1">
+                    <a href="tel:+17162285844" class="hover:opacity-100 transition-opacity">(716) 228-5844</a>
                 </p>
             </div>
             <div>
